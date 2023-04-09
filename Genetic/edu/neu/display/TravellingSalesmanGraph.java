@@ -1,4 +1,4 @@
-package display;
+package edu.neu.display;
 
 import javax.swing.*;
 import java.awt.*;

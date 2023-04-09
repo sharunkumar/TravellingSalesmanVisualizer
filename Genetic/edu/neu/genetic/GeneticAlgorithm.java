@@ -1,16 +1,15 @@
-package genetic;
-
-import modals.Location;
-import modals.Population;
-import modals.TravelPath;
+package edu.neu.genetic;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-import display.TravellingSalesmanGraph;
-import display.TravellingSalesmanWindow;
+import edu.neu.display.TravellingSalesmanGraph;
+import edu.neu.display.TravellingSalesmanWindow;
+import edu.neu.modals.Location;
+import edu.neu.modals.Population;
+import edu.neu.modals.TravelPath;
 
 /**
  * The Genetic Algorithm system. This class brings together the entire process

@@ -1,4 +1,4 @@
-package io;
+package edu.neu.io;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import modals.Location;
+import edu.neu.modals.Location;
 
 public class DataSet {
 

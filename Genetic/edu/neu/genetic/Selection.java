@@ -1,10 +1,10 @@
-package genetic;
+package edu.neu.genetic;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import modals.Population;
-import modals.TravelPath;
+import edu.neu.modals.Population;
+import edu.neu.modals.TravelPath;
 
 /**
  * Determines which chromosomes will survive and potentially reproduce.

@@ -1,9 +1,9 @@
-package genetic;
+package edu.neu.genetic;
 
 import java.util.Random;
 
-import modals.Location;
-import modals.TravelPath;
+import edu.neu.modals.Location;
+import edu.neu.modals.TravelPath;
 
 /**
  * Used for mutating the Chromosomes.

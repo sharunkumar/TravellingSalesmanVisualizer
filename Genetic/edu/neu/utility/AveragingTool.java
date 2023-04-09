@@ -1,9 +1,9 @@
-package Utility;
-
-import display.TravellingSalesmanGraph;
-import genetic.GeneticAlgorithm;
+package edu.neu.utility;
 
 import java.util.ArrayList;
+
+import edu.neu.display.TravellingSalesmanGraph;
+import edu.neu.genetic.GeneticAlgorithm;
 
 /**
  * Runs a Genetic Algorithm several times and graphs the average of the results.

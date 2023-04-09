@@ -1,10 +1,10 @@
-package genetic;
+package edu.neu.genetic;
 
 import java.util.*;
 
-import modals.Location;
-import modals.Population;
-import modals.TravelPath;
+import edu.neu.modals.Location;
+import edu.neu.modals.Population;
+import edu.neu.modals.TravelPath;
 
 /**
  * Used for Chromosome reproduction.

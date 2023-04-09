@@ -1,9 +1,9 @@
-package display;
+package edu.neu.display;
 
 import javax.swing.*;
 
-import modals.Location;
-import modals.TravelPath;
+import edu.neu.modals.Location;
+import edu.neu.modals.TravelPath;
 
 import java.awt.*;
 

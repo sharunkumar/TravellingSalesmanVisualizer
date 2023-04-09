@@ -1,11 +1,11 @@
-package genetic;
+package edu.neu.genetic;
 
-import static modals.Population.fromDataSet;
+import static edu.neu.modals.Population.fromDataSet;
 
 import java.io.IOException;
 import java.util.Random;
 
-import IO.DataSet;
+import edu.neu.io.DataSet;
 
 public class Preset {
 

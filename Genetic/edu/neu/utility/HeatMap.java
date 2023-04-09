@@ -1,10 +1,10 @@
-package Utility;
+package edu.neu.utility;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import genetic.GeneticAlgorithm;
-import genetic.Preset;
+import edu.neu.genetic.GeneticAlgorithm;
+import edu.neu.genetic.Preset;
 
 public class HeatMap {
     private int maxValue = 0;

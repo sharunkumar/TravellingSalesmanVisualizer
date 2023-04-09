@@ -1,4 +1,4 @@
-package modals;
+package edu.neu.modals;
 
 import java.util.Arrays;
 import java.util.Random;

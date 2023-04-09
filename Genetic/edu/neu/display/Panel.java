@@ -1,4 +1,4 @@
-package display;
+package edu.neu.display;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,7 +7,7 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
-import modals.Location;
+import edu.neu.modals.Location;
 
 /**
  * All the drawing is done here.

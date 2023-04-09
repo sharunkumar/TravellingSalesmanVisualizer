@@ -1,4 +1,4 @@
-package modals;
+package edu.neu.modals;
 
 import java.nio.BufferOverflowException;
 import java.util.HashSet;
@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-import IO.DataSet;
+import edu.neu.io.DataSet;
 
 /**
  * Represents a Population of chromosomes.

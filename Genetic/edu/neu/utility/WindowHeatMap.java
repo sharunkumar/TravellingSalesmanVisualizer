@@ -1,4 +1,4 @@
-package Utility;
+package edu.neu.utility;
 
 import javax.swing.*;
 import java.awt.*;
