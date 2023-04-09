@@ -9,6 +9,7 @@ import java.util.Random;
  */
 public class TravelPath implements Comparable<TravelPath> {
 
+    private int hashcode = -1;
     private Location[] locations;
     private int distance = -1; // Calculated once then cached.
     private Random random;
@@ -67,11 +68,14 @@ public class TravelPath implements Comparable<TravelPath> {
 
     @Override
     public int hashCode() {
-        StringBuilder sb = new StringBuilder();
-        for (Location location : locations) {
-            sb.append(location);
+        if (hashcode == -1) {
+            StringBuilder sb = new StringBuilder();
+            for (Location location : locations) {
+                sb.append(location);
+            }
+            hashcode = sb.toString().hashCode();
         }
-        return (new String(sb)).hashCode();
+        return hashcode;
     }
 
     public int getDistance() {
@@ -107,7 +111,7 @@ public class TravelPath implements Comparable<TravelPath> {
     public String toString() {
         StringBuilder sb = new StringBuilder("[ ");
         for (Location item : locations) {
-            sb.append(item.getName());
+            sb.append(item.toString());
             sb.append(" ");
         }
         sb.append("]");

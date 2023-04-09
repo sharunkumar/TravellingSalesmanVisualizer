@@ -19,7 +19,7 @@ public class TravellingSalesmanWindow extends JFrame {
     private Panel panel;
     Location[] locations;
     TravelPath path;
-    private int maxX, maxY;
+    private float maxX, maxY;
     double scaleX;
     double scaleY;
 
@@ -73,11 +73,11 @@ public class TravellingSalesmanWindow extends JFrame {
      */
     private void setScale() {
         for (Location c : locations) {
-            if (c.getX() > maxX) {
-                maxX = c.getX();
+            if (c.getLatitude() > maxX) {
+                maxX = c.getLatitude();
             }
-            if (c.getY() > maxY) {
-                maxY = c.getY();
+            if (c.getLongitude() > maxY) {
+                maxY = c.getLongitude();
             }
         }
         scaleX = ((double) maxX) / ((double) WIDTH - OFFSET);

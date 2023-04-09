@@ -8,32 +8,27 @@ import java.util.Random;
  */
 public class Location {
 
-    private String name;
-    private int x, y;
+    private int hashCode = -1;
+    private float latitude, longitude;
 
     /**
      * Constructs the location.
      * 
-     * @param name the name of the location
-     * @param x    the x coordinate
-     * @param y    the y coordinate
+     * @param name      the name of the location
+     * @param latitude  the x coordinate
+     * @param longitude the y coordinate
      */
-    public Location(String name, int x, int y) {
-        this.name = name;
-        this.x = x;
-        this.y = y;
+    public Location(float latitude, float longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
-    public String getName() {
-        return name;
+    public float getLatitude() {
+        return latitude;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
+    public float getLongitude() {
+        return longitude;
     }
 
     /**
@@ -43,34 +38,9 @@ public class Location {
      * @return a Randomly generated location
      */
     public static Location getRandomLocation(Random random) {
-        String name = getRandomName(random);
         int x = random.nextInt(500);
         int y = random.nextInt(500);
-        return new Location(name, x, y);
-    }
-
-    /**
-     * Helper method to generate a random name for the random location generator.
-     * 
-     * @param random the Random object to be used for the generation
-     * @return random letters
-     */
-    private static String getRandomName(Random random) {
-
-        // Create an array with random integers.
-        int[] name = new int[random.nextInt(5) + 3];
-        for (int i = 0; i < name.length; i++) {
-            name[i] = random.nextInt(26) + 65;
-        }
-
-        // Convert the integers in the array to chars.
-        // Add each char to StringBuilder.
-        StringBuilder sb = new StringBuilder();
-        for (int i : name) {
-            sb.append((char) i);
-        }
-
-        return new String(sb);
+        return new Location(x, y);
     }
 
     /**
@@ -82,14 +52,14 @@ public class Location {
      */
     public static double distance(Location location1, Location location2) {
 
-        int x1 = location1.getX();
-        int y1 = location1.getY();
+        float x1 = location1.getLatitude();
+        float y1 = location1.getLongitude();
 
-        int x2 = location2.getX();
-        int y2 = location2.getY();
+        float x2 = location2.getLatitude();
+        float y2 = location2.getLongitude();
 
-        int xDiff = x2 - x1;
-        int yDiff = y2 - y1;
+        float xDiff = x2 - x1;
+        float yDiff = y2 - y1;
 
         return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     }
@@ -103,24 +73,24 @@ public class Location {
 
         Location location = (Location) o;
 
-        if (x != location.x)
+        if (latitude != location.latitude)
             return false;
-        if (y != location.y)
+        if (longitude != location.longitude)
             return false;
-        return name.equals(location.name);
+        return toString().equals(location.toString());
 
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + x;
-        result = 31 * result + y;
-        return result;
+        if (hashCode == -1) {
+            hashCode = toString().hashCode();
+        }
+        return hashCode;
     }
 
     @Override
     public String toString() {
-        return name + " (" + x + ", " + y + ")";
+        return "(" + latitude + ", " + longitude + ")";
     }
 }

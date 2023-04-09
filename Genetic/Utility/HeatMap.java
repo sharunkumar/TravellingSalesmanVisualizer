@@ -3,6 +3,7 @@ package Utility;
 import GeneticAlgorithms.GeneticAlgorithm;
 import GeneticAlgorithms.Preset;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class HeatMap {
@@ -305,7 +306,7 @@ public class HeatMap {
     // }
     // }
 
-    private static void outputHeatMap() {
+    private static void outputHeatMap() throws IOException {
         GeneticAlgorithm geneticAlgorithm = Preset.getDefaultGA();
 
         geneticAlgorithm.run();
@@ -333,7 +334,11 @@ public class HeatMap {
 
         if (args.length == 0) {
             System.out.println("Mode: Outputting Heat Map.");
-            outputHeatMap();
+            try {
+                outputHeatMap();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return;
         }
 

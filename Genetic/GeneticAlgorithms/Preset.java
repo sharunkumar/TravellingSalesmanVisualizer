@@ -1,8 +1,9 @@
 package GeneticAlgorithms;
 
-import IO.Import.DataSet;
-
+import java.io.IOException;
 import java.util.Random;
+
+import IO.DataSet;
 
 import static GeneticObjects.Population.fromDataSet;
 
@@ -11,7 +12,7 @@ public class Preset {
     private Preset() {
     }
 
-    public static GeneticAlgorithm getDefaultGA() {
+    public static GeneticAlgorithm getDefaultGA() throws IOException {
 
         Random random = new Random();
         long seed = random.nextLong();
@@ -27,7 +28,8 @@ public class Preset {
 
         GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm();
 
-        geneticAlgorithm.setPopulation(fromDataSet(popSize, DataSet.bays29, r));
+        geneticAlgorithm.setPopulation(fromDataSet(popSize,
+                new DataSet("E:\\PSA\\PSA-Final-Project\\Dataset\\2023-01-avon-and-somerset-street.csv"), r));
         // geneticAlgorithm.setPopulation(Population.getRandomPopulation(100, popSize,
         // r));
         geneticAlgorithm.setMaxGen(maxGen);

@@ -1,12 +1,12 @@
 package GeneticObjects;
 
-import IO.Import.DataSet;
-
 import java.nio.BufferOverflowException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Random;
+
+import IO.DataSet;
 
 /**
  * Represents a Population of chromosomes.
@@ -134,7 +134,7 @@ public class Population implements Iterable<TravelPath> {
     }
 
     public static Population fromDataSet(int popSize, DataSet dataSet, Random r) {
-        Location[] locations = IO.Import.getLocations(dataSet);
+        Location[] locations = dataSet.getNormalizedLocations();
         Population population = new Population(popSize);
         population.populate(locations, r);
         return population;

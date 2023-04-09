@@ -48,22 +48,22 @@ class Panel extends JPanel {
         Location[] array = this.window.path.getArray();
 
         for (int i = 1; i < array.length; i++) {
-            int x1 = (int) (array[i - 1].getX() / this.window.scaleX
+            int x1 = (int) (array[i - 1].getLatitude() / this.window.scaleX
                     + TravellingSalesmanWindow.OFFSET / 2);
-            int y1 = (int) (array[i - 1].getY() / this.window.scaleY
+            int y1 = (int) (array[i - 1].getLongitude() / this.window.scaleY
                     + TravellingSalesmanWindow.OFFSET / 2);
-            int x2 = (int) (array[i].getX() / this.window.scaleX
+            int x2 = (int) (array[i].getLatitude() / this.window.scaleX
                     + TravellingSalesmanWindow.OFFSET / 2);
-            int y2 = (int) (array[i].getY() / this.window.scaleY
+            int y2 = (int) (array[i].getLongitude() / this.window.scaleY
                     + TravellingSalesmanWindow.OFFSET / 2);
             graphics.drawLine(x1, y1, x2, y2);
         }
 
-        int x1 = (int) (array[0].getX() / this.window.scaleX + TravellingSalesmanWindow.OFFSET / 2);
-        int y1 = (int) (array[0].getY() / this.window.scaleY + TravellingSalesmanWindow.OFFSET / 2);
-        int x2 = (int) (array[array.length - 1].getX() / this.window.scaleX
+        int x1 = (int) (array[0].getLatitude() / this.window.scaleX + TravellingSalesmanWindow.OFFSET / 2);
+        int y1 = (int) (array[0].getLongitude() / this.window.scaleY + TravellingSalesmanWindow.OFFSET / 2);
+        int x2 = (int) (array[array.length - 1].getLatitude() / this.window.scaleX
                 + TravellingSalesmanWindow.OFFSET / 2);
-        int y2 = (int) (array[array.length - 1].getY() / this.window.scaleY
+        int y2 = (int) (array[array.length - 1].getLongitude() / this.window.scaleY
                 + TravellingSalesmanWindow.OFFSET / 2);
         graphics.drawLine(x1, y1, x2, y2);
 
@@ -72,9 +72,9 @@ class Panel extends JPanel {
     private void paintLocations(Graphics2D graphics) {
         graphics.setColor(Color.white);
         for (Location c : this.window.locations) {
-            int x = (int) ((c.getX()) / this.window.scaleX
+            int x = (int) ((c.getLatitude()) / this.window.scaleX
                     - TravellingSalesmanWindow.LOCATION_SIZE / 2 + TravellingSalesmanWindow.OFFSET / 2);
-            int y = (int) ((c.getY()) / this.window.scaleY
+            int y = (int) ((c.getLongitude()) / this.window.scaleY
                     - TravellingSalesmanWindow.LOCATION_SIZE / 2 + TravellingSalesmanWindow.OFFSET / 2);
             graphics.fillOval(x, y, TravellingSalesmanWindow.LOCATION_SIZE, TravellingSalesmanWindow.LOCATION_SIZE);
         }
@@ -83,13 +83,13 @@ class Panel extends JPanel {
     private void paintLocationNames(Graphics2D graphics) {
         graphics.setColor(Color.white);
         for (Location c : this.window.locations) {
-            int x = (int) ((c.getX()) / this.window.scaleX
+            int x = (int) ((c.getLatitude()) / this.window.scaleX
                     - TravellingSalesmanWindow.LOCATION_SIZE / 2 + TravellingSalesmanWindow.OFFSET / 2);
-            int y = (int) ((c.getY()) / this.window.scaleY
+            int y = (int) ((c.getLongitude()) / this.window.scaleY
                     - TravellingSalesmanWindow.LOCATION_SIZE / 2 + TravellingSalesmanWindow.OFFSET / 2);
             graphics.fillOval(x, y, TravellingSalesmanWindow.LOCATION_SIZE, TravellingSalesmanWindow.LOCATION_SIZE);
-            int fontOffset = getFontMetrics(graphics.getFont()).stringWidth(c.getName()) / 2 - 2;
-            graphics.drawString(c.getName(), x - fontOffset, y - 3);
+            int fontOffset = getFontMetrics(graphics.getFont()).stringWidth(c.toString()) / 2 - 2;
+            graphics.drawString(c.toString(), x - fontOffset, y - 3);
         }
     }
 }
