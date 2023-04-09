@@ -1,4 +1,4 @@
-package GeneticObjects;
+package modals;
 
 import java.nio.BufferOverflowException;
 import java.util.HashSet;

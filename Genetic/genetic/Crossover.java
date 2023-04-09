@@ -1,10 +1,10 @@
-package GeneticAlgorithms;
-
-import GeneticObjects.TravelPath;
-import GeneticObjects.Location;
-import GeneticObjects.Population;
+package genetic;
 
 import java.util.*;
+
+import modals.Location;
+import modals.Population;
+import modals.TravelPath;
 
 /**
  * Used for Chromosome reproduction.

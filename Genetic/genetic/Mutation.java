@@ -1,9 +1,9 @@
-package GeneticAlgorithms;
-
-import GeneticObjects.TravelPath;
-import GeneticObjects.Location;
+package genetic;
 
 import java.util.Random;
+
+import modals.Location;
+import modals.TravelPath;
 
 /**
  * Used for mutating the Chromosomes.

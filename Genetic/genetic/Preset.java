@@ -1,11 +1,11 @@
-package GeneticAlgorithms;
+package genetic;
+
+import static modals.Population.fromDataSet;
 
 import java.io.IOException;
 import java.util.Random;
 
 import IO.DataSet;
-
-import static GeneticObjects.Population.fromDataSet;
 
 public class Preset {
 

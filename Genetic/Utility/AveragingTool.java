@@ -1,7 +1,7 @@
 package Utility;
 
-import Display.TravellingSalesmanGraph;
-import GeneticAlgorithms.GeneticAlgorithm;
+import display.TravellingSalesmanGraph;
+import genetic.GeneticAlgorithm;
 
 import java.util.ArrayList;
 

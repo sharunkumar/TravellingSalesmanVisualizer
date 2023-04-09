@@ -1,7 +1,7 @@
 import java.io.IOException;
 
-import GeneticAlgorithms.GeneticAlgorithm;
-import GeneticAlgorithms.Preset;
+import genetic.GeneticAlgorithm;
+import genetic.Preset;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,9 +1,10 @@
-package Display;
-
-import GeneticObjects.TravelPath;
-import GeneticObjects.Location;
+package display;
 
 import javax.swing.*;
+
+import modals.Location;
+import modals.TravelPath;
+
 import java.awt.*;
 
 /**

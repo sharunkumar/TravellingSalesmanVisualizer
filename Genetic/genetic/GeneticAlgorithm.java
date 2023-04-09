@@ -1,15 +1,16 @@
-package GeneticAlgorithms;
+package genetic;
 
-import Display.TravellingSalesmanGraph;
-import Display.TravellingSalesmanWindow;
-import GeneticObjects.TravelPath;
-import GeneticObjects.Location;
-import GeneticObjects.Population;
+import modals.Location;
+import modals.Population;
+import modals.TravelPath;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Random;
+
+import display.TravellingSalesmanGraph;
+import display.TravellingSalesmanWindow;
 
 /**
  * The Genetic Algorithm system. This class brings together the entire process

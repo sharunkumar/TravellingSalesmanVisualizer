@@ -1,4 +1,4 @@
-package IO;
+package io;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import GeneticObjects.Location;
+import modals.Location;
 
 public class DataSet {
 

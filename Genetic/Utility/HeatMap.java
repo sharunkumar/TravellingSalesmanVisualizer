@@ -1,10 +1,10 @@
 package Utility;
 
-import GeneticAlgorithms.GeneticAlgorithm;
-import GeneticAlgorithms.Preset;
-
 import java.io.IOException;
 import java.util.Scanner;
+
+import genetic.GeneticAlgorithm;
+import genetic.Preset;
 
 public class HeatMap {
     private int maxValue = 0;

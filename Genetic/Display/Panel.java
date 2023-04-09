@@ -1,4 +1,4 @@
-package Display;
+package display;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,7 +7,7 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
-import GeneticObjects.Location;
+import modals.Location;
 
 /**
  * All the drawing is done here.

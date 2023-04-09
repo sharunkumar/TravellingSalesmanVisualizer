@@ -1,4 +1,4 @@
-package GeneticObjects;
+package modals;
 
 import java.util.Random;
 
