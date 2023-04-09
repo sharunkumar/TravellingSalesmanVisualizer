@@ -45,7 +45,7 @@ public class TravellingSalesmanGraph extends JFrame {
 
     /**
      * Construct WindowGraph.
-     *
+     * 
      * @param yValues the values to be plotted
      * @param legend  the the identifier of each set of values,
      *                example: legend.get(0) is the name of yValues.get(0).
@@ -71,18 +71,10 @@ public class TravellingSalesmanGraph extends JFrame {
         setWindowProperties();
     }
 
-    public static void drawRotate(Graphics2D g2d, double x, double y, int angle, String text) {
-        g2d.translate((float) x, (float) y);
-        g2d.rotate(Math.toRadians(angle));
-        g2d.drawString(text, 0, 0);
-        g2d.rotate(-Math.toRadians(angle));
-        g2d.translate(-(float) x, -(float) y);
-    }
-
     /**
      * Sets the scale of graph so that none of the values are drawn
      * outside of the window.
-     *
+     * 
      * @param yValues the values to plot
      */
     private void setScale(ArrayList<ArrayList<Integer>> yValues) {
@@ -157,7 +149,7 @@ public class TravellingSalesmanGraph extends JFrame {
         private void paintTitle(Graphics2D graphics) {
             String s = "Evaluation per Generation";
             graphics.drawString(s, TravellingSalesmanGraph.WIDTH / 2
-                            - getFontMetrics(graphics.getFont()).stringWidth(s) / 2,
+                    - getFontMetrics(graphics.getFont()).stringWidth(s) / 2,
                     (int) (TravellingSalesmanGraph.HEIGHT * 0.05));
         }
 
@@ -205,7 +197,7 @@ public class TravellingSalesmanGraph extends JFrame {
 
             String s = "Generation";
             graphics.drawString(s, TravellingSalesmanGraph.WIDTH / 2
-                            - getFontMetrics(graphics.getFont()).stringWidth(s) / 2,
+                    - getFontMetrics(graphics.getFont()).stringWidth(s) / 2,
                     (int) (TravellingSalesmanGraph.HEIGHT * 0.95));
         }
 
@@ -259,5 +251,13 @@ public class TravellingSalesmanGraph extends JFrame {
             return Color.getHSBColor(steps * indexOfHue, 1.0f, 0.7f);
         }
 
+    }
+
+    public static void drawRotate(Graphics2D g2d, double x, double y, int angle, String text) {
+        g2d.translate((float) x, (float) y);
+        g2d.rotate(Math.toRadians(angle));
+        g2d.drawString(text, 0, 0);
+        g2d.rotate(-Math.toRadians(angle));
+        g2d.translate(-(float) x, -(float) y);
     }
 }

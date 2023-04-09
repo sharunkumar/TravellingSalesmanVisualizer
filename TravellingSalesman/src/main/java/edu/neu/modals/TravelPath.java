@@ -4,38 +4,40 @@ import java.util.Arrays;
 import java.util.Random;
 
 /**
- * Contains an array of City objects which represents a path through the cities.
+ * Contains an array of location objects which represents a path through the
+ * locations.
  */
 public class TravelPath implements Comparable<TravelPath> {
 
+    private int hashcode = -1;
     private Location[] locations;
     private int distance = -1; // Calculated once then cached.
     private Random random;
 
     /**
-     * Construct the Chromosome from an array. The cities are in the same order
+     * Construct the Chromosome from an array. The locations are in the same order
      * as they are in the array. No shuffling is done.
-     *
-     * @param cities the array of City objects for construction
+     * 
+     * @param locations the array of location objects for construction
      */
-    public TravelPath(Location[] cities) {
-        this.locations = cities.clone();
+    public TravelPath(Location[] locations) {
+        this.locations = locations.clone();
     }
 
     /**
-     * Construct the Chromosome from an array of City objects and shuffle them.
-     *
-     * @param cities the array of City objects for construction
-     * @param random the Random object for shuffling the Chromosome
+     * Construct the Chromosome from an array of location objects and shuffle them.
+     * 
+     * @param locations the array of location objects for construction
+     * @param random    the Random object for shuffling the Chromosome
      */
-    public TravelPath(Location[] cities, Random random) {
-        this.locations = cities.clone();
+    public TravelPath(Location[] locations, Random random) {
+        this.locations = locations.clone();
         this.random = random;
         shuffle();
     }
 
     /**
-     * Shuffles the cities in the Chromosome.
+     * Shuffles the locations in the Chromosome.
      */
     private void shuffle() {
         for (int i = 0; i < locations.length; i++) {
@@ -44,10 +46,10 @@ public class TravelPath implements Comparable<TravelPath> {
     }
 
     /**
-     * Helper method for shuffling the cities. Swaps two cities.
-     *
-     * @param i the index of the first city
-     * @param j the index of the second city
+     * Helper method for shuffling the locations. Swaps two locations.
+     * 
+     * @param i the index of the first location
+     * @param j the index of the second location
      */
     private void swap(int i, int j) {
         Location temp = locations[i];
@@ -66,11 +68,14 @@ public class TravelPath implements Comparable<TravelPath> {
 
     @Override
     public int hashCode() {
-        StringBuilder sb = new StringBuilder();
-        for (Location city : locations) {
-            sb.append(city);
+        if (hashcode == -1) {
+            StringBuilder sb = new StringBuilder();
+            for (Location location : locations) {
+                sb.append(location);
+            }
+            hashcode = sb.toString().hashCode();
         }
-        return (new String(sb)).hashCode();
+        return hashcode;
     }
 
     public int getDistance() {
@@ -106,7 +111,7 @@ public class TravelPath implements Comparable<TravelPath> {
     public String toString() {
         StringBuilder sb = new StringBuilder("[ ");
         for (Location item : locations) {
-            sb.append(item.getName());
+            sb.append(item.toString());
             sb.append(" ");
         }
         sb.append("]");
