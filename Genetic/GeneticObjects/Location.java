@@ -64,6 +64,10 @@ public class Location {
         return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     }
 
+    public double distanceTo(Location otherLocation) {
+        return distance(this, otherLocation);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)

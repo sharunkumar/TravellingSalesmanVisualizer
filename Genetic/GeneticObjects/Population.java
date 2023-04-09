@@ -134,7 +134,7 @@ public class Population implements Iterable<TravelPath> {
     }
 
     public static Population fromDataSet(int popSize, DataSet dataSet, Random r) {
-        Location[] locations = dataSet.getNormalizedLocations();
+        Location[] locations = dataSet.getGroupedLocations(500, 10);
         Population population = new Population(popSize);
         population.populate(locations, r);
         return population;

@@ -3,7 +3,9 @@ package IO;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import GeneticObjects.Location;
@@ -37,7 +39,7 @@ public class DataSet {
         return locations.toArray(new Location[0]);
     }
 
-    public Location[] getNormalizedLocations() {
+    public Location[] getNormalizedLocations(int normalizationFactor) {
         Set<Location> result = new HashSet<Location>();
         float minLat, maxLat, minLng, maxLng;
         minLat = Float.MAX_VALUE;
@@ -64,12 +66,37 @@ public class DataSet {
         for (Location location : locations) {
             float lat = location.getLatitude();
             float lng = location.getLongitude();
-            int normalizedLat = (int) (((lat - minLat) / latRange) * 50);
-            int normalizedLng = (int) (((lng - minLng) / lngRange) * 50);
+            int normalizedLat = (int) (((lat - minLat) / latRange) * normalizationFactor);
+            int normalizedLng = (int) (((lng - minLng) / lngRange) * normalizationFactor);
 
             result.add(new Location(normalizedLat, normalizedLng));
         }
 
         return result.toArray(new Location[0]);
+    }
+
+    public Location[] getGroupedLocations(int normalizationFactor, double distanceThreshold) {
+        List<List<Location>> groups = new ArrayList<>();
+        for (Location location : getNormalizedLocations(normalizationFactor)) {
+            boolean added = false;
+            for (List<Location> group : groups) {
+                if (group.stream().anyMatch(l -> l.distanceTo(location) <= distanceThreshold)) {
+                    group.add(location);
+                    added = true;
+                    break;
+                }
+            }
+            if (!added) {
+                List<Location> newGroup = new ArrayList<>();
+                newGroup.add(location);
+                groups.add(newGroup);
+            }
+        }
+        Location[] midpoints = new Location[groups.size()];
+        for (int i = 0; i < groups.size(); i++) {
+            Location midpoint = groups.get(i).get(0);
+            midpoints[i] = midpoint;
+        }
+        return midpoints;
     }
 }
