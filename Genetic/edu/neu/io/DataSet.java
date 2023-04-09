@@ -36,7 +36,7 @@ public class DataSet {
     }
 
     public static DataSet DefaultDataSet() throws IOException {
-        return new DataSet("E:\\PSA\\PSA-Final-Project\\Dataset\\2023-01-avon-and-somerset-street.csv");
+        return new DataSet("../DataSet/2023-01-avon-and-somerset-street.csv");
     }
 
     public Location[] getLocations() {
