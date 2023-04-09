@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Draws the cities to the screen, as well as a path.
+ * Draws the locations to the screen, as well as a path.
  */
 public class TravellingSalesmanWindow extends JFrame {
 
@@ -24,19 +24,19 @@ public class TravellingSalesmanWindow extends JFrame {
     double scaleY;
 
     /**
-     * Construct the WindowTSP and draw the cities to the screen.
+     * Construct the WindowTSP and draw the locations to the screen.
      * 
-     * @param cities the cities to draw to the screen
+     * @param locations the locations to draw to the screen
      */
-    public TravellingSalesmanWindow(Location[] cities) {
-        this.locations = cities;
+    public TravellingSalesmanWindow(Location[] locations) {
+        this.locations = locations;
         setScale();
         panel = createPanel();
         setWindowProperties();
     }
 
     /**
-     * Draw a path through the city.
+     * Draw a path through the location.
      * 
      * @param path the Travel Path to draw
      */
@@ -68,7 +68,7 @@ public class TravellingSalesmanWindow extends JFrame {
     }
 
     /**
-     * Sets the scale for the drawing so that all the cities
+     * Sets the scale for the drawing so that all the locations
      * are drawn inside the window.
      */
     private void setScale() {

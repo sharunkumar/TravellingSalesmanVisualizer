@@ -35,11 +35,11 @@ class Panel extends JPanel {
     private void paintTravelingSalesman(Graphics2D graphics) {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         setBackground(Color.black);
-        paintCityNames(graphics);
+        paintLocationNames(graphics);
         if (this.window.path != null) {
             paintChromosome(graphics);
         }
-        paintCities(graphics);
+        paintLocations(graphics);
     }
 
     private void paintChromosome(Graphics2D graphics) {
@@ -69,7 +69,7 @@ class Panel extends JPanel {
 
     }
 
-    private void paintCities(Graphics2D graphics) {
+    private void paintLocations(Graphics2D graphics) {
         graphics.setColor(Color.white);
         for (Location c : this.window.locations) {
             int x = (int) ((c.getX()) / this.window.scaleX
@@ -80,7 +80,7 @@ class Panel extends JPanel {
         }
     }
 
-    private void paintCityNames(Graphics2D graphics) {
+    private void paintLocationNames(Graphics2D graphics) {
         graphics.setColor(Color.white);
         for (Location c : this.window.locations) {
             int x = (int) ((c.getX()) / this.window.scaleX

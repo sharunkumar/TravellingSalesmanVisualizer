@@ -38,36 +38,36 @@ public class Population implements Iterable<TravelPath> {
         chromosomes.add(chromosome);
     }
 
-    public void populate(Location[] cities, Random random) {
+    public void populate(Location[] locations, Random random) {
 
         if (chromosomes.size() == maxSize) {
             throw new BufferOverflowException();
         }
 
-        // If the popSize is greater than the factorial of cities, uniqueness not
+        // If the popSize is greater than the factorial of locations, uniqueness not
         // possible.
-        // Example: if there are 2 cities but the population size is 100, it is
+        // Example: if there are 2 locations but the population size is 100, it is
         // impossible
         // to have all unique values since there are at most 2! = 2 unique
         // possibilities.
-        if ((cities.length == 1 && maxSize > 1) ||
-                (cities.length == 2 && maxSize > 2) ||
-                (cities.length == 3 && maxSize > 6) ||
-                (cities.length == 4 && maxSize > 24) ||
-                (cities.length == 5 && maxSize > 120) ||
-                (cities.length == 6 && maxSize > 720) ||
-                (cities.length == 7 && maxSize > 5_040) ||
-                (cities.length == 8 && maxSize > 40_320) ||
-                (cities.length == 9 && maxSize > 362_880)) {
+        if ((locations.length == 1 && maxSize > 1) ||
+                (locations.length == 2 && maxSize > 2) ||
+                (locations.length == 3 && maxSize > 6) ||
+                (locations.length == 4 && maxSize > 24) ||
+                (locations.length == 5 && maxSize > 120) ||
+                (locations.length == 6 && maxSize > 720) ||
+                (locations.length == 7 && maxSize > 5_040) ||
+                (locations.length == 8 && maxSize > 40_320) ||
+                (locations.length == 9 && maxSize > 362_880)) {
             throw new IllegalStateException("Cannot force uniqueness when" +
                     " the population size is greater than the factorial" +
-                    " of the total number of cities.");
+                    " of the total number of locations.");
         }
 
         HashSet<TravelPath> hashSet = new HashSet<>();
 
         while (chromosomes.size() < maxSize) {
-            TravelPath chromo = new TravelPath(cities, random);
+            TravelPath chromo = new TravelPath(locations, random);
             if (!hashSet.contains(chromo)) {
                 hashSet.add(chromo);
                 add(chromo);
@@ -84,11 +84,11 @@ public class Population implements Iterable<TravelPath> {
     }
 
     /**
-     * Get an array of all the Cities.
+     * Get an array of all the locations.
      * 
-     * @return the array of Cities
+     * @return the array of locations
      */
-    public Location[] getCities() {
+    public Location[] getLocations() {
         return chromosomes.peek().getArray().clone();
     }
 
@@ -134,31 +134,31 @@ public class Population implements Iterable<TravelPath> {
     }
 
     public static Population fromDataSet(int popSize, DataSet dataSet, Random r) {
-        Location[] cities = IO.Import.getCities(dataSet);
+        Location[] locations = IO.Import.getLocations(dataSet);
         Population population = new Population(popSize);
-        population.populate(cities, r);
+        population.populate(locations, r);
         return population;
     }
 
     /**
      * Generate a Population of randomly generate Chromosomes.
      * 
-     * @param numOfCities the number of cities
-     * @param sizeOfPop   the size of the population
-     * @param random      the Random object used for the generation
+     * @param numOfLocations the number of locations
+     * @param sizeOfPop      the size of the population
+     * @param random         the Random object used for the generation
      * @return a randomly generated Population
      */
-    public static Population getRandomPopulation(int numOfCities, int sizeOfPop, Random random) {
-        Location[] cities = new Location[numOfCities];
+    public static Population getRandomPopulation(int numOfLocations, int sizeOfPop, Random random) {
+        Location[] locations = new Location[numOfLocations];
 
-        for (int i = 0; i < numOfCities; i++) {
-            cities[i] = Location.getRandomCity(random);
+        for (int i = 0; i < numOfLocations; i++) {
+            locations[i] = Location.getRandomLocation(random);
         }
 
         Population population = new Population(sizeOfPop);
 
         for (int i = 0; i < sizeOfPop; i++) {
-            population.add(new TravelPath(cities, random));
+            population.add(new TravelPath(locations, random));
         }
 
         return population;

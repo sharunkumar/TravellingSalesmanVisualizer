@@ -129,27 +129,27 @@ public class GeneticAlgorithm {
 
     public void forceUniqueness(boolean forceUniqueness) {
 
-        int cities = population.getCities().length;
+        int locations = population.getLocations().length;
         int popSize = population.size();
 
-        // If the popSize is greater than the factorial of cities, uniqueness not
+        // If the popSize is greater than the factorial of locations, uniqueness not
         // possible.
-        // Example: if there are 2 cities but the population size is 100, it is
+        // Example: if there are 2 locations but the population size is 100, it is
         // impossible
         // to have all unique values since there are at most 2! = 2 unique
         // possibilities.
-        if ((cities == 1 && popSize > 1) ||
-                (cities == 2 && popSize > 2) ||
-                (cities == 3 && popSize > 6) ||
-                (cities == 4 && popSize > 24) ||
-                (cities == 5 && popSize > 120) ||
-                (cities == 6 && popSize > 720) ||
-                (cities == 7 && popSize > 5_040) ||
-                (cities == 8 && popSize > 40_320) ||
-                (cities == 9 && popSize > 362_880)) {
+        if ((locations == 1 && popSize > 1) ||
+                (locations == 2 && popSize > 2) ||
+                (locations == 3 && popSize > 6) ||
+                (locations == 4 && popSize > 24) ||
+                (locations == 5 && popSize > 120) ||
+                (locations == 6 && popSize > 720) ||
+                (locations == 7 && popSize > 5_040) ||
+                (locations == 8 && popSize > 40_320) ||
+                (locations == 9 && popSize > 362_880)) {
             throw new IllegalStateException("Cannot force uniqueness when" +
                     " the population size is greater than the factorial" +
-                    " of the total number of cities.");
+                    " of the total number of locations.");
         }
 
         this.forceUniqueness = forceUniqueness;
@@ -223,7 +223,7 @@ public class GeneticAlgorithm {
         if (!finished) {
             throw new IllegalArgumentException("Genetic algorithm was never run.");
         }
-        TravellingSalesmanWindow win = new TravellingSalesmanWindow(population.getCities());
+        TravellingSalesmanWindow win = new TravellingSalesmanWindow(population.getLocations());
         win.draw(population.getMostFit());
     }
 
@@ -255,7 +255,7 @@ public class GeneticAlgorithm {
      * Also displays a graph that contains the average distance per population.
      */
     public void runWithDebugMode() {
-        TravellingSalesmanWindow win = new TravellingSalesmanWindow(population.getCities());
+        TravellingSalesmanWindow win = new TravellingSalesmanWindow(population.getLocations());
         delay(1000);
 
         TravelPath mostFitLast = population.getMostFit();
@@ -403,11 +403,11 @@ public class GeneticAlgorithm {
     }
 
     /**
-     * Helper method for swapping two Cities in a Chromosome to change the tour.
+     * Helper method for swapping two locations in a Chromosome to change the tour.
      * 
-     * @param array the array of Cities to do the swap in
-     * @param i     the index of the first City
-     * @param j     the index of the second City
+     * @param array the array of locations to do the swap in
+     * @param i     the index of the first location
+     * @param j     the index of the second location
      */
     private static void swap(Location[] array, int i, int j) {
         Location temp = array[i];
@@ -483,7 +483,7 @@ public class GeneticAlgorithm {
 
     public void printProperties() {
         System.out.println("----------Genetic Algorithm Properties----------");
-        System.out.println("Number of Cities:   " + population.getMostFit().getArray().length);
+        System.out.println("Number of locations:   " + population.getMostFit().getArray().length);
         System.out.println("Population Size:    " + population.size());
         System.out.println("Max. Generation:    " + maxGen);
         System.out.println("k Value:            " + k);

@@ -14,82 +14,88 @@ class Mutation {
      * Class cannot be instantiated, as there would be no point, since all
      * the methods are static.
      */
-    private Mutation () {}
+    private Mutation() {
+    }
 
     /**
-     * Selects a city and inserts it into a random place.
-     * @param chromosome    The Chromosome who's cities will be swapped.
-     * @param random        The Random object used for randomly selecting the cities
-     * @return              the mutated Chromosome
+     * Selects a location and inserts it into a random place.
+     * 
+     * @param path   The Chromosome who's locations will be swapped.
+     * @param random The Random object used for randomly selecting the locations
+     * @return the mutated Chromosome
      */
-    static TravelPath insertion (TravelPath chromosome, Random random) {
-        Location[] cities = chromosome.getArray();
-        int randomIndex = random.nextInt(cities.length);
-        int randomDestination = random.nextInt(cities.length);
+    static TravelPath insertion(TravelPath path, Random random) {
+        Location[] locations = path.getArray();
+        int randomIndex = random.nextInt(locations.length);
+        int randomDestination = random.nextInt(locations.length);
 
         if (randomIndex < randomDestination) {
-            Location temp = cities[randomIndex];
+            Location temp = locations[randomIndex];
             for (int i = randomIndex; i < randomDestination; i++) {
-                cities[i] = cities[i+1];
+                locations[i] = locations[i + 1];
             }
-            cities[randomDestination] = temp;
+            locations[randomDestination] = temp;
         } else {
-            Location temp = cities[randomIndex];
+            Location temp = locations[randomIndex];
             for (int i = randomIndex; i > randomDestination; i--) {
-                cities[i] = cities[i-1];
+                locations[i] = locations[i - 1];
             }
-            cities[randomDestination] = temp;
+            locations[randomDestination] = temp;
         }
-        return new TravelPath(cities);
+        return new TravelPath(locations);
     }
 
     /**
-     * Swaps two randomly selected cities.
-     * @param chromosome    The Chromosome who's cities will be swapped.
-     * @param random        The Random object used for randomly selecting the cities
-     * @return              the mutated Chromosome
+     * Swaps two randomly selected locations.
+     * 
+     * @param path   The Chromosome who's locations will be swapped.
+     * @param random The Random object used for randomly selecting the locations
+     * @return the mutated Chromosome
      */
-    static TravelPath reciprocalExchange (TravelPath chromosome, Random random) {
-        Location[] cities = chromosome.getArray();
-        int l = cities.length;
-        swap(cities, random.nextInt(l), random.nextInt(l));
-        return new TravelPath(cities);
+    static TravelPath reciprocalExchange(TravelPath path, Random random) {
+        Location[] locations = path.getArray();
+        int l = locations.length;
+        swap(locations, random.nextInt(l), random.nextInt(l));
+        return new TravelPath(locations);
     }
 
     /**
-     * Pick a subset of Cities and randomly re-arrange them.
-     * @param chromosome    The Chromosome who's cities will be swapped.
-     * @param random        The Random object used for randomly selecting the cities
-     * @return              the mutated Chromosome
+     * Pick a subset of locations and randomly re-arrange them.
+     * 
+     * @param chromosome The Chromosome who's locations will be swapped.
+     * @param random     The Random object used for randomly selecting the locations
+     * @return the mutated Chromosome
      */
-    static TravelPath scrambleMutation (TravelPath chromosome, Random random) {
+    static TravelPath scrambleMutation(TravelPath chromosome, Random random) {
 
         /**
-         * The subset Cities include wrapping.
-         * Example: if there is a Chromosome with 10 cities and randomIndexStart is 8
-         * and randomIndexEnd is 2, that means that the subset will include the cities
+         * The subset locations include wrapping.
+         * Example: if there is a Chromosome with 10 locations and randomIndexStart is 8
+         * and randomIndexEnd is 2, that means that the subset will include the
+         * locations
          * at indexes 8, 9, 1, and 2.
          */
 
-        Location[] cities = chromosome.getArray();
-        int randomIndexStart = random.nextInt(cities.length);
-        int randomIndexEnd = random.nextInt(cities.length);
+        Location[] locations = chromosome.getArray();
+        int randomIndexStart = random.nextInt(locations.length);
+        int randomIndexEnd = random.nextInt(locations.length);
 
-        for (int i = randomIndexStart; i%cities.length != randomIndexEnd; i++) {
-            int r = random.nextInt(Math.abs(i%cities.length - randomIndexEnd));
-            swap(cities, i%cities.length, (i+r)%cities.length);
+        for (int i = randomIndexStart; i % locations.length != randomIndexEnd; i++) {
+            int r = random.nextInt(Math.abs(i % locations.length - randomIndexEnd));
+            swap(locations, i % locations.length, (i + r) % locations.length);
         }
 
-        return new TravelPath(cities);
+        return new TravelPath(locations);
     }
 
     /**
-     * Helper method for swapping two Cities in a Chromosome to change the tour.
-     * @param array     the array of Cities to do the swap in
-     * @param i         the index of the first City
-     * @param j         the index of the second City
+     * Helper method for swapping two locations in a Chromosome to change the tour.
+     * 
+     * @param array the array of locations to do the swap in
+     * @param i     the index of the first location
+     * @param j     the index of the second location
      */
-    private static void swap (Location[] array, int i, int j) {
+    private static void swap(Location[] array, int i, int j) {
         Location temp = array[i];
         array[i] = array[j];
         array[j] = temp;

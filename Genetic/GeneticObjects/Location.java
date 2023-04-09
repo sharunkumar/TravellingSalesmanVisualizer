@@ -3,7 +3,7 @@ package GeneticObjects;
 import java.util.Random;
 
 /**
- * Represents a city in the Traveling Salesman Problem.
+ * Represents a location in the Traveling Salesman Problem.
  * Immutable.
  */
 public class Location {
@@ -12,9 +12,9 @@ public class Location {
     private int x, y;
 
     /**
-     * Constructs the City.
+     * Constructs the location.
      * 
-     * @param name the name of the city
+     * @param name the name of the location
      * @param x    the x coordinate
      * @param y    the y coordinate
      */
@@ -37,12 +37,12 @@ public class Location {
     }
 
     /**
-     * Create a City with a random name and random location.
+     * Create a location with a random name and random location.
      * 
      * @param random the Random object to be used for the generation
-     * @return a Randomly generated City
+     * @return a Randomly generated location
      */
-    public static Location getRandomCity(Random random) {
+    public static Location getRandomLocation(Random random) {
         String name = getRandomName(random);
         int x = random.nextInt(500);
         int y = random.nextInt(500);
@@ -50,7 +50,7 @@ public class Location {
     }
 
     /**
-     * Helper method to generate a random name for the random City generator.
+     * Helper method to generate a random name for the random location generator.
      * 
      * @param random the Random object to be used for the generation
      * @return random letters
@@ -74,19 +74,19 @@ public class Location {
     }
 
     /**
-     * Finds the Euclidean distance between two cities.
+     * Finds the Euclidean distance between two locations.
      * 
-     * @param city1 the first city
-     * @param city2 the second city
+     * @param location1 the first location
+     * @param location2 the second location
      * @return the distance
      */
-    public static double distance(Location city1, Location city2) {
+    public static double distance(Location location1, Location location2) {
 
-        int x1 = city1.getX();
-        int y1 = city1.getY();
+        int x1 = location1.getX();
+        int y1 = location1.getY();
 
-        int x2 = city2.getX();
-        int y2 = city2.getY();
+        int x2 = location2.getX();
+        int y2 = location2.getY();
 
         int xDiff = x2 - x1;
         int yDiff = y2 - y1;
@@ -101,13 +101,13 @@ public class Location {
         if (o == null || getClass() != o.getClass())
             return false;
 
-        Location city = (Location) o;
+        Location location = (Location) o;
 
-        if (x != city.x)
+        if (x != location.x)
             return false;
-        if (y != city.y)
+        if (y != location.y)
             return false;
-        return name.equals(city.name);
+        return name.equals(location.name);
 
     }
 

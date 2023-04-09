@@ -7,18 +7,19 @@ import java.util.Scanner;
 
 /**
  * Helper class for reading the provided data sets and converting it to an array
- * of City objects.
+ * of location objects.
  */
 public class Import {
 
     /**
-     * Read the specified data set and return an array of City objects based on the
+     * Read the specified data set and return an array of location objects based on
+     * the
      * set.
      * 
      * @param dataSet the data set to read
-     * @return the City objects contained within the data set
+     * @return the location objects contained within the data set
      */
-    public static Location[] getCities(DataSet dataSet) {
+    public static Location[] getLocations(DataSet dataSet) {
 
         String dataSetName;
         int startingLine;
@@ -34,19 +35,19 @@ public class Import {
 
         String[] lines = read(dataSetName).split("\n");
         String[] words = lines[3].split(" ");
-        int numOfCities = Integer.parseInt(words[words.length - 1]);
-        Location[] cities = new Location[numOfCities];
+        int numOfLocations = Integer.parseInt(words[words.length - 1]);
+        Location[] locations = new Location[numOfLocations];
 
-        // Read each line and turn it into a City.
-        for (int i = startingLine; i < startingLine + numOfCities; i++) {
+        // Read each line and turn it into a location.
+        for (int i = startingLine; i < startingLine + numOfLocations; i++) {
             String[] line = removeWhiteSpace(lines[i]).trim().split(" ");
             int x = (int) Double.parseDouble(line[1].trim());
             int y = (int) Double.parseDouble(line[2].trim());
-            Location city = new Location(line[0], x, y);
-            cities[i - startingLine] = city;
+            Location location = new Location(line[0], x, y);
+            locations[i - startingLine] = location;
         }
 
-        return cities;
+        return locations;
     }
 
     /**
