@@ -28,8 +28,7 @@ public class Preset {
 
         GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm();
 
-        geneticAlgorithm.setPopulation(fromDataSet(popSize,
-                new DataSet("E:\\PSA\\PSA-Final-Project\\Dataset\\2023-01-avon-and-somerset-street.csv"), r));
+        geneticAlgorithm.setPopulation(fromDataSet(popSize, DataSet.DefaultDataSet(), r));
         // geneticAlgorithm.setPopulation(Population.getRandomPopulation(100, popSize,
         // r));
         geneticAlgorithm.setMaxGen(maxGen);
