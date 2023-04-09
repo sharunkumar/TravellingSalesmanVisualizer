@@ -64,8 +64,8 @@ public class DataSet {
         for (Location location : locations) {
             float lat = location.getLatitude();
             float lng = location.getLongitude();
-            float normalizedLat = (lat - minLat) / latRange;
-            float normalizedLng = (lng - minLng) / lngRange;
+            int normalizedLat = (int) (((lat - minLat) / latRange) * 50);
+            int normalizedLng = (int) (((lng - minLng) / lngRange) * 50);
 
             result.add(new Location(normalizedLat, normalizedLng));
         }

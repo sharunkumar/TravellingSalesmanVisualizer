@@ -22,7 +22,7 @@ public class Preset {
 
         // Parameters.
         int popSize = 500; // Size of the population.
-        int maxGen = 500; // Number of generations to run.
+        int maxGen = 1000; // Number of generations to run.
         double crossoverRate = 0.90; // Odds that crossover will occur.
         double mutationRate = 0.04; // Odds that mutation will occur.
 
