@@ -25,13 +25,15 @@ class Panel extends JPanel {
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        paintTravelingSalesman((Graphics2D) graphics);
+        paintTravelingSalesman((Graphics2D) graphics, false);
     }
 
-    private void paintTravelingSalesman(Graphics2D graphics) {
+    private void paintTravelingSalesman(Graphics2D graphics, boolean withNames) {
         graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         setBackground(Color.black);
-        paintLocationNames(graphics);
+        if (withNames) {
+            paintLocationNames(graphics);
+        }
         if (this.window.path != null) {
             paintChromosome(graphics);
         }
