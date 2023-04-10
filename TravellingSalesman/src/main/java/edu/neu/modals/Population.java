@@ -1,24 +1,24 @@
 package edu.neu.modals;
 
+import edu.neu.io.DataSet;
+
 import java.nio.BufferOverflowException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Random;
 
-import edu.neu.io.DataSet;
-
 /**
  * Represents a Population of chromosomes.
  */
 public class Population implements Iterable<TravelPath> {
 
-    private PriorityQueue<TravelPath> chromosomes;
-    private int maxSize;
+    private final PriorityQueue<TravelPath> chromosomes;
+    private final int maxSize;
 
     /**
      * Constructs an empty population with a maximum size.
-     * 
+     *
      * @param maxSize the maximum size of the Population
      */
     public Population(int maxSize) {
@@ -26,9 +26,40 @@ public class Population implements Iterable<TravelPath> {
         chromosomes = new PriorityQueue<>();
     }
 
+    public static Population fromDataSet(int popSize, DataSet dataSet, Random r) {
+        Location[] locations = dataSet.getNormalizedLocations(500);
+        Population population = new Population(popSize);
+        population.populate(locations, r);
+        return population;
+    }
+
+    /**
+     * Generate a Population of randomly generate Chromosomes.
+     *
+     * @param numOfLocations the number of locations
+     * @param sizeOfPop      the size of the population
+     * @param random         the Random object used for the generation
+     * @return a randomly generated Population
+     */
+    public static Population getRandomPopulation(int numOfLocations, int sizeOfPop, Random random) {
+        Location[] locations = new Location[numOfLocations];
+
+        for (int i = 0; i < numOfLocations; i++) {
+            locations[i] = Location.getRandomLocation(random);
+        }
+
+        Population population = new Population(sizeOfPop);
+
+        for (int i = 0; i < sizeOfPop; i++) {
+            population.add(new TravelPath(locations, random));
+        }
+
+        return population;
+    }
+
     /**
      * Adds a Chromosome to the Population.
-     * 
+     *
      * @param chromosome the chromosome to add
      */
     public void add(TravelPath chromosome) {
@@ -85,7 +116,7 @@ public class Population implements Iterable<TravelPath> {
 
     /**
      * Get an array of all the locations.
-     * 
+     *
      * @return the array of locations
      */
     public Location[] getLocations() {
@@ -94,7 +125,7 @@ public class Population implements Iterable<TravelPath> {
 
     /**
      * Get an array of all the Chromosomes.
-     * 
+     *
      * @return the array of the Chromosomes
      */
     public TravelPath[] getChromosomes() {
@@ -110,7 +141,7 @@ public class Population implements Iterable<TravelPath> {
 
     /**
      * Get the size of the Population.
-     * 
+     *
      * @return the number of all the Chromosomes.
      */
     public int size() {
@@ -119,7 +150,7 @@ public class Population implements Iterable<TravelPath> {
 
     /**
      * Gets the average distance of all the chromosomes.
-     * 
+     *
      * @return the mean distance travelled
      */
     public int getAverageDistance() {
@@ -133,40 +164,9 @@ public class Population implements Iterable<TravelPath> {
         return averageDistance / chromosomes.size();
     }
 
-    public static Population fromDataSet(int popSize, DataSet dataSet, Random r) {
-        Location[] locations = dataSet.getGroupedLocations(500, 10);
-        Population population = new Population(popSize);
-        population.populate(locations, r);
-        return population;
-    }
-
-    /**
-     * Generate a Population of randomly generate Chromosomes.
-     * 
-     * @param numOfLocations the number of locations
-     * @param sizeOfPop      the size of the population
-     * @param random         the Random object used for the generation
-     * @return a randomly generated Population
-     */
-    public static Population getRandomPopulation(int numOfLocations, int sizeOfPop, Random random) {
-        Location[] locations = new Location[numOfLocations];
-
-        for (int i = 0; i < numOfLocations; i++) {
-            locations[i] = Location.getRandomLocation(random);
-        }
-
-        Population population = new Population(sizeOfPop);
-
-        for (int i = 0; i < sizeOfPop; i++) {
-            population.add(new TravelPath(locations, random));
-        }
-
-        return population;
-    }
-
     /**
      * Get the Chromosome that has the path with the least distance.
-     * 
+     *
      * @return the most fit Chromosome
      */
     public TravelPath getMostFit() {
