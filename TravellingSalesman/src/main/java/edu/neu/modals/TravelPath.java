@@ -8,8 +8,8 @@ import java.util.Random;
  * locations.
  */
 public class TravelPath implements Comparable<TravelPath> {
+    private final Location[] locations;
     private int hashcode = -1;
-    private Location[] locations;
     private int distance = -1; // Calculated once then cached.
     private Random random;
 

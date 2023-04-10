@@ -14,11 +14,11 @@ public class TravellingSalesmanWindow extends JFrame {
     static final int LOCATION_SIZE = 6;
     private static final int WIDTH = 1600;
     private static final int HEIGHT = 1600 / 16 * 9;
+    private final Panel panel;
     Location[] locations;
     TravelPath path;
     double scaleX;
     double scaleY;
-    private Panel panel;
     private float maxX, maxY;
 
     /**
