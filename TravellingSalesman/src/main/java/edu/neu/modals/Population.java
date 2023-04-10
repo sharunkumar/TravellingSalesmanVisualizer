@@ -12,7 +12,6 @@ import java.util.Random;
  * Represents a Population of chromosomes.
  */
 public class Population implements Iterable<TravelPath> {
-
     private final PriorityQueue<TravelPath> chromosomes;
     private final int maxSize;
 

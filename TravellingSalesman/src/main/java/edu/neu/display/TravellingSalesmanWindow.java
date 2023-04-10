@@ -1,32 +1,29 @@
 package edu.neu.display;
 
-import javax.swing.*;
-
 import edu.neu.modals.Location;
 import edu.neu.modals.TravelPath;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
  * Draws the locations to the screen, as well as a path.
  */
 public class TravellingSalesmanWindow extends JFrame {
-
-    private static final int WIDTH = 1600;
-    private static final int HEIGHT = 1600 / 16 * 9;
     static final int OFFSET = 40;
     static final int LOCATION_SIZE = 6;
-
-    private Panel panel;
+    private static final int WIDTH = 1600;
+    private static final int HEIGHT = 1600 / 16 * 9;
     Location[] locations;
     TravelPath path;
-    private float maxX, maxY;
     double scaleX;
     double scaleY;
+    private Panel panel;
+    private float maxX, maxY;
 
     /**
      * Construct the WindowTSP and draw the locations to the screen.
-     * 
+     *
      * @param locations the locations to draw to the screen
      */
     public TravellingSalesmanWindow(Location[] locations) {
@@ -38,7 +35,7 @@ public class TravellingSalesmanWindow extends JFrame {
 
     /**
      * Draw a path through the location.
-     * 
+     *
      * @param path the Travel Path to draw
      */
     public void draw(TravelPath path) {

@@ -1,19 +1,19 @@
 package edu.neu.utility;
 
-import java.util.ArrayList;
-
 import edu.neu.display.TravellingSalesmanGraph;
 import edu.neu.genetic.GeneticAlgorithm;
+
+import java.util.ArrayList;
 
 /**
  * Runs a Genetic Algorithm several times and graphs the average of the results.
  */
 public class AveragingTool {
-
     private GeneticAlgorithm geneticAlgorithm;
     private int numOfTimesToRun;
     private ArrayList<ArrayList<Integer>> allValues;
     private ArrayList<String> legend = new ArrayList<>();
+    private int idx = 0;
 
     public AveragingTool(GeneticAlgorithm geneticAlgorithm, int numOfTimesToRun) {
         this.geneticAlgorithm = geneticAlgorithm;
@@ -66,8 +66,6 @@ public class AveragingTool {
         int avgFinalSolution = valuesForBest.get(valuesForBest.size() - 1);
         System.out.println("Average Final Solution: " + avgFinalSolution);
     }
-
-    private int idx = 0;
 
     public void addItemToLegend(String item) {
         legend.set(idx, item + " - " + legend.get(idx++));

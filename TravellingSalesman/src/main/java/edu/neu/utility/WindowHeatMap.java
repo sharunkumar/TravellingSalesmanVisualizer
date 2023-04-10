@@ -4,13 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 class WindowHeatMap extends JFrame {
-
+    private final int[][] array;
+    private final HeatMap heatMap;
     private int width, height;
     private int rows, columns;
     private int maxValue, minValue;
-    private int[][] array;
     private int scale = 1;
-    private HeatMap heatMap;
 
     WindowHeatMap(HeatMap heatMap) {
         this.heatMap = heatMap;

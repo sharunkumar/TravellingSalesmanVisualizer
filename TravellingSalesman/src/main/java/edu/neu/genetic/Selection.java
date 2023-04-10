@@ -1,15 +1,17 @@
 package edu.neu.genetic;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import edu.neu.modals.Population;
 import edu.neu.modals.TravelPath;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Determines which chromosomes will survive and potentially reproduce.
  */
 class Selection {
+    // There is a 1 in 5 chance that fittest individual is not selected.
+    private static final int ODDS_OF_NOT_PICKING_FITTEST = 5;
 
     /**
      * Class cannot be instantiated, as there would be no point, since all
@@ -18,13 +20,10 @@ class Selection {
     private Selection() {
     }
 
-    // There is a 1 in 5 chance that fittest individual is not selected.
-    private static final int ODDS_OF_NOT_PICKING_FITTEST = 5;
-
     /**
      * Picks k Chromosomes at at random and then return the best one.
      * There is a small chance that the best one will not be selected.
-     * 
+     *
      * @param population the population to selected from
      * @param k          the number of chromosomes to select
      * @param random     the Random object for randomly selecting
@@ -42,7 +41,7 @@ class Selection {
 
     /**
      * Returns k randomly selected Chromosomes.
-     * 
+     *
      * @param pop    an array of Chromosomes (a population)
      * @param k      the number of Chromosomes to randomly select
      * @param random the Random object used for picking a random chromosomes
@@ -63,7 +62,7 @@ class Selection {
     /**
      * Get the best Chromosome in a list of Chromosomes. There is a small chance
      * that a randomly selected Chromosome is picked instead of the best one.
-     * 
+     *
      * @param arrayList the list of Chromosomes
      * @param random    the Random object used for selecting a random Chromosome if
      *                  needed
@@ -84,7 +83,7 @@ class Selection {
 
     /**
      * Get the best Chromosome in a list of Chromosomes.
-     * 
+     *
      * @param arrayList the list to search
      * @return the best chromosome
      */

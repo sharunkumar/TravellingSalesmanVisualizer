@@ -1,16 +1,17 @@
 package edu.neu.genetic;
 
-import java.util.*;
-
 import edu.neu.modals.Location;
 import edu.neu.modals.Population;
 import edu.neu.modals.TravelPath;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Random;
 
 /**
  * Used for Chromosome reproduction.
  */
 class Crossover {
-
     /**
      * Class cannot be instantiated, as there would be no point, since all
      * the methods are static.
@@ -20,7 +21,7 @@ class Crossover {
 
     /**
      * Uses a bit mask to perform a uniform order crossover.
-     * 
+     *
      * @param p1 the first parent Chromosome
      * @param p2 the second parent Chromosome
      * @param r  the Random object for generating a bit mask
@@ -99,7 +100,7 @@ class Crossover {
 
     /**
      * Generate an array of a specified sizes with randomly placed ones and zeroes.
-     * 
+     *
      * @param size   the size of the array
      * @param random the Random object used for generating the random ones and
      *               zeroes
@@ -118,7 +119,7 @@ class Crossover {
 
     /**
      * Performs a crossover on all the locations after a particular point.
-     * 
+     *
      * @param p1 the first parent chromosome
      * @param p2 the second parent chromosome
      * @param r  the Random object for selecting a point
@@ -204,7 +205,7 @@ class Crossover {
 
     /**
      * Performs a crossover on all the locations between two points.
-     * 
+     *
      * @param p1 the first parent chromosome
      * @param p2 the second parent chromosome
      * @param r  the Random object for selecting a point

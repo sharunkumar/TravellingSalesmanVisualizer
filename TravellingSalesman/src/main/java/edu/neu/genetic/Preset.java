@@ -1,14 +1,13 @@
 package edu.neu.genetic;
 
-import static edu.neu.modals.Population.fromDataSet;
+import edu.neu.io.DataSet;
 
 import java.io.IOException;
 import java.util.Random;
 
-import edu.neu.io.DataSet;
+import static edu.neu.modals.Population.fromDataSet;
 
 public class Preset {
-
     private Preset() {
     }
 

@@ -1,22 +1,21 @@
 package edu.neu.genetic;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.PriorityQueue;
-import java.util.Random;
-
 import edu.neu.display.TravellingSalesmanGraph;
 import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
 import edu.neu.modals.Population;
 import edu.neu.modals.TravelPath;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.PriorityQueue;
+import java.util.Random;
+
 /**
  * The Genetic Algorithm system. This class brings together the entire process
  * of the Genetic Algorithm.
  */
 public class GeneticAlgorithm {
-
     // Parameters to be set.
     private Population population;
     private Population initialPop;
@@ -65,6 +64,27 @@ public class GeneticAlgorithm {
         bestDistanceOfEachGeneration = new ArrayList<>();
         areaUnderAverageDistances = 0;
         areaUnderBestDistances = 0;
+    }
+
+    /**
+     * Helper method for swapping two locations in a Chromosome to change the tour.
+     *
+     * @param array the array of locations to do the swap in
+     * @param i     the index of the first location
+     * @param j     the index of the second location
+     */
+    private static void swap(Location[] array, int i, int j) {
+        Location temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    private static void delay(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     public void setPopulation(Population population) {
@@ -283,7 +303,7 @@ public class GeneticAlgorithm {
      * The meat of the entire class. Generates the next generation from
      * the current population. Brings together all the other classes in
      * the package; Selection, Crossover & Mutation.
-     * 
+     *
      * @return the new generation
      */
     private Population createNextGeneration() {
@@ -403,21 +423,8 @@ public class GeneticAlgorithm {
     }
 
     /**
-     * Helper method for swapping two locations in a Chromosome to change the tour.
-     * 
-     * @param array the array of locations to do the swap in
-     * @param i     the index of the first location
-     * @param j     the index of the second location
-     */
-    private static void swap(Location[] array, int i, int j) {
-        Location temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-
-    /**
      * Mutate the Chromosome based on what type is selected.
-     * 
+     *
      * @param chromosome the Chromosome to mutate
      * @return the mutated Chromosome
      */
@@ -435,7 +442,7 @@ public class GeneticAlgorithm {
 
     /**
      * Perform the selected type of crossover.
-     * 
+     *
      * @param p1 the first parent
      * @param p2 the second parent
      * @return the children
@@ -450,26 +457,6 @@ public class GeneticAlgorithm {
             children = Crossover.orderCrossover(p1, p2, random);
         }
         return children;
-    }
-
-    private static void delay(int ms) {
-        try {
-            Thread.sleep(ms);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public enum MutationType {
-        INSERTION,
-        RECIPROCAL_EXCHANGE,
-        SCRAMBLE
-    }
-
-    public enum CrossoverType {
-        UNIFORM_ORDER,
-        ONE_POINT,
-        TWO_POINT
     }
 
     public void reset() {
@@ -515,6 +502,18 @@ public class GeneticAlgorithm {
                 getAreaUnderAverageDistances());
         System.out.println("Area Under Average Distance:           " +
                 getAreaUnderBestDistances());
+    }
+
+    public enum MutationType {
+        INSERTION,
+        RECIPROCAL_EXCHANGE,
+        SCRAMBLE
+    }
+
+    public enum CrossoverType {
+        UNIFORM_ORDER,
+        ONE_POINT,
+        TWO_POINT
     }
 
 }

@@ -1,10 +1,10 @@
 package edu.neu.utility;
 
-import java.io.IOException;
-import java.util.Scanner;
-
 import edu.neu.genetic.GeneticAlgorithm;
 import edu.neu.genetic.Preset;
+
+import java.io.IOException;
+import java.util.Scanner;
 
 public class HeatMap {
     private int maxValue = 0;
@@ -32,6 +32,107 @@ public class HeatMap {
         scale = 10;
         crossoverRangeSet = false;
         mutationRangeSet = false;
+    }
+
+    private static void showInputValuesInWindow(int scale) {
+        HeatMap heatMap = new HeatMap();
+        Scanner sc = new Scanner(System.in);
+
+        for (int i = 0; i < 15; i++) {
+            if (i == 0) {
+                sc.nextLine();
+            } else {
+                System.out.println(sc.nextLine());
+            }
+        }
+        String[] s = sc.nextLine().split(" ");
+        int rows = Integer.parseInt(s[0]);
+        int columns = Integer.parseInt(s[3]);
+
+        heatMap.array = new int[rows][columns];
+
+        // The 24th line is where the Utility values are.
+        for (int i = 0; i < 7; i++) {
+            System.out.println(sc.nextLine());
+        }
+
+        sc.nextLine();
+
+        for (int r = 0; r < rows; r++) {
+            for (int c = 0; c < columns; c++) {
+                int input = sc.nextInt();
+                heatMap.array[r][c] = input;
+                if (input > heatMap.maxValue) {
+                    heatMap.maxValue = input;
+                }
+                if (input < heatMap.minValue) {
+                    heatMap.minValue = input;
+                }
+            }
+        }
+
+        sc.nextLine();
+        while (sc.hasNextLine()) {
+            System.out.println(sc.nextLine());
+        }
+
+        sc.close();
+
+        heatMap.setScale(scale);
+        heatMap.showInWindow();
+    }
+
+    private static void outputHeatMap() throws IOException {
+        GeneticAlgorithm geneticAlgorithm = Preset.getDefaultGA();
+
+        geneticAlgorithm.run();
+        geneticAlgorithm.printProperties();
+        System.out.println("-------------Heat Map Information---------------");
+        generateHeatMap(geneticAlgorithm);
+    }
+
+    private static void generateHeatMap(GeneticAlgorithm geneticAlgorithm) {
+        HeatMap heatMap = new HeatMap(geneticAlgorithm);
+        heatMap.setCrossoverRange(0.90, 1.00, 0.02);
+        heatMap.setMutationRange(0.00, 0.10, 0.02);
+        heatMap.setNumberOfRuns(5);
+        heatMap.run();
+        heatMap.setScale(4);
+        System.out.println("---------------Heat Map Values------------------");
+        heatMap.printResults();
+        System.out.println("---------------Heat Map Results-----------------");
+        System.out.println(heatMap.getBest());
+        System.out.print(heatMap.getWorst());
+        System.out.println("-------------------Finished--------------------");
+    }
+
+    public static void main(String[] args) {
+
+        if (args.length == 0) {
+            System.out.println("Mode: Outputting Heat Map.");
+            try {
+                outputHeatMap();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+
+        if (args.length == 1) {
+            System.out.println("Mode: Inputting Heat Map.");
+            try {
+                int scale = Integer.parseInt(args[0]);
+                HeatMap.showInputValuesInWindow(scale);
+                return;
+            } catch (Exception ex) {
+                System.out.println("Invalid parameter.");
+                System.out.println("Parameter must be an integer between 0 and 20.");
+                return;
+            }
+        }
+
+        System.out.println("Invalid parameters.");
+        System.out.println("Parameter must be an integer between 0 and 20.");
     }
 
     private void setCrossoverRange(double start, double finish, double increment) {
@@ -230,6 +331,15 @@ public class HeatMap {
         return minValue;
     }
 
+    // private static void print(int[][] array) {
+    // for (int[] y : array) {
+    // for (int x : y) {
+    // System.out.print(x + " ");
+    // }
+    // System.out.println();
+    // }
+    // }
+
     int getMaxValue() {
         return maxValue;
     }
@@ -247,115 +357,5 @@ public class HeatMap {
             }
             System.out.println();
         }
-    }
-
-    private static void showInputValuesInWindow(int scale) {
-        HeatMap heatMap = new HeatMap();
-        Scanner sc = new Scanner(System.in);
-
-        for (int i = 0; i < 15; i++) {
-            if (i == 0) {
-                sc.nextLine();
-            } else {
-                System.out.println(sc.nextLine());
-            }
-        }
-        String[] s = sc.nextLine().split(" ");
-        int rows = Integer.parseInt(s[0]);
-        int columns = Integer.parseInt(s[3]);
-
-        heatMap.array = new int[rows][columns];
-
-        // The 24th line is where the Utility values are.
-        for (int i = 0; i < 7; i++) {
-            System.out.println(sc.nextLine());
-        }
-
-        sc.nextLine();
-
-        for (int r = 0; r < rows; r++) {
-            for (int c = 0; c < columns; c++) {
-                int input = sc.nextInt();
-                heatMap.array[r][c] = input;
-                if (input > heatMap.maxValue) {
-                    heatMap.maxValue = input;
-                }
-                if (input < heatMap.minValue) {
-                    heatMap.minValue = input;
-                }
-            }
-        }
-
-        sc.nextLine();
-        while (sc.hasNextLine()) {
-            System.out.println(sc.nextLine());
-        }
-
-        sc.close();
-
-        heatMap.setScale(scale);
-        heatMap.showInWindow();
-    }
-
-    // private static void print(int[][] array) {
-    // for (int[] y : array) {
-    // for (int x : y) {
-    // System.out.print(x + " ");
-    // }
-    // System.out.println();
-    // }
-    // }
-
-    private static void outputHeatMap() throws IOException {
-        GeneticAlgorithm geneticAlgorithm = Preset.getDefaultGA();
-
-        geneticAlgorithm.run();
-        geneticAlgorithm.printProperties();
-        System.out.println("-------------Heat Map Information---------------");
-        generateHeatMap(geneticAlgorithm);
-    }
-
-    private static void generateHeatMap(GeneticAlgorithm geneticAlgorithm) {
-        HeatMap heatMap = new HeatMap(geneticAlgorithm);
-        heatMap.setCrossoverRange(0.90, 1.00, 0.02);
-        heatMap.setMutationRange(0.00, 0.10, 0.02);
-        heatMap.setNumberOfRuns(5);
-        heatMap.run();
-        heatMap.setScale(4);
-        System.out.println("---------------Heat Map Values------------------");
-        heatMap.printResults();
-        System.out.println("---------------Heat Map Results-----------------");
-        System.out.println(heatMap.getBest());
-        System.out.print(heatMap.getWorst());
-        System.out.println("-------------------Finished--------------------");
-    }
-
-    public static void main(String[] args) {
-
-        if (args.length == 0) {
-            System.out.println("Mode: Outputting Heat Map.");
-            try {
-                outputHeatMap();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return;
-        }
-
-        if (args.length == 1) {
-            System.out.println("Mode: Inputting Heat Map.");
-            try {
-                int scale = Integer.parseInt(args[0]);
-                HeatMap.showInputValuesInWindow(scale);
-                return;
-            } catch (Exception ex) {
-                System.out.println("Invalid parameter.");
-                System.out.println("Parameter must be an integer between 0 and 20.");
-                return;
-            }
-        }
-
-        System.out.println("Invalid parameters.");
-        System.out.println("Parameter must be an integer between 0 and 20.");
     }
 }

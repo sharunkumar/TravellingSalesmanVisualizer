@@ -1,5 +1,7 @@
 package edu.neu.io;
 
+import edu.neu.modals.Location;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,10 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import edu.neu.modals.Location;
-
 public class DataSet {
-
     public Set<Location> locations = new HashSet<Location>();
 
     public DataSet(String fileName) throws IOException {

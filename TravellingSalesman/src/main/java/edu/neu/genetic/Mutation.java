@@ -1,15 +1,14 @@
 package edu.neu.genetic;
 
-import java.util.Random;
-
 import edu.neu.modals.Location;
 import edu.neu.modals.TravelPath;
+
+import java.util.Random;
 
 /**
  * Used for mutating the Chromosomes.
  */
 class Mutation {
-
     /**
      * Class cannot be instantiated, as there would be no point, since all
      * the methods are static.
@@ -19,7 +18,7 @@ class Mutation {
 
     /**
      * Selects a location and inserts it into a random place.
-     * 
+     *
      * @param path   The Chromosome who's locations will be swapped.
      * @param random The Random object used for randomly selecting the locations
      * @return the mutated Chromosome
@@ -47,7 +46,7 @@ class Mutation {
 
     /**
      * Swaps two randomly selected locations.
-     * 
+     *
      * @param path   The Chromosome who's locations will be swapped.
      * @param random The Random object used for randomly selecting the locations
      * @return the mutated Chromosome
@@ -61,7 +60,7 @@ class Mutation {
 
     /**
      * Pick a subset of locations and randomly re-arrange them.
-     * 
+     *
      * @param chromosome The Chromosome who's locations will be swapped.
      * @param random     The Random object used for randomly selecting the locations
      * @return the mutated Chromosome
@@ -90,7 +89,7 @@ class Mutation {
 
     /**
      * Helper method for swapping two locations in a Chromosome to change the tour.
-     * 
+     *
      * @param array the array of locations to do the swap in
      * @param i     the index of the first location
      * @param j     the index of the second location

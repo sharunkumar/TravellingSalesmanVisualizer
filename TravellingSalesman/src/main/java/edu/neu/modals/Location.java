@@ -7,14 +7,13 @@ import java.util.Random;
  * Immutable.
  */
 public class Location {
-
+    private final float latitude;
+    private final float longitude;
     private int hashCode = -1;
-    private float latitude, longitude;
 
     /**
      * Constructs the location.
-     * 
-     * @param name      the name of the location
+     *
      * @param latitude  the x coordinate
      * @param longitude the y coordinate
      */
@@ -23,17 +22,9 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public float getLatitude() {
-        return latitude;
-    }
-
-    public float getLongitude() {
-        return longitude;
-    }
-
     /**
      * Create a location with a random name and random location.
-     * 
+     *
      * @param random the Random object to be used for the generation
      * @return a Randomly generated location
      */
@@ -45,7 +36,7 @@ public class Location {
 
     /**
      * Finds the Euclidean distance between two locations.
-     * 
+     *
      * @param location1 the first location
      * @param location2 the second location
      * @return the distance
@@ -62,6 +53,14 @@ public class Location {
         float yDiff = y2 - y1;
 
         return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
     }
 
     public double distanceTo(Location otherLocation) {

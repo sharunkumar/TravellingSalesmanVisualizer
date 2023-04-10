@@ -1,13 +1,9 @@
 package edu.neu.display;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-
-import javax.swing.JPanel;
-
 import edu.neu.modals.Location;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * All the drawing is done here.

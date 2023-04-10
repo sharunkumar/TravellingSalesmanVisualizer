@@ -8,7 +8,6 @@ import java.util.Random;
  * locations.
  */
 public class TravelPath implements Comparable<TravelPath> {
-
     private int hashcode = -1;
     private Location[] locations;
     private int distance = -1; // Calculated once then cached.
@@ -17,7 +16,7 @@ public class TravelPath implements Comparable<TravelPath> {
     /**
      * Construct the Chromosome from an array. The locations are in the same order
      * as they are in the array. No shuffling is done.
-     * 
+     *
      * @param locations the array of location objects for construction
      */
     public TravelPath(Location[] locations) {
@@ -26,7 +25,7 @@ public class TravelPath implements Comparable<TravelPath> {
 
     /**
      * Construct the Chromosome from an array of location objects and shuffle them.
-     * 
+     *
      * @param locations the array of location objects for construction
      * @param random    the Random object for shuffling the Chromosome
      */
@@ -47,7 +46,7 @@ public class TravelPath implements Comparable<TravelPath> {
 
     /**
      * Helper method for shuffling the locations. Swaps two locations.
-     * 
+     *
      * @param i the index of the first location
      * @param j the index of the second location
      */
