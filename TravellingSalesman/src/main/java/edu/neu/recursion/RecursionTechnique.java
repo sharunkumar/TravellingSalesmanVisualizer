@@ -1,4 +1,4 @@
-package edu.neu.coe;
+package edu.neu.recursion;
 
 import java.util.ArrayList;
 
