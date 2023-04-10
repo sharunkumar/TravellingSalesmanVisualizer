@@ -1,5 +1,6 @@
-package edu.neu.interfaces;
+package edu.neu.solvers;
 
+import edu.neu.interfaces.AbstractTspSolver;
 import edu.neu.io.DataSet;
 import edu.neu.modals.Location;
 import edu.neu.modals.TravelPath;
