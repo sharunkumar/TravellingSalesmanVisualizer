@@ -5,6 +5,8 @@ import edu.neu.christofides.GreedyMatch;
 import edu.neu.christofides.MultiGraph;
 import edu.neu.christofides.PrimsAlgorithm;
 import edu.neu.graphs.node.GraphNode;
+import edu.neu.tactical.optimizations.OptimizationHelperFunctions;
+import edu.neu.tactical.optimizations.RandomOptimization;
 
 import java.util.Arrays;
 
@@ -29,6 +31,10 @@ public class Main {
         System.out.println("Route = " + Arrays.toString(route));
         System.out.println("Total Sum : "+sum);
 
+        int[] randomSwappingRoute = RandomOptimization.randomSwappingRoute(weightMatrix, route);
+
+        System.out.println("Random Swapping Shortest path: "+Arrays.toString(randomSwappingRoute));
+        System.out.println("Route Sum " + OptimizationHelperFunctions.calculateRouteSum(weightMatrix, randomSwappingRoute));
 
     }
 }
