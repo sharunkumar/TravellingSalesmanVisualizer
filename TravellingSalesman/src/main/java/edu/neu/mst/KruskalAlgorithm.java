@@ -10,6 +10,7 @@ import edu.neu.modals.Location;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 
+// FIXME see if this works
 public class KruskalAlgorithm {
     public static final int MAX = 100;
     private final HashMap<Location, Location> parent = new HashMap<>();
