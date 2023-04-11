@@ -7,11 +7,13 @@ package edu.neu.mst;
 
 import edu.neu.modals.Location;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Graph {
-    protected final int vCount;
-    protected final int eCount;
+    //    protected final int eCount;
     private final Location[] locations;
-    protected Edge[] edges;
+    protected List<Edge> edges;
     protected int[][] mst;
 //    protected List<Point> points = new ArrayList<>();
 
@@ -23,30 +25,42 @@ public class Graph {
 
     public Graph(Location[] locations) {
         this.locations = locations;
-        this.eCount = locations.length * (locations.length - 1) / 2;
-        this.vCount = locations.length;
-        edges = new Edge[eCount];
+//        this.eCount = locations.length * (locations.length - 1) / 2;
+        edges = new ArrayList<>();
+        int i = 0;
+
+        for (var u : locations) {
+            for (var v : locations) {
+                var curr = new Edge(u, v);
+                if (u != v && edges.stream().noneMatch(e -> e.compareTo(curr) == 0)) {
+                    edges.add(curr);
+                }
+            }
+        }
     }
 
+    public static void main(String[] args) {
+
+    }
 //    public boolean isInMst(int u, int v) {
 //        return mst[u][v] != 0;
 //    }
+
+    public Location[] getLocations() {
+        return locations;
+    }
 
     private void findMst() {
         KruskalAlgorithm kA = new KruskalAlgorithm();
         mst = kA.findMST(this);
     }
 
-    public Edge[] getEdges() {
+    public List<Edge> getEdges() {
         return edges;
     }
 
     public int getvCount() {
-        return eCount;
-    }
-
-    public int geteCount() {
-        return eCount;
+        return locations.length;
     }
 
 //    private void genGraph() {
@@ -95,4 +109,8 @@ public class Graph {
 //        Edge e = new Edge(u, v, weight);
 //        return e;
 //    }
+
+    public int geteCount() {
+        return edges.size();
+    }
 }

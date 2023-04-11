@@ -5,37 +5,37 @@
  */
 package edu.neu.mst;
 
+import edu.neu.modals.Location;
+
+import java.util.HashMap;
+import java.util.PriorityQueue;
+
 public class KruskalAlgorithm {
     public static final int MAX = 100;
-    private final int[] parent = new int[MAX];
+    private final HashMap<Location, Location> parent = new HashMap<>();
     private final int[][] mst = new int[MAX][MAX];
-    private Edge[] edges = new Edge[MAX];
-    private int edgeCount = 5;
+//    private Edge[] edges = new Edge[MAX];
 
     public int[][] findMST(Graph graph) {
 
-        this.edgeCount = graph.geteCount();
-        this.edges = graph.getEdges();
+        int edgeCount = graph.geteCount();
+        var edges = new PriorityQueue<>(graph.getEdges());
 
-        for (int i = 0; i < edgeCount; ++i) {
-            parent[i] = i;
+        for (var loc : graph.getLocations()) {
+            parent.put(loc, loc);
         }
 
-        sort();
-
-        for (int i = 0; i < edgeCount; ++i) {
+        while (!edges.isEmpty()) {
+            var edge = edges.poll();
             //find root of u
-            int u = findRoot(edges[i].getU());
+            var u = findRoot(edge.getU());
             //find root of v
-            int v = findRoot(edges[i].getV());
+            var v = findRoot(edge.getV());
 
             //if u== v then the cycle created
             if (u != v) {
-                int x = edges[i].getU();
-                int y = edges[i].getV();
-
-                //save the mst 
-                mst[x][y] = mst[y][x] = edges[i].getWeight();
+//                var x = edge.getU();
+//                var y = edge.getV();
 
                 union(u, v);
 
@@ -43,40 +43,28 @@ public class KruskalAlgorithm {
 
             }
         }
+
         return mst;
     }
 
-    int findRoot(int x) {
-        while (parent[x] != x) {
-            x = parent[x];
+    Location findRoot(Location x) {
+        while (parent.get(x) != x) {
+            x = parent.get(x);
         }
         return x;
     }
 
-    void union(int u, int v) {
-        if (parent[u] == u && parent[v] == v) {
-            parent[v] = u;
-        } else if (parent[u] == u && parent[v] != v) {
-            parent[u] = v;
-        } else if (parent[v] == v && parent[u] != u) {
-            parent[v] = u;
-        } else if (parent[u] != u && parent[v] != v) {
-            int root1 = findRoot(u);
-            int root2 = findRoot(v);
-            parent[root1] = root2;
+    void union(Location u, Location v) {
+        if (parent.get(u) == u && parent.get(v) == v) {
+            parent.put(v, u);
+        } else if (parent.get(u) == u && parent.get(v) != v) {
+            parent.put(u, v);
+        } else if (parent.get(v) == v && parent.get(u) != u) {
+            parent.put(v, u);
+        } else if (parent.get(u) != u && parent.get(v) != v) {
+            var root1 = findRoot(u);
+            var root2 = findRoot(v);
+            parent.put(root1, root2);
         }
     }
-
-    private void sort() {
-        for (int i = 0; i < edgeCount; ++i) {
-            for (int j = i + 1; j < edgeCount; ++j) {
-                if (edges[i].getWeight() > edges[j].getWeight()) {
-                    Edge tmp = edges[i];
-                    edges[i] = edges[j];
-                    edges[j] = tmp;
-                }
-            }
-        }
-    }
-
 }
