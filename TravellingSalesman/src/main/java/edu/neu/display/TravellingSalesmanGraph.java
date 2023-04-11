@@ -24,7 +24,6 @@ import java.util.ArrayList;
  * the third line is "Total".
  */
 public class TravellingSalesmanGraph extends JFrame {
-
     private static final int WIDTH = 900;
     private static final int HEIGHT = 900 / 16 * 9;
     private static final int OFFSET = 150;

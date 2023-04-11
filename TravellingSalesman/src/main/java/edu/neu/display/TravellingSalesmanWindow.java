@@ -7,35 +7,34 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Draws the cities to the screen, as well as a path.
+ * Draws the locations to the screen, as well as a path.
  */
 public class TravellingSalesmanWindow extends JFrame {
-
     static final int OFFSET = 40;
     static final int LOCATION_SIZE = 6;
     private static final int WIDTH = 1600;
     private static final int HEIGHT = 1600 / 16 * 9;
+    private final Panel panel;
     Location[] locations;
     TravelPath path;
     double scaleX;
     double scaleY;
-    private Panel panel;
-    private int maxX, maxY;
+    private float maxX, maxY;
 
     /**
-     * Construct the WindowTSP and draw the cities to the screen.
+     * Construct the WindowTSP and draw the locations to the screen.
      *
-     * @param cities the cities to draw to the screen
+     * @param locations the locations to draw to the screen
      */
-    public TravellingSalesmanWindow(Location[] cities) {
-        this.locations = cities;
+    public TravellingSalesmanWindow(Location[] locations) {
+        this.locations = locations;
         setScale();
         panel = createPanel();
         setWindowProperties();
     }
 
     /**
-     * Draw a path through the city.
+     * Draw a path through the location.
      *
      * @param path the Travel Path to draw
      */
@@ -67,16 +66,16 @@ public class TravellingSalesmanWindow extends JFrame {
     }
 
     /**
-     * Sets the scale for the drawing so that all the cities
+     * Sets the scale for the drawing so that all the locations
      * are drawn inside the window.
      */
     private void setScale() {
         for (Location c : locations) {
-            if (c.getX() > maxX) {
-                maxX = c.getX();
+            if (c.getLatitude() > maxX) {
+                maxX = c.getLatitude();
             }
-            if (c.getY() > maxY) {
-                maxY = c.getY();
+            if (c.getLongitude() > maxY) {
+                maxY = c.getLongitude();
             }
         }
         scaleX = ((double) maxX) / ((double) WIDTH - OFFSET);
