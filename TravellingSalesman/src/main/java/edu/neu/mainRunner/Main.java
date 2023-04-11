@@ -1,23 +1,23 @@
 package edu.neu.mainRunner;
 
-import edu.neu.christofides.EulerCircuitGenerator;
-import edu.neu.christofides.GreedyMatch;
-import edu.neu.christofides.MultiGraph;
-import edu.neu.christofides.PrimsAlgorithm;
+import edu.neu.christofides.*;
 import edu.neu.graphs.node.GraphNode;
 import edu.neu.tactical.optimizations.OptimizationHelperFunctions;
 import edu.neu.tactical.optimizations.RandomOptimization;
+import edu.neu.tactical.optimizations.TwoOptOptimization;
+import edu.neu.utility.ReadDistanceMatrix;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        double [][] weightMatrix  = new double[100][100]; // placeholder for adjacency matrix
+        double [][] weightMatrix  = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION);
 
-        int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix, weightMatrix.length);
-        int[][] matchGraph = GreedyMatch.greadyMatch(minimumSpanningTree, weightMatrix, weightMatrix.length);
+        int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix, weightMatrix[0].length);
+        int[][] matchGraph = GreedyMatch.greadyMatch(minimumSpanningTree, weightMatrix, weightMatrix[0].length);
 
         GraphNode nodes[] = MultiGraph.build(matchGraph, minimumSpanningTree);
         int route[] = EulerCircuitGenerator.generateEulerCircuit(nodes);
@@ -35,6 +35,12 @@ public class Main {
 
         System.out.println("Random Swapping Shortest path: "+Arrays.toString(randomSwappingRoute));
         System.out.println("Route Sum " + OptimizationHelperFunctions.calculateRouteSum(weightMatrix, randomSwappingRoute));
+
+
+       // int[] twoOptOptimizationTechnique = TwoOptOptimization.twoOptOptimization(route, weightMatrix);
+
+       // System.out.println("Two Opt Optimization Path: "+Arrays.toString(twoOptOptimizationTechnique));
+        //System.out.println("Route Sum " + OptimizationHelperFunctions.calculateRouteSum(weightMatrix, randomSwappingRoute));
 
     }
 }
