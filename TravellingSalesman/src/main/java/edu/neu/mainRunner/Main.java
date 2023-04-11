@@ -1,5 +1,6 @@
 package edu.neu.mainRunner;
 
+import edu.neu.christofides.GreedyMatch;
 import edu.neu.christofides.PrimsAlgorithm;
 
 public class Main {
@@ -8,7 +9,9 @@ public class Main {
 
         double [][] weightMatrix  = new double[100][100]; // placeholder for adjacency matrix
 
-        int[] primsAlgoOutput = PrimsAlgorithm.run(weightMatrix, weightMatrix.length);
+        int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix, weightMatrix.length);
+        int[][] matchGraph = GreedyMatch.greadyMatch(minimumSpanningTree, weightMatrix, weightMatrix.length);
+
 
     }
 }
