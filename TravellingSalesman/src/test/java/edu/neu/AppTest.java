@@ -7,6 +7,8 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
 
 /**
@@ -41,7 +43,6 @@ public class AppTest
         double[][] weightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION);
         int[] route = ChristofidesAlgorithm.run(weightMatrix);
         assertSame(route.length, 26);
-        assertEquals(route, new int[]{0, 14, 13, 2, 1, 9, 8, 6, 4, 5, 3, 7, 15, 18, 19, 17, 16, 20, 21, 25, 22, 23, 24,
-                11, 12, 10});
+        assertArrayEquals(route, new int[]{0, 14, 13, 2, 1, 9, 8, 6, 4, 5, 3, 7, 15, 18, 19, 17, 16, 20, 21, 25, 22, 23, 24, 11, 12, 10});
     }
 }
