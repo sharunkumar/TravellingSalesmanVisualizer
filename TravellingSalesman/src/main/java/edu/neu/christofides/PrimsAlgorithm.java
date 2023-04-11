@@ -13,7 +13,7 @@ public class PrimsAlgorithm {
 
 
         for (int i = 0; i < weightMatrixSize; i++) {
-            primQueue.add(i);
+            primQueue.add(new Integer(i));
         }
 
         for (int i = 0; i < weightMatrixSize; i++) {
@@ -27,7 +27,7 @@ public class PrimsAlgorithm {
 
         do {
             checkTree[zero] = true;
-            primQueue.remove(zero);
+            primQueue.remove(new Integer(zero));
             for (int v = 0; v < weightMatrixSize; v++) {
                 if (!checkTree[v] && weightMatrix[zero][v] < allKeys[v]) {
                     result[v] = zero;
