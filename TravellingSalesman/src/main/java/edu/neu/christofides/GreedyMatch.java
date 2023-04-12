@@ -36,7 +36,7 @@ public class GreedyMatch {
                     edges[i][j] = new Edge(((Integer) oddDegreeNodes.get(i)).intValue(),
                             ((Integer) oddDegreeNodes.get(j)).intValue(), Double.MAX_VALUE);
             }
-            Arrays.sort(edges[i]); //sortera alla kanter från nod i
+            Arrays.sort(edges[i]);
         }
 
         boolean matched[] = new boolean[weightMatrixSize];
