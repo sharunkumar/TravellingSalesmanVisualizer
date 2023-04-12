@@ -14,6 +14,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+
         double [][] weightMatrix  = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_2);
 
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix, weightMatrix[0].length);
@@ -44,6 +45,7 @@ public class Main {
 
         System.out.println("Two Opt Optimization Path: "+Arrays.toString(twoOptOptimizationTechnique));
         System.out.println("Two Opt Route Sum " + OptimizationHelperFunctions.calculateRouteSum(weightMatrix, twoOptOptimizationTechnique));
+
 
     }
 }
