@@ -19,6 +19,6 @@ public class App
         routeMap[0][3] = 1;
         RecursionTSP recursionTSP = new RecursionTSP(routeMap);
         long travelingSalesman = recursionTSP.travelingSalesmanRecursion(1, 0);
-        System.out.println(travelingSalesman);
+        System.out.println("Traveling Salesman Minimum Weight: "+travelingSalesman);
     }
 }
