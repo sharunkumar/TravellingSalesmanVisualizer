@@ -8,7 +8,7 @@ public class RecursionTSP {
     public static int numberOfVertices = 0;
     public RecursionTSP(int[][] routeMap) {
         numberOfVertices = routeMap[0].length;
-        System.out.println("Length of routeMap: "+numberOfVertices);
+        System.out.println("Length of routeMap (Recursion Technique): "+numberOfVertices);
         adjacencyMatrix = new int[numberOfVertices][numberOfVertices];
         adjacencyMatrix = routeMap;
     }

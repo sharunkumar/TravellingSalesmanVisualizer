@@ -28,12 +28,15 @@ public class App
 
         RecursionTSP recursionTSP = new RecursionTSP(routeMap);
         DynamicProgrammingTSP dynamicProgrammingTSP = new DynamicProgrammingTSP(routeMap);
+        NearestNeighborsHeuristicAlgorithm nearestNeighborsHeuristicAlgorithm = new NearestNeighborsHeuristicAlgorithm(routeMap);
 
         long travelingSalesmanRecursion = recursionTSP.travelingSalesmanRecursion(1, 0);
         long travelingSalesmanDP = dynamicProgrammingTSP.travelingSalesmanDP(1, 0);
+        long travelingSalesmanNearestNeighbors = nearestNeighborsHeuristicAlgorithm.NearestNeighbors(1, 0);
 
         System.out.println("Traveling Salesman Minimum Weight (Recursion Technique): "+travelingSalesmanRecursion);
         System.out.println("Traveling Salesman Minimum Weight (Dynamic Programming Technique): "+travelingSalesmanDP);
+        System.out.println("Traveling Salesman Minimum Weight (Nearest Neighbors Heuristics Technique): "+travelingSalesmanNearestNeighbors);
 
     }
 }
