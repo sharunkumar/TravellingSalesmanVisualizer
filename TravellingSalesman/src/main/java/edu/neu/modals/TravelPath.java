@@ -92,7 +92,8 @@ public class TravelPath implements Comparable<TravelPath> {
         if (hashcode == -1) {
             StringBuilder sb = new StringBuilder();
             for (Location location : locations) {
-                sb.append(location);
+                sb.append(location.hashCode());
+                sb.append(" ");
             }
             hashcode = sb.toString().hashCode();
         }
