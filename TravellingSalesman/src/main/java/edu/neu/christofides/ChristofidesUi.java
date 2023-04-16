@@ -2,7 +2,9 @@ package edu.neu.christofides;
 
 import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
+import edu.neu.modals.TravelPath;
 import edu.neu.optimizations.tactical.RandomOptimizerBruteForce;
+import edu.neu.optimizations.tactical.TwoOptOptimization;
 
 import java.util.Random;
 
@@ -58,6 +60,13 @@ public class ChristofidesUi {
                         "Optimization Path: " + path);
             }
         }
+
+        print("Running Two Opt Optimization", "Running Two Opt Optimization");
+
+        var twoOptRoute = TwoOptOptimization.twoOptOptimization(path.getRoute(), weightMatrix, window, locations);
+
+        path = new TravelPath(locations, twoOptRoute);
+        print("Two Opt Optimization Complete!", "Two Opt Optimization Complete:" + path);
 
         print("Final Path: " + path.getRoute(), "Final Path: " + path);
 

@@ -1,5 +1,9 @@
 package edu.neu.optimizations.tactical;
 
+import edu.neu.display.TravellingSalesmanWindow;
+import edu.neu.modals.Location;
+import edu.neu.modals.TravelPath;
+
 import static edu.neu.utilties.TSPUtilities.calculateDistance;
 
 public class TwoOptOptimization {
@@ -27,6 +31,35 @@ public class TwoOptOptimization {
             }
             route = bestRoute;
         }
+        return bestRoute;
+    }
+
+    public static int[] twoOptOptimization(int[] route, double[][] distMatrix, TravellingSalesmanWindow window,
+                                           Location[] locations) {
+        boolean improved = true;
+        int[] bestRoute = route.clone();
+        double bestDistance = calculateDistance(bestRoute, distMatrix);
+        while (improved) {
+            improved = false;
+            for (int i = 1; i < route.length - 2; i++) {
+                for (int j = i + 1; j < route.length; j++) {
+                    if (j - i == 1) {
+                        continue;
+                    }
+                    int[] newRoute = route.clone();
+                    reverse(newRoute, i, j);
+                    double newDistance = calculateDistance(newRoute, distMatrix);
+                    if (newDistance < bestDistance) {
+                        bestDistance = newDistance;
+                        bestRoute = newRoute;
+                        window.drawPath(new TravelPath(locations, bestRoute));
+                        improved = true;
+                    }
+                }
+            }
+            route = bestRoute;
+        }
+        window.drawPath(new TravelPath(locations, bestRoute));
         return bestRoute;
     }
 
