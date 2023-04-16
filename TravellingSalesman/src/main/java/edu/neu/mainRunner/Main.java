@@ -13,17 +13,15 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
-
         double[][] weightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_2);
 
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix, weightMatrix[0].length);
 
         int[][] matchGraph = GreedyMatch.greadyMatch(minimumSpanningTree, weightMatrix, weightMatrix[0].length);
 
-        GraphNode nodes[] = MultiGraph.build(matchGraph, minimumSpanningTree);
-        int route[] = EulerCircuitGenerator.generateEulerCircuit(nodes);
-        int routeCopy[] = Arrays.copyOf(route, route.length);
+        GraphNode[] nodes = MultiGraph.build(matchGraph, minimumSpanningTree);
+        int[] route = EulerCircuitGenerator.generateEulerCircuit(nodes);
+        int[] routeCopy = Arrays.copyOf(route, route.length);
 
         double sum = 0;
 
@@ -47,7 +45,5 @@ public class Main {
         System.out.println("Two Opt Optimization Path: " + Arrays.toString(twoOptOptimizationTechnique));
         System.out.println("Two Opt Route Sum " + OptimizationHelperFunctions.calculateRouteSum(weightMatrix,
                 twoOptOptimizationTechnique));
-
-
     }
 }

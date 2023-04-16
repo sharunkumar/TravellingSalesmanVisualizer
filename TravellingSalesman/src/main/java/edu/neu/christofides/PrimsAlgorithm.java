@@ -35,7 +35,6 @@ public class PrimsAlgorithm {
                 }
             }
 
-
             double mint = Constants.DOUBLE_MAX_VALUE;
             for (Integer integer : primQueue) {
                 elem = (Integer) integer;
@@ -47,12 +46,12 @@ public class PrimsAlgorithm {
             }
         } while (!primQueue.isEmpty());
 
-        double minimumSpanningTreeSum=0;
-        for(int k=0;k<weightMatrixSize;k++){
-            minimumSpanningTreeSum+=allKeys[k];
+        double minimumSpanningTreeSum = 0;
+        for (int k = 0; k < weightMatrixSize; k++) {
+            minimumSpanningTreeSum += allKeys[k];
         }
 
-        System.out.println("Minimum Spanning Tree Route Sum = "+minimumSpanningTreeSum);
+        System.out.println("Minimum Spanning Tree Route Sum = " + minimumSpanningTreeSum);
         return result;
     }
 }

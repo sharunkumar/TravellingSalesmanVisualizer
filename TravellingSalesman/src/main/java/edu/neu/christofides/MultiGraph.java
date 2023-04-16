@@ -10,12 +10,10 @@ public class MultiGraph {
             nodes[i] = new GraphNode(i);
         }
 
-
         for (int i = 1; i < mst.length; i++) {
             nodes[i].addChild(nodes[mst[i]]);
             nodes[mst[i]].addChild(nodes[i]);
         }
-
 
         for (int i = 0; i < match.length; i++) {
             nodes[match[i][0]].addChild(nodes[match[i][1]]);

@@ -20,7 +20,7 @@ public class ChristofidesAlgorithm {
         sum += weightMatrix[route[0]][route[route.length - 1]];
         System.out.println("Route = " + Arrays.toString(route));
         System.out.println("Total Sum : " + sum);
-
+        
         return route;
     }
 }

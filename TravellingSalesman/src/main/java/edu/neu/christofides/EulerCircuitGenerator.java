@@ -11,7 +11,6 @@ public class EulerCircuitGenerator {
         Vector tmpPath = new Vector();
         int j = 0;
 
-
         nodes[0].getNextChild(nodes[0].getName(), tmpPath, true);
         path.addAll(0, tmpPath);
 
@@ -44,7 +43,6 @@ public class EulerCircuitGenerator {
                 inPath[((Integer) path.get(i)).intValue()] = true;
             }
         }
-
 
         return route;
     }
