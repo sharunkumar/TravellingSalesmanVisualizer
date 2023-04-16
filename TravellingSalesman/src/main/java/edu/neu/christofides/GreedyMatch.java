@@ -5,6 +5,7 @@ import edu.neu.graphs.node.Node;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.*;
 
 public class GreedyMatch {
     public static int[][] greedyMatch(int[] minimumSpanningTree, double[][] weightMatrix, int weightMatrixSize) {
@@ -65,5 +66,43 @@ public class GreedyMatch {
         var oddNodes = new ArrayList<Integer>();
         _root.visitFindOddDegreeNodes(oddNodes);
         return oddNodes;
+    }
+
+    public static int[][] greadyMatch(int[] minimumSpanningTree, double[][] weightMatrix, int length) {
+        List<Integer>[] adj = buildAdjacencyList(minimumSpanningTree, length);
+        boolean[] visited = new boolean[length];
+        int[][] match = new int[length/2][2];
+        int count = 0;
+
+        for (int i = 0; i < length; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                for (int j : adj[i]) {
+                    if (!visited[j]) {
+                        visited[j] = true;
+                        match[count][0] = i;
+                        match[count][1] = j;
+                        count++;
+                        break;
+                    }
+                }
+            }
+        }
+
+        return match;
+    }
+
+    private static List<Integer>[] buildAdjacencyList(int[] minimumSpanningTree, int length) {
+        List<Integer>[] adj = new List[length];
+        for (int i = 0; i < length; i++) {
+            adj[i] = new ArrayList<>();
+        }
+        for (int i = 0; i < minimumSpanningTree.length; i += 2) {
+            int u = minimumSpanningTree[i];
+            int v = minimumSpanningTree[i + 1];
+            adj[u].add(v);
+            adj[v].add(u);
+        }
+        return adj;
     }
 }
