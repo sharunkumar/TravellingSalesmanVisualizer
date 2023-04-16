@@ -10,13 +10,13 @@ import static edu.neu.optimizations.tactical.OptimizationHelperFunctions.swap;
 import static edu.neu.utilties.TSPUtilities.calculateDistance;
 
 public class RandomOptimizer implements Iterator<TravelPath> {
-    private final double[][] weightMatrix;
-    private final Location[] locations;
-    private final int maxIterations;
-    private final Random random;
+    protected final double[][] weightMatrix;
+    protected final Location[] locations;
+    protected final int maxIterations;
+    protected final Random random;
+    protected int[] route;
+    protected double currentDistance;
     int current = 0;
-    private int[] route;
-    private double currentDistance;
 
     public RandomOptimizer(Location[] locations, double[][] weightMatrix, int[] route, Random random,
                            int maxIterations) {
