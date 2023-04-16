@@ -15,7 +15,7 @@ import static edu.neu.utilties.DistanceCalculator.calculateDistance;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        double[][] weightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_2);
+        double[][] weightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_1);
 
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
 
