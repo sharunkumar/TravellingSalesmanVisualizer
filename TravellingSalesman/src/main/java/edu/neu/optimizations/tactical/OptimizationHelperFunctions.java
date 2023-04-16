@@ -1,4 +1,4 @@
-package edu.neu.tactical.optimizations;
+package edu.neu.optimizations.tactical;
 
 public class OptimizationHelperFunctions {
 
@@ -11,7 +11,7 @@ public class OptimizationHelperFunctions {
         return sum;
     }
 
-     static void swap(int[] route, int i, int j) {
+    static void swap(int[] route, int i, int j) {
         int temp = route[i];
         route[i] = route[j];
         route[j] = temp;
