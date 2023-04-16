@@ -113,14 +113,6 @@ class Panel extends JPanel {
         }
     }
 
-    private void trySleep(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
     private void paintLocationNames(Graphics2D graphics) {
         graphics.setColor(Color.white);
         for (Location c : this.window.locations) {

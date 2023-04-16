@@ -1,4 +1,4 @@
-package edu.neu.mainRunner;
+package edu.neu;
 
 import edu.neu.christofides.*;
 import edu.neu.graphs.node.GraphNode;

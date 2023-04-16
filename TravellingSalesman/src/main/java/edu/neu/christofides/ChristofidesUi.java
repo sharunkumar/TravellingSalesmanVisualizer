@@ -21,5 +21,6 @@ public class ChristofidesUi {
         window.setMinimumSpanningTree(minimumSpanningTree);
         window.setDrawMode(MST);
         window.repaint();
+        window.setTitle("Minimum Spanning Tree");
     }
 }

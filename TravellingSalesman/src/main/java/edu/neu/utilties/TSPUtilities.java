@@ -21,4 +21,12 @@ public class TSPUtilities {
         }
         return weightMatrix;
     }
+
+    private void trySleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
