@@ -1,12 +1,29 @@
 package edu.neu.christofides;
 
 import edu.neu.graphs.node.GraphNode;
+import edu.neu.modals.Location;
+import edu.neu.modals.TravelPath;
 
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Vector;
 
 public class EulerCircuitGenerator {
+
+    public static TravelPath generateEulerCircuit(Location[] locations, int[] minimumSpanningTree,
+                                                  double[][] weightMatrix) {
+        int[][] matchGraph = GreedyMatch.greedyMatch(minimumSpanningTree, weightMatrix);
+        GraphNode[] nodes = MultiGraph.build(matchGraph, minimumSpanningTree);
+        int[] route = generateEulerCircuit(nodes);
+
+        Location[] path = new Location[route.length];
+
+        for (int i = 0; i < route.length; i++)
+            path[i] = locations[route[i]];
+
+        return new TravelPath(path);
+    }
+
     public static int[] generateEulerCircuit(GraphNode[] nodes) {
         var path = new LinkedList<Integer>();
         var tmpPath = new Vector<Integer>();

@@ -8,7 +8,7 @@ import java.util.Random;
 public class SimulatedAnnealing {
     public static int[] run(double[][] weightMatrix, double temperature, double coolingRate) {
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix); //, weightMatrix[0].length
-        int[][] matchGraph = GreedyMatch.greedyMatch(minimumSpanningTree, weightMatrix, weightMatrix[0].length);
+        int[][] matchGraph = GreedyMatch.greedyMatch(minimumSpanningTree, weightMatrix);
 
         GraphNode[] nodes = MultiGraph.build(matchGraph, minimumSpanningTree);
         int[] currentRoute = EulerCircuitGenerator.generateEulerCircuit(nodes);

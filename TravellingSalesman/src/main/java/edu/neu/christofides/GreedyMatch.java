@@ -8,8 +8,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class GreedyMatch {
-    public static int[][] greedyMatch(int[] minimumSpanningTree, double[][] weightMatrix, int weightMatrixSize) {
+    public static int[][] greedyMatch(int[] minimumSpanningTree, double[][] weightMatrix) {
 
+        int weightMatrixSize = weightMatrix[0].length;
+        
         Node[] nodes = new Node[minimumSpanningTree.length];
 
         nodes[0] = new Node(0, true);
