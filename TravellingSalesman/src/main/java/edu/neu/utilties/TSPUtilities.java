@@ -2,7 +2,7 @@ package edu.neu.utilties;
 
 import edu.neu.modals.Location;
 
-public class DistanceCalculator {
+public class TSPUtilities {
     public static double calculateDistance(int[] route, double[][] distMatrix) {
         double distance = 0;
         for (int i = 0; i < route.length - 1; i++) {

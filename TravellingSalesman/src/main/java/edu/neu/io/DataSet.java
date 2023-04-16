@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static edu.neu.utilties.DistanceCalculator.getWeightMatrix;
+import static edu.neu.utilties.TSPUtilities.getWeightMatrix;
 
 public class DataSet {
     public Location[] locations;

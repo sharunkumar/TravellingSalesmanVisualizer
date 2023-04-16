@@ -5,7 +5,7 @@ import edu.neu.io.DataSet;
 
 import java.io.IOException;
 
-import static edu.neu.utilties.DistanceCalculator.getWeightMatrix;
+import static edu.neu.utilties.TSPUtilities.getWeightMatrix;
 
 public class App {
     public static void main(String[] args) throws IOException {

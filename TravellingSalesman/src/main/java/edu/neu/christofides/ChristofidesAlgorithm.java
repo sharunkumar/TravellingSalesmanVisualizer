@@ -4,7 +4,7 @@ import edu.neu.graphs.node.GraphNode;
 
 import java.util.Arrays;
 
-import static edu.neu.utilties.DistanceCalculator.calculateDistance;
+import static edu.neu.utilties.TSPUtilities.calculateDistance;
 
 public class ChristofidesAlgorithm {
     public static int[] run(double[][] weightMatrix) {

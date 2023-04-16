@@ -10,7 +10,7 @@ import edu.neu.utility.ReadDistanceMatrix;
 import java.io.IOException;
 import java.util.Arrays;
 
-import static edu.neu.utilties.DistanceCalculator.calculateDistance;
+import static edu.neu.utilties.TSPUtilities.calculateDistance;
 
 public class Main {
 

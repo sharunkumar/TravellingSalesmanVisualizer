@@ -11,7 +11,7 @@ import java.awt.*;
  */
 public class TravellingSalesmanWindow extends JFrame {
     static final int OFFSET = 40;
-    static final int LOCATION_SIZE = 6;
+    static final int LOCATION_SIZE = 4;
     private static final int WIDTH = 1600;
     private static final int HEIGHT = 1600 / 16 * 9;
     private final Panel panel;
