@@ -11,8 +11,9 @@ public class TravelPath implements Comparable<TravelPath> {
     private final Location[] locations;
     private final int[] route;
     private int hashcode = -1;
-    private int distance = -1; // Calculated once then cached.
+    private double distance = -1; // Calculated once then cached.
     private Random random;
+
     /**
      * Construct the Chromosome from an array. The locations are in the same order
      * as they are in the array. No shuffling is done.
@@ -83,7 +84,7 @@ public class TravelPath implements Comparable<TravelPath> {
 
     @Override
     public int compareTo(TravelPath chromosome) {
-        return getDistance() - chromosome.getDistance();
+        return Double.compare(getDistance(), chromosome.getDistance());
     }
 
     @Override
@@ -98,7 +99,7 @@ public class TravelPath implements Comparable<TravelPath> {
         return hashcode;
     }
 
-    public int getDistance() {
+    public double getDistance() {
 
         // If this was already calculated, don't calculate it again.
         if (distance != -1) {
@@ -129,7 +130,7 @@ public class TravelPath implements Comparable<TravelPath> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("[ ");
+        StringBuilder sb = new StringBuilder("Distance = " + getDistance() + ", [ ");
         for (Location item : locations) {
             sb.append(item.toString());
             sb.append(" ");

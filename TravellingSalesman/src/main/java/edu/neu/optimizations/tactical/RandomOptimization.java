@@ -38,8 +38,6 @@ public class RandomOptimization extends OptimizationHelperFunctions {
                         System.out.println("NewSum = " + newSum + " Swapped Count = " + count + " Swapped " + initialRoute[j] + " and " + initialRoute[i]);
                         sum = newSum;
                         improved = true;
-
-
                     } else {
                         swap(initialRoute, i, j);
                     }

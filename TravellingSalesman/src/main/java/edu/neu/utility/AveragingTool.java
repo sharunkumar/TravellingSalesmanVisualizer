@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class AveragingTool {
     private GeneticAlgorithm geneticAlgorithm;
     private int numOfTimesToRun;
-    private ArrayList<ArrayList<Integer>> allValues;
+    private ArrayList<ArrayList<Double>> allValues;
     private ArrayList<String> legend = new ArrayList<>();
     private int idx = 0;
 
@@ -24,25 +24,25 @@ public class AveragingTool {
 
     public void run() {
 
-        ArrayList<Integer> valuesForAverage = new ArrayList<>(); // Average dist. of each gen.
-        ArrayList<Integer> valuesForBest = new ArrayList<>(); // Best dist. of each gen.
+        ArrayList<Double> valuesForAverage = new ArrayList<>(); // Average dist. of each gen.
+        ArrayList<Double> valuesForBest = new ArrayList<>(); // Best dist. of each gen.
 
         for (int i = 0; i < numOfTimesToRun; i++) {
             geneticAlgorithm.reset();
             geneticAlgorithm.run();
 
-            ArrayList<Integer> avgDist = geneticAlgorithm.getAverageDistanceOfEachGeneration();
-            ArrayList<Integer> bestDist = geneticAlgorithm.getBestDistanceOfEachGeneration();
+            ArrayList<Double> avgDist = geneticAlgorithm.getAverageDistanceOfEachGeneration();
+            ArrayList<Double> bestDist = geneticAlgorithm.getBestDistanceOfEachGeneration();
 
             if (valuesForAverage.size() == 0) {
                 for (int j = 0; j < avgDist.size(); j++) {
-                    valuesForAverage.add(0);
+                    valuesForAverage.add(0d);
                 }
             }
 
             if (valuesForBest.size() == 0) {
                 for (int j = 0; j < bestDist.size(); j++) {
-                    valuesForBest.add(0);
+                    valuesForBest.add(0d);
                 }
             }
 
@@ -63,7 +63,7 @@ public class AveragingTool {
         allValues.add(valuesForAverage);
         allValues.add(valuesForBest);
 
-        int avgFinalSolution = valuesForBest.get(valuesForBest.size() - 1);
+        double avgFinalSolution = valuesForBest.get(valuesForBest.size() - 1);
         System.out.println("Average Final Solution: " + avgFinalSolution);
     }
 

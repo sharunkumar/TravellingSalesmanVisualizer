@@ -28,7 +28,7 @@ public class TravellingSalesmanGraph extends JFrame {
     private static final int HEIGHT = 900 / 16 * 9;
     private static final int OFFSET = 150;
 
-    private ArrayList<ArrayList<Integer>> yValues;
+    private ArrayList<ArrayList<Double>> yValues;
     private ArrayList<String> legend;
 
     /**
@@ -39,8 +39,8 @@ public class TravellingSalesmanGraph extends JFrame {
      */
     private double yScale = 1.0;
     private double xScale = 1.0;
-    private int maxY = 0;
-    private int minY = Integer.MAX_VALUE;
+    private double maxY = 0;
+    private double minY = Integer.MAX_VALUE;
 
     /**
      * Construct WindowGraph.
@@ -49,7 +49,7 @@ public class TravellingSalesmanGraph extends JFrame {
      * @param legend  the the identifier of each set of values,
      *                example: legend.get(0) is the name of yValues.get(0).
      */
-    public TravellingSalesmanGraph(ArrayList<ArrayList<Integer>> yValues, ArrayList<String> legend) {
+    public TravellingSalesmanGraph(ArrayList<ArrayList<Double>> yValues, ArrayList<String> legend) {
 
         for (int i = 1; i < yValues.size(); i++) {
             if (yValues.get(i).size() != yValues.get(i - 1).size()) {
@@ -84,12 +84,12 @@ public class TravellingSalesmanGraph extends JFrame {
      *
      * @param yValues the values to plot
      */
-    private void setScale(ArrayList<ArrayList<Integer>> yValues) {
+    private void setScale(ArrayList<ArrayList<Double>> yValues) {
 
         xScale = ((double) yValues.get(0).size()) / ((double) TravellingSalesmanGraph.WIDTH - OFFSET);
 
-        for (ArrayList<Integer> list : yValues) {
-            for (Integer y : list) {
+        for (var list : yValues) {
+            for (var y : list) {
 
                 if (y > maxY && y > TravellingSalesmanGraph.HEIGHT - OFFSET) {
                     yScale = ((double) y / ((double) TravellingSalesmanGraph.HEIGHT - OFFSET));
@@ -164,17 +164,17 @@ public class TravellingSalesmanGraph extends JFrame {
             final int TOTAL_LABELS = 20;
             int startX = OFFSET / 2 - 70;
             int startY = OFFSET / 2 + 5;
-            int step = maxY / TOTAL_LABELS;
+            double step = maxY / TOTAL_LABELS;
 
             for (int i = 0; i < TOTAL_LABELS; i++) {
-                int steps = i * step;
+                double steps = i * step;
                 graphics.drawString(maxY - steps
                         + "", startX, startY + (int) (steps / yScale));
             }
 
             // Draw dashes.
             for (int i = 0; i < TOTAL_LABELS; i++) {
-                int steps = i * step;
+                double steps = i * step;
                 int x = startX;
                 int y = startY + (int) (steps / yScale);
                 graphics.drawLine(x + 65, y - 5, x + 75, y - 5);
@@ -215,7 +215,7 @@ public class TravellingSalesmanGraph extends JFrame {
             }
         }
 
-        private void paintPlot(Graphics2D graphics, ArrayList<Integer> yValues) {
+        private void paintPlot(Graphics2D graphics, ArrayList<Double> yValues) {
 
             int x = 0;
             int r = 1; // Radius.
