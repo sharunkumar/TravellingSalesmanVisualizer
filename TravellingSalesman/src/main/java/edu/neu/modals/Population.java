@@ -152,9 +152,9 @@ public class Population implements Iterable<TravelPath> {
      *
      * @return the mean distance travelled
      */
-    public int getAverageDistance() {
+    public double getAverageDistance() {
 
-        int averageDistance = 0;
+        double averageDistance = 0;
 
         for (TravelPath chromosome : chromosomes) {
             averageDistance += chromosome.getDistance();

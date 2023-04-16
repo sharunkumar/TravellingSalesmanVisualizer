@@ -1,6 +1,6 @@
 package edu.neu.optimizations.tactical;
 
-import static edu.neu.utilties.DistanceCalculator.calculateDistance;
+import static edu.neu.utilties.TSPUtilities.calculateDistance;
 
 public class TwoOptOptimization {
 

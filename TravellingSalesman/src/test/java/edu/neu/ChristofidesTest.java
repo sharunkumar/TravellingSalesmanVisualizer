@@ -9,7 +9,7 @@ import junit.framework.TestSuite;
 
 import java.io.IOException;
 
-import static edu.neu.utilties.DistanceCalculator.calculateDistance;
+import static edu.neu.utilties.TSPUtilities.calculateDistance;
 import static org.junit.Assert.assertArrayEquals;
 
 /**

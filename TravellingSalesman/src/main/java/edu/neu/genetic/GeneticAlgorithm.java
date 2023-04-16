@@ -33,12 +33,12 @@ public class GeneticAlgorithm {
     private boolean finished;
 
     // Results
-    private int averageDistanceOfFirstGeneration;
-    private int averageDistanceOfLastGeneration;
-    private int bestDistanceOfFirstGeneration;
-    private int bestDistanceOfLastGeneration;
-    private ArrayList<Integer> averageDistanceOfEachGeneration;
-    private ArrayList<Integer> bestDistanceOfEachGeneration;
+    private double averageDistanceOfFirstGeneration;
+    private double averageDistanceOfLastGeneration;
+    private double bestDistanceOfFirstGeneration;
+    private double bestDistanceOfLastGeneration;
+    private ArrayList<Double> averageDistanceOfEachGeneration;
+    private ArrayList<Double> bestDistanceOfEachGeneration;
     private int areaUnderAverageDistances;
     private int areaUnderBestDistances;
 
@@ -183,42 +183,42 @@ public class GeneticAlgorithm {
         this.mutationType = mutationType;
     }
 
-    public int getAverageDistanceOfFirstGeneration() {
+    public double getAverageDistanceOfFirstGeneration() {
         if (!finished) {
             throw new IllegalArgumentException("Genetic algorithm was never run.");
         }
         return averageDistanceOfFirstGeneration;
     }
 
-    public int getAverageDistanceOfLastGeneration() {
+    public double getAverageDistanceOfLastGeneration() {
         if (!finished) {
             throw new IllegalArgumentException("Genetic algorithm was never run.");
         }
         return averageDistanceOfLastGeneration;
     }
 
-    public int getBestDistanceOfFirstGeneration() {
+    public double getBestDistanceOfFirstGeneration() {
         if (!finished) {
             throw new IllegalArgumentException("Genetic algorithm was never run.");
         }
         return bestDistanceOfFirstGeneration;
     }
 
-    public int getBestDistanceOfLastGeneration() {
+    public double getBestDistanceOfLastGeneration() {
         if (!finished) {
             throw new IllegalArgumentException("Genetic algorithm was never run.");
         }
         return bestDistanceOfLastGeneration;
     }
 
-    public ArrayList<Integer> getAverageDistanceOfEachGeneration() {
+    public ArrayList<Double> getAverageDistanceOfEachGeneration() {
         if (!finished) {
             throw new IllegalArgumentException("Genetic algorithm was never run.");
         }
         return averageDistanceOfEachGeneration;
     }
 
-    public ArrayList<Integer> getBestDistanceOfEachGeneration() {
+    public ArrayList<Double> getBestDistanceOfEachGeneration() {
         if (!finished) {
             throw new IllegalArgumentException("Genetic algorithm was never run.");
         }
@@ -244,11 +244,11 @@ public class GeneticAlgorithm {
             throw new IllegalArgumentException("Genetic algorithm was never run.");
         }
         TravellingSalesmanWindow win = new TravellingSalesmanWindow(population.getLocations());
-        win.draw(population.getMostFit());
+        win.drawPath(population.getMostFit());
     }
 
     public void showGraphInWindow() {
-        ArrayList<ArrayList<Integer>> yValues = new ArrayList<>();
+        ArrayList<ArrayList<Double>> yValues = new ArrayList<>();
         yValues.add(averageDistanceOfEachGeneration);
         yValues.add(bestDistanceOfEachGeneration);
         ArrayList<String> legend = new ArrayList<>();
@@ -279,13 +279,13 @@ public class GeneticAlgorithm {
         delay(1000);
 
         TravelPath mostFitLast = population.getMostFit();
-        win.draw(mostFitLast);
+        win.drawPath(mostFitLast);
         for (int i = 0; i < maxGen; i++) {
             population = createNextGeneration();
 
             TravelPath mostFit = population.getMostFit();
             if (!mostFit.equals(mostFitLast)) {
-                win.draw(mostFit);
+                win.drawPath(mostFit);
             }
             mostFitLast = mostFit;
             averageDistanceOfEachGeneration.add(population.getAverageDistance());
@@ -394,7 +394,7 @@ public class GeneticAlgorithm {
 
     private TravelPath performLocalSearch(TravelPath chromosome) {
 
-        int bestDistance = chromosome.getDistance();
+        double bestDistance = chromosome.getDistance();
         Location[] array = chromosome.getArray();
         Location[] bestArray = array.clone();
 
@@ -410,7 +410,7 @@ public class GeneticAlgorithm {
 
                 TravelPath c = new TravelPath(temp);
 
-                int distance = c.getDistance();
+                double distance = c.getDistance();
                 if (distance < bestDistance) {
                     bestDistance = distance;
                     bestArray = c.getArray();

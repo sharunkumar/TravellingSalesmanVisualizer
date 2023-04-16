@@ -9,8 +9,9 @@ import java.util.Random;
  */
 public class TravelPath implements Comparable<TravelPath> {
     private final Location[] locations;
+    private final int[] route;
     private int hashcode = -1;
-    private int distance = -1; // Calculated once then cached.
+    private double distance = -1; // Calculated once then cached.
     private Random random;
 
     /**
@@ -21,6 +22,19 @@ public class TravelPath implements Comparable<TravelPath> {
      */
     public TravelPath(Location[] locations) {
         this.locations = locations.clone();
+        this.route = new int[locations.length];
+        for (int i = 0; i < locations.length; i++) {
+            route[i] = i;
+        }
+    }
+
+    public TravelPath(Location[] locations, int[] route) {
+        Location[] travelRoute = new Location[locations.length];
+        for (int i = 0; i < route.length; i++) {
+            travelRoute[i] = locations[route[i]];
+        }
+        this.locations = travelRoute;
+        this.route = route;
     }
 
     /**
@@ -33,6 +47,14 @@ public class TravelPath implements Comparable<TravelPath> {
         this.locations = locations.clone();
         this.random = random;
         shuffle();
+        this.route = new int[locations.length];
+        for (int i = 0; i < locations.length; i++) {
+            route[i] = i;
+        }
+    }
+
+    public int[] getRoute() {
+        return route;
     }
 
     /**
@@ -62,7 +84,7 @@ public class TravelPath implements Comparable<TravelPath> {
 
     @Override
     public int compareTo(TravelPath chromosome) {
-        return getDistance() - chromosome.getDistance();
+        return Double.compare(getDistance(), chromosome.getDistance());
     }
 
     @Override
@@ -70,14 +92,15 @@ public class TravelPath implements Comparable<TravelPath> {
         if (hashcode == -1) {
             StringBuilder sb = new StringBuilder();
             for (Location location : locations) {
-                sb.append(location);
+                sb.append(location.hashCode());
+                sb.append(" ");
             }
             hashcode = sb.toString().hashCode();
         }
         return hashcode;
     }
 
-    public int getDistance() {
+    public double getDistance() {
 
         // If this was already calculated, don't calculate it again.
         if (distance != -1) {
@@ -108,9 +131,9 @@ public class TravelPath implements Comparable<TravelPath> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("[ ");
-        for (Location item : locations) {
-            sb.append(item.toString());
+        StringBuilder sb = new StringBuilder("Distance = " + getDistance() + ", [ ");
+        for (var item : route) {
+            sb.append(item);
             sb.append(" ");
         }
         sb.append("]");

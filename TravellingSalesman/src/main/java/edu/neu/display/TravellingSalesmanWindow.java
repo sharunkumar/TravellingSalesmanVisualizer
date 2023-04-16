@@ -6,15 +6,19 @@ import edu.neu.modals.TravelPath;
 import javax.swing.*;
 import java.awt.*;
 
+import static edu.neu.display.DRAW_MODE.PATHS;
+
 /**
  * Draws the locations to the screen, as well as a path.
  */
 public class TravellingSalesmanWindow extends JFrame {
     static final int OFFSET = 40;
-    static final int LOCATION_SIZE = 6;
+    static final int LOCATION_SIZE = 4;
     private static final int WIDTH = 1600;
     private static final int HEIGHT = 1600 / 16 * 9;
     private final Panel panel;
+    protected DRAW_MODE drawMode = PATHS;
+    protected int[] minimumSpanningTree = null;
     Location[] locations;
     TravelPath path;
     double scaleX;
@@ -33,13 +37,30 @@ public class TravellingSalesmanWindow extends JFrame {
         setWindowProperties();
     }
 
+    public DRAW_MODE getDrawMode() {
+        return drawMode;
+    }
+
+    public void setDrawMode(DRAW_MODE drawMode) {
+        this.drawMode = drawMode;
+    }
+
+    public int[] getMinimumSpanningTree() {
+        return minimumSpanningTree;
+    }
+
+    public void setMinimumSpanningTree(int[] minimumSpanningTree) {
+        this.minimumSpanningTree = minimumSpanningTree;
+    }
+
     /**
      * Draw a path through the location.
      *
      * @param path the Travel Path to draw
      */
-    public void draw(TravelPath path) {
+    public void drawPath(TravelPath path) {
         this.path = path;
+        setDrawMode(PATHS);
         panel.repaint();
     }
 
@@ -83,3 +104,4 @@ public class TravellingSalesmanWindow extends JFrame {
     }
 
 }
+

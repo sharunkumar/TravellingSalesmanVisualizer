@@ -9,6 +9,7 @@ import java.util.Random;
 public class Location {
     private final float latitude;
     private final float longitude;
+    private final String crimeID;
     private int hashCode = -1;
 
     /**
@@ -16,10 +17,12 @@ public class Location {
      *
      * @param latitude  the x coordinate
      * @param longitude the y coordinate
+     * @param crimeID
      */
-    public Location(float latitude, float longitude) {
+    public Location(float latitude, float longitude, String crimeID) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.crimeID = crimeID;
     }
 
     /**
@@ -31,7 +34,7 @@ public class Location {
     public static Location getRandomLocation(Random random) {
         int x = random.nextInt(500);
         int y = random.nextInt(500);
-        return new Location(x, y);
+        return new Location(x, y, "");
     }
 
     /**
@@ -53,6 +56,10 @@ public class Location {
         float yDiff = y2 - y1;
 
         return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+    }
+
+    public String getCrimeID() {
+        return crimeID;
     }
 
     public float getLatitude() {

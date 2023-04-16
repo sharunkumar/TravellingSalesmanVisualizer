@@ -1,8 +1,7 @@
-package edu.neu.mainRunner;
+package edu.neu;
 
 import edu.neu.christofides.*;
 import edu.neu.graphs.node.GraphNode;
-import edu.neu.optimizations.tactical.OptimizationHelperFunctions;
 import edu.neu.optimizations.tactical.RandomOptimization;
 import edu.neu.optimizations.tactical.TwoOptOptimization;
 import edu.neu.utility.ReadDistanceMatrix;
@@ -10,7 +9,7 @@ import edu.neu.utility.ReadDistanceMatrix;
 import java.io.IOException;
 import java.util.Arrays;
 
-import static edu.neu.utilties.DistanceCalculator.calculateDistance;
+import static edu.neu.utilties.TSPUtilities.calculateDistance;
 
 public class Main {
 
@@ -19,7 +18,7 @@ public class Main {
 
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
 
-        int[][] matchGraph = GreedyMatch.greedyMatch(minimumSpanningTree, weightMatrix, weightMatrix[0].length);
+        int[][] matchGraph = GreedyMatch.greedyMatch(minimumSpanningTree, weightMatrix);
 
         GraphNode[] nodes = MultiGraph.build(matchGraph, minimumSpanningTree);
         int[] route = EulerCircuitGenerator.generateEulerCircuit(nodes);
@@ -31,14 +30,12 @@ public class Main {
         int[] randomSwappingRoute = RandomOptimization.randomSwappingRoute(weightMatrix, route);
 
         System.out.println("Random Swapping Shortest path: " + Arrays.toString(randomSwappingRoute));
-        System.out.println("Random Swapping Route Sum " + OptimizationHelperFunctions.calculateRouteSum(weightMatrix,
-                randomSwappingRoute));
+        System.out.println("Random Swapping Route Sum " + calculateDistance(randomSwappingRoute, weightMatrix));
 
 
         int[] twoOptOptimizationTechnique = TwoOptOptimization.twoOptOptimization(routeCopy, weightMatrix);
 
         System.out.println("Two Opt Optimization Path: " + Arrays.toString(twoOptOptimizationTechnique));
-        System.out.println("Two Opt Route Sum " + OptimizationHelperFunctions.calculateRouteSum(weightMatrix,
-                twoOptOptimizationTechnique));
+        System.out.println("Two Opt Route Sum " + calculateDistance(twoOptOptimizationTechnique, weightMatrix));
     }
 }
