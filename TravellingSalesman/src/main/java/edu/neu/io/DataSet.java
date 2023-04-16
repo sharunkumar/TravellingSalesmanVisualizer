@@ -26,10 +26,11 @@ public class DataSet {
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
                 try {
-                    float latitude = Float.parseFloat(data[5]);
-                    float longitude = Float.parseFloat(data[4]);
+                    String crimeID = data[0];
+                    float latitude = Float.parseFloat(data[1]);
+                    float longitude = Float.parseFloat(data[2]);
 
-                    unique_locations.add(new Location(latitude, longitude));
+                    unique_locations.add(new Location(latitude, longitude, crimeID));
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
@@ -44,7 +45,7 @@ public class DataSet {
     }
 
     public static DataSet DefaultDataSet() throws IOException {
-        return new DataSet("../DataSet/2023-01-avon-and-somerset-street.csv");
+        return new DataSet("../DataSet/info6205.spring2023.teamproject.csv");
     }
 
     public Location[] getLocations() {
@@ -81,7 +82,7 @@ public class DataSet {
             float normalizedLat = ((lat - minLat) / latRange) * normalizationFactor;
             float normalizedLng = ((lng - minLng) / lngRange) * normalizationFactor;
 
-            result.add(new Location(normalizedLat, normalizedLng));
+            result.add(new Location(normalizedLat, normalizedLng, location.getCrimeID()));
         }
 
         return result.toArray(new Location[0]);
