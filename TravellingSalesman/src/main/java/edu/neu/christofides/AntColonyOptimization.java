@@ -16,7 +16,7 @@ public class AntColonyOptimization {
     private final double beta;
     private final double evaporationRate;
     private final double initialPheromoneLevel;
-    private double[][] pheromoneMatrix;
+    public double[][] pheromoneMatrix;
 
     public AntColonyOptimization(double[][] weightMatrix, int numAnts, double alpha, double beta,
                                  double evaporationRate, double initialPheromoneLevel) {
@@ -31,7 +31,7 @@ public class AntColonyOptimization {
         initPheromones();
     }
 
-    private void initPheromones() {
+    public void initPheromones() {
         for (int i = 0; i < numNodes; i++) {
             for (int j = 0; j < numNodes; j++) {
                 pheromoneMatrix[i][j] = initialPheromoneLevel;
@@ -74,7 +74,7 @@ public class AntColonyOptimization {
         return bestRoute;
     }
 
-    private double calculateDistance(int[] route, double[][] weightMatrix) {
+    public double calculateDistance(int[] route, double[][] weightMatrix) {
         double distance = 0.0;
         for (int i = 0; i < route.length - 1; i++) {
             int fromNode = route[i];
@@ -87,7 +87,7 @@ public class AntColonyOptimization {
     }
 
 
-    private int selectNextNode(int currentNode, List<Integer> nodes) {
+    public int selectNextNode(int currentNode, List<Integer> nodes) {
         double[] probabilities = new double[numNodes];
         double sum = 0.0;
         for (int node : nodes) {
@@ -109,7 +109,7 @@ public class AntColonyOptimization {
         return -1; // Should never reach this line
     }
 
-    private void updatePheromones(int[] route, double distance) {
+    public void updatePheromones(int[] route, double distance) {
         double delta = 1.0 / distance;
         for (int i = 0; i < numNodes - 1; i++) {
             int currentNode = route[i];
