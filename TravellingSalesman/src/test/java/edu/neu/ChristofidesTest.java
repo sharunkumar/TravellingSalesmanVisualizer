@@ -15,7 +15,7 @@ import static org.junit.Assert.assertArrayEquals;
 /**
  * Unit test for simple App.
  */
-public class AppTest
+public class ChristofidesTest
         extends TestCase {
     private static double[][] defaultWeightMatrix;
 
@@ -24,7 +24,7 @@ public class AppTest
      *
      * @param testName name of the test case
      */
-    public AppTest(String testName) throws IOException {
+    public ChristofidesTest(String testName) throws IOException {
         super(testName);
         defaultWeightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_1);
     }
@@ -33,7 +33,7 @@ public class AppTest
      * @return the suite of tests being tested
      */
     public static Test suite() {
-        return new TestSuite(AppTest.class);
+        return new TestSuite(ChristofidesTest.class);
     }
 
     /**
@@ -42,7 +42,7 @@ public class AppTest
     public void testApp() {
         assertTrue(true);
     }
-
+    @org.junit.Test
     public void testChristofidesDefault() throws IOException {
         int[] route = ChristofidesAlgorithm.run(defaultWeightMatrix);
         assertSame(route.length, 26);
