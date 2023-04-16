@@ -9,10 +9,10 @@ import java.util.Random;
  */
 public class TravelPath implements Comparable<TravelPath> {
     private final Location[] locations;
+    private final int[] route;
     private int hashcode = -1;
     private int distance = -1; // Calculated once then cached.
     private Random random;
-
     /**
      * Construct the Chromosome from an array. The locations are in the same order
      * as they are in the array. No shuffling is done.
@@ -21,6 +21,19 @@ public class TravelPath implements Comparable<TravelPath> {
      */
     public TravelPath(Location[] locations) {
         this.locations = locations.clone();
+        this.route = new int[locations.length];
+        for (int i = 0; i < locations.length; i++) {
+            route[i] = i;
+        }
+    }
+
+    public TravelPath(Location[] locations, int[] route) {
+        Location[] travelRoute = new Location[locations.length];
+        for (int i = 0; i < route.length; i++) {
+            travelRoute[i] = locations[route[i]];
+        }
+        this.locations = travelRoute;
+        this.route = route;
     }
 
     /**
@@ -33,6 +46,14 @@ public class TravelPath implements Comparable<TravelPath> {
         this.locations = locations.clone();
         this.random = random;
         shuffle();
+        this.route = new int[locations.length];
+        for (int i = 0; i < locations.length; i++) {
+            route[i] = i;
+        }
+    }
+
+    public int[] getRoute() {
+        return route;
     }
 
     /**

@@ -3,6 +3,14 @@ package edu.neu.utilties;
 import edu.neu.modals.Location;
 
 public class TSPUtilities {
+    public static void trySleep(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static double calculateDistance(int[] route, double[][] distMatrix) {
         double distance = 0;
         for (int i = 0; i < route.length - 1; i++) {
@@ -20,13 +28,5 @@ public class TSPUtilities {
             }
         }
         return weightMatrix;
-    }
-
-    private void trySleep(int millis) {
-        try {
-            Thread.sleep(millis);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

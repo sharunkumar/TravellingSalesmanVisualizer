@@ -24,7 +24,7 @@ public abstract class AbstractTspSolver {
     public void solve() {
         do {
             var path = getNextPath();
-            window.draw(path);
+            window.drawPath(path);
         } while (hasNextIteration());
 
         afterSolving();

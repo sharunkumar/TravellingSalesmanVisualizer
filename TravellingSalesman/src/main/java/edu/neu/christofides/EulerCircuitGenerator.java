@@ -4,6 +4,7 @@ import edu.neu.graphs.node.GraphNode;
 import edu.neu.modals.Location;
 import edu.neu.modals.TravelPath;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Vector;
@@ -16,12 +17,9 @@ public class EulerCircuitGenerator {
         GraphNode[] nodes = MultiGraph.build(matchGraph, minimumSpanningTree);
         int[] route = generateEulerCircuit(nodes);
 
-        Location[] path = new Location[route.length];
+        System.out.println("Euler Route = " + Arrays.toString(route));
 
-        for (int i = 0; i < route.length; i++)
-            path[i] = locations[route[i]];
-
-        return new TravelPath(path);
+        return new TravelPath(locations, route);
     }
 
     public static int[] generateEulerCircuit(GraphNode[] nodes) {

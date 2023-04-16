@@ -2,7 +2,6 @@ package edu.neu;
 
 import edu.neu.christofides.*;
 import edu.neu.graphs.node.GraphNode;
-import edu.neu.optimizations.tactical.OptimizationHelperFunctions;
 import edu.neu.optimizations.tactical.RandomOptimization;
 import edu.neu.optimizations.tactical.TwoOptOptimization;
 import edu.neu.utility.ReadDistanceMatrix;
@@ -31,14 +30,12 @@ public class Main {
         int[] randomSwappingRoute = RandomOptimization.randomSwappingRoute(weightMatrix, route);
 
         System.out.println("Random Swapping Shortest path: " + Arrays.toString(randomSwappingRoute));
-        System.out.println("Random Swapping Route Sum " + OptimizationHelperFunctions.calculateRouteSum(weightMatrix,
-                randomSwappingRoute));
+        System.out.println("Random Swapping Route Sum " + calculateDistance(randomSwappingRoute, weightMatrix));
 
 
         int[] twoOptOptimizationTechnique = TwoOptOptimization.twoOptOptimization(routeCopy, weightMatrix);
 
         System.out.println("Two Opt Optimization Path: " + Arrays.toString(twoOptOptimizationTechnique));
-        System.out.println("Two Opt Route Sum " + OptimizationHelperFunctions.calculateRouteSum(weightMatrix,
-                twoOptOptimizationTechnique));
+        System.out.println("Two Opt Route Sum " + calculateDistance(twoOptOptimizationTechnique, weightMatrix));
     }
 }

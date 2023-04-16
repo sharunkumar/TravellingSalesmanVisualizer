@@ -244,7 +244,7 @@ public class GeneticAlgorithm {
             throw new IllegalArgumentException("Genetic algorithm was never run.");
         }
         TravellingSalesmanWindow win = new TravellingSalesmanWindow(population.getLocations());
-        win.draw(population.getMostFit());
+        win.drawPath(population.getMostFit());
     }
 
     public void showGraphInWindow() {
@@ -279,13 +279,13 @@ public class GeneticAlgorithm {
         delay(1000);
 
         TravelPath mostFitLast = population.getMostFit();
-        win.draw(mostFitLast);
+        win.drawPath(mostFitLast);
         for (int i = 0; i < maxGen; i++) {
             population = createNextGeneration();
 
             TravelPath mostFit = population.getMostFit();
             if (!mostFit.equals(mostFitLast)) {
-                win.draw(mostFit);
+                win.drawPath(mostFit);
             }
             mostFitLast = mostFit;
             averageDistanceOfEachGeneration.add(population.getAverageDistance());
