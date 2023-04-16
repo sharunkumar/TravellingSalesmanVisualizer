@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrimsAlgorithm {
-    public static int[] run(double[][] weightMatrix, int weightMatrixSize) {
+    public static int[] run(double[][] weightMatrix) {
 
         List<Integer> primQueue = new ArrayList<>();
+        int weightMatrixSize = weightMatrix[0].length;
         boolean[] checkTree = new boolean[weightMatrixSize];
         double[] allKeys = new double[weightMatrixSize];
         int[] result = new int[weightMatrixSize];
@@ -35,7 +36,6 @@ public class PrimsAlgorithm {
                 }
             }
 
-
             double mint = Constants.DOUBLE_MAX_VALUE;
             for (Integer integer : primQueue) {
                 elem = (Integer) integer;
@@ -47,12 +47,12 @@ public class PrimsAlgorithm {
             }
         } while (!primQueue.isEmpty());
 
-        double minimumSpanningTreeSum=0;
-        for(int k=0;k<weightMatrixSize;k++){
-            minimumSpanningTreeSum+=allKeys[k];
+        double minimumSpanningTreeSum = 0;
+        for (int k = 0; k < weightMatrixSize; k++) {
+            minimumSpanningTreeSum += allKeys[k];
         }
 
-        System.out.println("Minimum Spanning Tree Route Sum = "+minimumSpanningTreeSum);
+        System.out.println("Minimum Spanning Tree Route Sum = " + minimumSpanningTreeSum);
         return result;
     }
 }

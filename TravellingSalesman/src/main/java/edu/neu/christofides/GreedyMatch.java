@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GreedyMatch {
-    public static int[][] greadyMatch(int[] minimumSpanningTree, double[][] weightMatrix, int weightMatrixSize) {
+    public static int[][] greedyMatch(int[] minimumSpanningTree, double[][] weightMatrix, int weightMatrixSize) {
 
         Node[] nodes = new Node[minimumSpanningTree.length];
 
@@ -58,12 +58,11 @@ public class GreedyMatch {
             }
         }
 
-
         return match;
     }
 
     private static ArrayList<Integer> findOddDegreeNodes(Node _root) {
-        ArrayList<Integer> oddNodes = new ArrayList();
+        var oddNodes = new ArrayList<Integer>();
         _root.visitFindOddDegreeNodes(oddNodes);
         return oddNodes;
     }
