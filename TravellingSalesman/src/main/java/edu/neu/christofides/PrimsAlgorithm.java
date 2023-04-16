@@ -47,6 +47,12 @@ public class PrimsAlgorithm {
             }
         } while (!primQueue.isEmpty());
 
+        double minimumSpanningTreeSum=0;
+        for(int k=0;k<weightMatrixSize;k++){
+            minimumSpanningTreeSum+=allKeys[k];
+        }
+
+        System.out.println("Minimum Spanning Tree Route Sum = "+minimumSpanningTreeSum);
         return result;
     }
 }

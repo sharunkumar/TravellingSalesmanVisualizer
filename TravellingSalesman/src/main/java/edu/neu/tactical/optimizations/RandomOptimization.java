@@ -8,7 +8,7 @@ public class RandomOptimization extends OptimizationHelperFunctions{
     {
 
         double sum = calculateRouteSum(weightMatrix, candidateShortestPath);
-        System.out.println(" Current sum =" + sum);
+
         Random random = new Random();
         boolean improved = true;
         int count = 0;
