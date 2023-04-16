@@ -34,10 +34,45 @@ class Panel extends JPanel {
         if (withNames) {
             paintLocationNames(graphics);
         }
-        if (this.window.path != null) {
-            paintChromosome(graphics);
+        switch (this.window.drawMode) {
+            case PATHS -> {
+                if (this.window.path != null) {
+                    paintChromosome(graphics);
+                }
+            }
+            case MST -> {
+                if (this.window.minimumSpanningTree != null) {
+                    paintMST(graphics);
+                }
+            }
+            default -> {
+            }
         }
+
         paintLocations(graphics);
+    }
+
+    private void paintMST(Graphics2D graphics) {
+        var tree = this.window.minimumSpanningTree;
+        var locations = this.window.locations;
+
+        for (int i = 0; i < tree.length; i++) {
+            var child = locations[i];
+            var parent = locations[tree[i]];
+            drawPathBetweenLocations(graphics, child, parent);
+        }
+    }
+
+    private void drawPathBetweenLocations(Graphics2D graphics, Location location1, Location location2) {
+        int x1 = (int) (location1.getLatitude() / this.window.scaleX
+                + TravellingSalesmanWindow.OFFSET / 2);
+        int y1 = (int) (location1.getLongitude() / this.window.scaleY
+                + TravellingSalesmanWindow.OFFSET / 2);
+        int x2 = (int) (location2.getLatitude() / this.window.scaleX
+                + TravellingSalesmanWindow.OFFSET / 2);
+        int y2 = (int) (location2.getLongitude() / this.window.scaleY
+                + TravellingSalesmanWindow.OFFSET / 2);
+        graphics.drawLine(x1, y1, x2, y2);
     }
 
     private void paintChromosome(Graphics2D graphics) {

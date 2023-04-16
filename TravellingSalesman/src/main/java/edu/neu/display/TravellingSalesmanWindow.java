@@ -15,6 +15,8 @@ public class TravellingSalesmanWindow extends JFrame {
     private static final int WIDTH = 1600;
     private static final int HEIGHT = 1600 / 16 * 9;
     private final Panel panel;
+    protected DRAW_MODE drawMode = DRAW_MODE.PATHS;
+    protected int[] minimumSpanningTree = null;
     Location[] locations;
     TravelPath path;
     double scaleX;
@@ -31,6 +33,22 @@ public class TravellingSalesmanWindow extends JFrame {
         setScale();
         panel = createPanel();
         setWindowProperties();
+    }
+
+    public DRAW_MODE getDrawMode() {
+        return drawMode;
+    }
+
+    public void setDrawMode(DRAW_MODE drawMode) {
+        this.drawMode = drawMode;
+    }
+
+    public int[] getMinimumSpanningTree() {
+        return minimumSpanningTree;
+    }
+
+    public void setMinimumSpanningTree(int[] minimumSpanningTree) {
+        this.minimumSpanningTree = minimumSpanningTree;
     }
 
     /**
@@ -83,3 +101,4 @@ public class TravellingSalesmanWindow extends JFrame {
     }
 
 }
+

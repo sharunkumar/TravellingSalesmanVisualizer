@@ -10,27 +10,36 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static edu.neu.utilties.DistanceCalculator.getWeightMatrix;
+
 public class DataSet {
-    public Set<Location> locations = new HashSet<Location>();
+    public Location[] locations;
+    public double[][] weightMatrix;
 
     public DataSet(String fileName) throws IOException {
+        Set<Location> unique_locations = new HashSet<>();
+
         try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
             br.readLine(); // skip the header
+            System.out.println("Loading the data set...");
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
                 try {
                     float latitude = Float.parseFloat(data[5]);
                     float longitude = Float.parseFloat(data[4]);
 
-                    // int normalizedLatitude = (int) ((latitude + 90) * 100);
-                    // int normalizedLongitude = (int) ((longitude + 180) * 100);
-
-                    locations.add(new Location(latitude, longitude));
+                    unique_locations.add(new Location(latitude, longitude));
                 } catch (Exception e) {
                     // e.printStackTrace();
                 }
             }
+            System.out.println("Data set loaded: " + unique_locations.size() + " locations.");
+
+            locations = unique_locations.toArray(new Location[0]);
+
+            // load the weight matrix
+            weightMatrix = getWeightMatrix(locations);
         }
     }
 
@@ -39,7 +48,7 @@ public class DataSet {
     }
 
     public Location[] getLocations() {
-        return locations.toArray(new Location[0]);
+        return locations;
     }
 
     public Location[] getNormalizedLocations(int normalizationFactor) {
@@ -69,8 +78,8 @@ public class DataSet {
         for (Location location : locations) {
             float lat = location.getLatitude();
             float lng = location.getLongitude();
-            int normalizedLat = (int) (((lat - minLat) / latRange) * normalizationFactor);
-            int normalizedLng = (int) (((lng - minLng) / lngRange) * normalizationFactor);
+            float normalizedLat = ((lat - minLat) / latRange) * normalizationFactor;
+            float normalizedLng = ((lng - minLng) / lngRange) * normalizationFactor;
 
             result.add(new Location(normalizedLat, normalizedLng));
         }
