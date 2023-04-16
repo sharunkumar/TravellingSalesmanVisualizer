@@ -40,7 +40,7 @@ public class AppTest
     }
 
     public void testChristofidesDefault() throws IOException {
-        double[][] weightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION);
+        double[][] weightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_1);
         int[] route = ChristofidesAlgorithm.run(weightMatrix);
         assertSame(route.length, 26);
         assertArrayEquals(route, new int[]{0, 14, 13, 2, 1, 9, 8, 6, 4, 5, 3, 7, 15, 18, 19, 17, 16, 20, 21, 25, 22, 23, 24, 11, 12, 10});
