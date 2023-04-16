@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class GreedyMatch {
-    public static int[][] greadyMatch(int[] minimumSpanningTree, double[][] weightMatrix, int weightMatrixSize) {
+    public static int[][] greedyMatch(int[] minimumSpanningTree, double[][] weightMatrix, int weightMatrixSize) {
 
         Node[] nodes = new Node[minimumSpanningTree.length];
 

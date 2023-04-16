@@ -19,7 +19,7 @@ public class Main {
 
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
 
-        int[][] matchGraph = GreedyMatch.greadyMatch(minimumSpanningTree, weightMatrix, weightMatrix[0].length);
+        int[][] matchGraph = GreedyMatch.greedyMatch(minimumSpanningTree, weightMatrix, weightMatrix[0].length);
 
         GraphNode[] nodes = MultiGraph.build(matchGraph, minimumSpanningTree);
         int[] route = EulerCircuitGenerator.generateEulerCircuit(nodes);
