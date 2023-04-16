@@ -9,6 +9,7 @@ import edu.neu.utility.ReadDistanceMatrix;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -20,7 +21,7 @@ public class GreedyMatchAndMultiGraphTest {
         double[][] weightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_2);
         int[][] checkGreedyMatch = {{0,7}, {4,8}};
         int[] route = {0,0,1,2,3,2,5,6,2};
-        int [][] greedyMatch = GreedyMatch.greedyMatch(route, weightMatrix, weightMatrix[0].length);
+        int [][] greedyMatch = GreedyMatch.greedyMatch(route, weightMatrix);
         assertArrayEquals(checkGreedyMatch,greedyMatch);
     }
 
@@ -28,11 +29,31 @@ public class GreedyMatchAndMultiGraphTest {
     public void testMultiGraphGeneration(){
         int[][] checkGreedyMatch = {{0,7}, {4,8}};
         int[] route = {0,0,1,2,3,2,5,6,2};
-        GraphNode checkGraph[] =  new GraphNode[9];
-        checkGraph = generateGraphNodeForMultiGraph();
+        GraphNode[] checkGraph = generateGraphNodeForMultiGraph();
         GraphNode[] nodes = MultiGraph.build(checkGreedyMatch, route);
         boolean result = checkBothGraphs(checkGraph, nodes);
        assertTrue(result);
+    }
+
+    public static GraphNode[] build(int[][] match, int[] mst) {
+        GraphNode[] nodes = new GraphNode[mst.length];
+
+        for (int i = 0; i < mst.length; i++) {
+            nodes[i] = new GraphNode(i);
+        }
+
+        for (int i = 1; i < mst.length; i++) {
+            nodes[i].addChild(nodes[mst[i]]);
+            nodes[mst[i]].addChild(nodes[i]);
+        }
+
+        for (int[] ints : match) {
+            nodes[ints[0]].addChild(nodes[ints[1]]);
+            nodes[ints[1]].addChild(nodes[ints[0]]);
+
+        }
+
+        return nodes;
     }
 
     public boolean checkBothGraphs(GraphNode expected[], GraphNode current[])
@@ -47,17 +68,25 @@ public class GreedyMatchAndMultiGraphTest {
             GraphNode one = expected[i];
             GraphNode two = current[i];
 
-            if((one.getName() != two.getName()) || (one.isVisited() != two.isVisited()))
+            if((one.getName() != two.getName()) || (one.isVisited() != two.isVisited()) || (one.getNumberOfChilds()!= two.getNumberOfChilds()))
             {
                 return false;
             }
 
-            /*if()
+            ArrayList oneChild = one.getChildList();
+            ArrayList twoChild = two.getChildList();
+            for(int j =0; j< oneChild.size();j++)
             {
-                return false;
-            }*/
+               GraphNode oneChildOne = (GraphNode) oneChild.get(j);
+               GraphNode twochildTwo = (GraphNode) twoChild.get(j);
+
+                if((oneChildOne.getName() != twochildTwo.getName()) || (oneChildOne.isVisited() != twochildTwo.isVisited()) || (oneChildOne.getNumberOfChilds()!= twochildTwo.getNumberOfChilds()))
+                {
+                    return false;
+                }
+            }
         }
-        return false;
+        return true;
     }
 
 
