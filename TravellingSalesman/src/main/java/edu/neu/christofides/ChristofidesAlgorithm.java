@@ -4,6 +4,8 @@ import edu.neu.graphs.node.GraphNode;
 
 import java.util.Arrays;
 
+import static edu.neu.utilties.DistanceCalculator.calculateDistance;
+
 public class ChristofidesAlgorithm {
     public static int[] run(double[][] weightMatrix) {
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
@@ -12,14 +14,8 @@ public class ChristofidesAlgorithm {
         GraphNode[] nodes = MultiGraph.build(matchGraph, minimumSpanningTree);
         int[] route = EulerCircuitGenerator.generateEulerCircuit(nodes);
 
-        double sum = 0;
-
-        for (int i = 1; i < route.length; i++) {
-            sum += weightMatrix[route[i - 1]][route[i]];
-        }
-        sum += weightMatrix[route[0]][route[route.length - 1]];
         System.out.println("Route = " + Arrays.toString(route));
-        System.out.println("Total Sum : " + sum);
+        System.out.println("Total Sum : " + calculateDistance(route, weightMatrix));
 
         return route;
     }

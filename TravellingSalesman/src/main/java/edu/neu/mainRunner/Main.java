@@ -10,6 +10,8 @@ import edu.neu.utility.ReadDistanceMatrix;
 import java.io.IOException;
 import java.util.Arrays;
 
+import static edu.neu.utilties.DistanceCalculator.calculateDistance;
+
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -23,15 +25,8 @@ public class Main {
         int[] route = EulerCircuitGenerator.generateEulerCircuit(nodes);
         int[] routeCopy = Arrays.copyOf(route, route.length);
 
-        double sum = 0;
-
-        for (int i = 1; i < route.length; i++) {
-            sum += weightMatrix[route[i - 1]][route[i]];
-        }
-        sum += weightMatrix[route[0]][route[route.length - 1]];
-
         System.out.println("Shortest Route = " + Arrays.toString(route));
-        System.out.println("Shortest Route Total Sum : " + sum);
+        System.out.println("Shortest Route Total Sum : " + calculateDistance(route, weightMatrix));
 
         int[] randomSwappingRoute = RandomOptimization.randomSwappingRoute(weightMatrix, route);
 
