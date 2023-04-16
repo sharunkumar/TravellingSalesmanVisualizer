@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PrimsAlgorithm {
-    public static int[] run(double[][] weightMatrix, int weightMatrixSize) {
+    public static int[] run(double[][] weightMatrix) {
 
         List<Integer> primQueue = new ArrayList<>();
+        int weightMatrixSize = weightMatrix[0].length;
         boolean[] checkTree = new boolean[weightMatrixSize];
         double[] allKeys = new double[weightMatrixSize];
         int[] result = new int[weightMatrixSize];

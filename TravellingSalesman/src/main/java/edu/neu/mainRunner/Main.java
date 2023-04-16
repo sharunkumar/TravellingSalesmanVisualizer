@@ -15,7 +15,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         double[][] weightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_2);
 
-        int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix, weightMatrix[0].length);
+        int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
 
         int[][] matchGraph = GreedyMatch.greadyMatch(minimumSpanningTree, weightMatrix, weightMatrix[0].length);
 

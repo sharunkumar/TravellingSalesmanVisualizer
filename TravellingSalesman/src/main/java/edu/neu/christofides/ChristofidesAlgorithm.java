@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class ChristofidesAlgorithm {
     public static int[] run(double[][] weightMatrix) {
-        int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix, weightMatrix[0].length);
+        int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
         int[][] matchGraph = GreedyMatch.greadyMatch(minimumSpanningTree, weightMatrix, weightMatrix[0].length);
 
         GraphNode[] nodes = MultiGraph.build(matchGraph, minimumSpanningTree);
@@ -20,7 +20,7 @@ public class ChristofidesAlgorithm {
         sum += weightMatrix[route[0]][route[route.length - 1]];
         System.out.println("Route = " + Arrays.toString(route));
         System.out.println("Total Sum : " + sum);
-        
+
         return route;
     }
 }

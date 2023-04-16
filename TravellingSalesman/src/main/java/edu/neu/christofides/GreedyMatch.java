@@ -62,7 +62,7 @@ public class GreedyMatch {
     }
 
     private static ArrayList<Integer> findOddDegreeNodes(Node _root) {
-        ArrayList<Integer> oddNodes = new ArrayList();
+        var oddNodes = new ArrayList<Integer>();
         _root.visitFindOddDegreeNodes(oddNodes);
         return oddNodes;
     }
