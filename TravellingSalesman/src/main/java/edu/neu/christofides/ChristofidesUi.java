@@ -26,9 +26,11 @@ public class ChristofidesUi {
     }
 
     public void run() {
-        int sleep_duration = 3000;
+        int sleep_duration = 0;
         window.setTitle("Generating Minimum Spanning Tree. Please wait...");
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
+        print("Minimum Spanning Tree Generated!",
+                "Minimum Spanning Tree: " + minimumSpanningTree);
         window.setMinimumSpanningTree(minimumSpanningTree);
         window.setDrawMode(MST);
         window.repaint();
@@ -37,9 +39,8 @@ public class ChristofidesUi {
         window.setTitle("Generating Euler Circuit. Please wait...");
 
         var path = EulerCircuitGenerator.generateEulerCircuit(locations, minimumSpanningTree, weightMatrix);
+        print("Euler Circuit Generated!", "Euler Circuit: " + path);
         window.drawPath(path);
-        window.setTitle("Euler Circuit Generated!");
-        System.out.println("Euler Circuit: " + path);
         trySleep(sleep_duration);
 
         window.setTitle("Generating Random Optimization. Please wait...");
@@ -53,7 +54,8 @@ public class ChristofidesUi {
             var new_path = path;
             if (prev_path.hashCode() != new_path.hashCode()) {
                 window.drawPath(path);
-                print("Random Optimization Path: " + path.getRoute(), "Random Optimization Path: " + path);
+                print("Random Optimization Path: " + path.getRoute(), "Random " +
+                        "Optimization Path: " + path);
             }
         }
 
