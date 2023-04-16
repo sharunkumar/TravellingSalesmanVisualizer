@@ -30,6 +30,12 @@ public class RandomOptimizerBruteForce extends RandomOptimizer {
         if (newDistance < currentDistance) {
             route = newRoute;
             currentDistance = newDistance;
+
+            // reset when hit
+            i = 0;
+            j = 1;
+            
+            return new TravelPath(locations, route);
         }
         j++;
         if (j == route.length - 1) {
