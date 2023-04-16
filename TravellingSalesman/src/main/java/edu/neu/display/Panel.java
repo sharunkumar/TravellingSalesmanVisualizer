@@ -34,6 +34,7 @@ class Panel extends JPanel {
         if (withNames) {
             paintLocationNames(graphics);
         }
+        paintLocations(graphics);
         switch (this.window.drawMode) {
             case PATHS -> {
                 if (this.window.path != null) {
@@ -48,8 +49,6 @@ class Panel extends JPanel {
             default -> {
             }
         }
-
-        paintLocations(graphics);
     }
 
     private void paintMST(Graphics2D graphics) {
@@ -64,6 +63,7 @@ class Panel extends JPanel {
     }
 
     private void drawPathBetweenLocations(Graphics2D graphics, Location location1, Location location2) {
+        graphics.setColor(Color.white);
         int x1 = (int) (location1.getLatitude() / this.window.scaleX
                 + TravellingSalesmanWindow.OFFSET / 2);
         int y1 = (int) (location1.getLongitude() / this.window.scaleY
@@ -103,7 +103,7 @@ class Panel extends JPanel {
     }
 
     private void paintLocations(Graphics2D graphics) {
-        graphics.setColor(Color.white);
+        graphics.setColor(Color.gray);
         for (Location c : this.window.locations) {
             int x = (int) ((c.getLatitude()) / this.window.scaleX
                     - TravellingSalesmanWindow.LOCATION_SIZE / 2 + TravellingSalesmanWindow.OFFSET / 2);
