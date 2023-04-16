@@ -24,18 +24,18 @@ public class RandomOptimizerBruteForce extends RandomOptimizer {
 
     @Override
     public TravelPath next() {
-        var newRoute = route.clone();
-        swap(newRoute, i, j);
-        var newDistance = calculateDistance(newRoute, weightMatrix);
+        swap(route, i, j);
+        var newDistance = calculateDistance(route, weightMatrix);
         if (newDistance < currentDistance) {
-            route = newRoute;
             currentDistance = newDistance;
 
             // reset when hit
             i = 0;
             j = 1;
-            
+
             return new TravelPath(locations, route);
+        } else {
+            swap(route, i, j);
         }
         j++;
         if (j == route.length - 1) {

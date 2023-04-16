@@ -132,8 +132,8 @@ public class TravelPath implements Comparable<TravelPath> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Distance = " + getDistance() + ", [ ");
-        for (Location item : locations) {
-            sb.append(item.toString());
+        for (var item : route) {
+            sb.append(item);
             sb.append(" ");
         }
         sb.append("]");
