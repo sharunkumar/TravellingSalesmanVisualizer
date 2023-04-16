@@ -13,7 +13,7 @@ public class PrimsAlgorithm {
 
 
         for (int i = 0; i < weightMatrixSize; i++) {
-            primQueue.add(i);
+            primQueue.add(new Integer(i));
         }
 
         for (int i = 0; i < weightMatrixSize; i++) {
@@ -23,10 +23,11 @@ public class PrimsAlgorithm {
         allKeys[0] = 0;
         int zero = 0;
         double temp;
+        Integer elem;
 
         do {
             checkTree[zero] = true;
-            primQueue.remove(zero);
+            primQueue.remove(new Integer(zero));
             for (int v = 0; v < weightMatrixSize; v++) {
                 if (!checkTree[v] && weightMatrix[zero][v] < allKeys[v]) {
                     result[v] = zero;
@@ -34,8 +35,10 @@ public class PrimsAlgorithm {
                 }
             }
 
+
             double mint = Constants.DOUBLE_MAX_VALUE;
-            for (Integer elem : primQueue) {
+            for (Integer integer : primQueue) {
+                elem = (Integer) integer;
                 temp = allKeys[elem];
                 if (temp < mint) {
                     zero = elem;
@@ -44,12 +47,12 @@ public class PrimsAlgorithm {
             }
         } while (!primQueue.isEmpty());
 
-        double minimumSpanningTreeSum = 0;
-        for (int k = 0; k < weightMatrixSize; k++) {
-            minimumSpanningTreeSum += allKeys[k];
+        double minimumSpanningTreeSum=0;
+        for(int k=0;k<weightMatrixSize;k++){
+            minimumSpanningTreeSum+=allKeys[k];
         }
 
-        System.out.println("Minimum Spanning Tree Route Sum = " + minimumSpanningTreeSum);
+        System.out.println("Minimum Spanning Tree Route Sum = "+minimumSpanningTreeSum);
         return result;
     }
 }

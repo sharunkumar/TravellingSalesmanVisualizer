@@ -1,4 +1,4 @@
-package edu.neu.optimizations.tactical;
+package edu.neu.tactical.optimizations;
 
 public class TwoOptOptimization {
 
@@ -31,9 +31,9 @@ public class TwoOptOptimization {
     public static int calculateDistance(int[] route, double[][] distMatrix) {
         int distance = 0;
         for (int i = 0; i < route.length - 1; i++) {
-            distance += distMatrix[route[i]][route[i + 1]];
+            distance += distMatrix[route[i]][route[i+1]];
         }
-        distance += distMatrix[route[route.length - 1]][route[0]];  // return to the starting point
+        distance += distMatrix[route[route.length-1]][route[0]];  // return to the starting point
         return distance;
     }
 
@@ -46,5 +46,6 @@ public class TwoOptOptimization {
             j--;
         }
     }
+
 
 }

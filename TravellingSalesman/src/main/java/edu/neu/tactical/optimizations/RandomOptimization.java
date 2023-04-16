@@ -1,10 +1,11 @@
-package edu.neu.optimizations.tactical;
+package edu.neu.tactical.optimizations;
 
 import java.util.Random;
 
-public class RandomOptimization extends OptimizationHelperFunctions {
+public class RandomOptimization extends OptimizationHelperFunctions{
 
-    public static int[] randomSwappingRoute(double[][] weightMatrix, int[] candidateShortestPath) {
+    public static int[] randomSwappingRoute(double[][] weightMatrix, int[] candidateShortestPath)
+    {
 
         double sum = calculateRouteSum(weightMatrix, candidateShortestPath);
 
@@ -19,7 +20,7 @@ public class RandomOptimization extends OptimizationHelperFunctions {
                     double newSum = calculateRouteSum(weightMatrix, candidateShortestPath);
                     if (newSum < sum) {
                         count++;
-                        System.out.println("NewSum = " + newSum + " Swapped Count = " + count + " Swapped " + candidateShortestPath[j] + " and " + candidateShortestPath[i]);
+                        System.out.println("NewSum = " + newSum + " Swapped Count = " +count + " Swapped " + candidateShortestPath[j] +" and " + candidateShortestPath[i]);
                         sum = newSum;
                         improved = true;
 
@@ -31,6 +32,8 @@ public class RandomOptimization extends OptimizationHelperFunctions {
             }
         }
 
+
         return candidateShortestPath;
+
     }
 }
