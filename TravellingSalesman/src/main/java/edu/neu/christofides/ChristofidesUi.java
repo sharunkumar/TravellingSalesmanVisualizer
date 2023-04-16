@@ -2,7 +2,7 @@ package edu.neu.christofides;
 
 import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
-import edu.neu.optimizations.tactical.RandomOptimizerBruteForce;
+import edu.neu.optimizations.tactical.RandomOptimizer;
 
 import java.util.Random;
 
@@ -44,7 +44,7 @@ public class ChristofidesUi {
 
         window.setTitle("Generating Random Optimization. Please wait...");
 
-        var optimizer = new RandomOptimizerBruteForce(locations, weightMatrix, path.getRoute(), new Random(69420),
+        var optimizer = new RandomOptimizer(locations, weightMatrix, path.getRoute(), new Random(69420),
                 100000);
 
         while (optimizer.hasNext()) {
