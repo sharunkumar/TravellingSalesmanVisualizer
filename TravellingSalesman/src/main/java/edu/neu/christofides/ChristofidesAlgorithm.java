@@ -10,7 +10,7 @@ public class ChristofidesAlgorithm {
         int[][] matchGraph = GreedyMatch.greadyMatch(minimumSpanningTree, weightMatrix, weightMatrix[0].length);
 
         GraphNode[] nodes = MultiGraph.build(matchGraph, minimumSpanningTree);
-        int route[] = EulerCircuitGenerator.generateEulerCircuit(nodes);
+        int[] route = EulerCircuitGenerator.generateEulerCircuit(nodes);
 
         double sum = 0;
 
@@ -20,7 +20,7 @@ public class ChristofidesAlgorithm {
         sum += weightMatrix[route[0]][route[route.length - 1]];
         System.out.println("Route = " + Arrays.toString(route));
         System.out.println("Total Sum : " + sum);
-
+        
         return route;
     }
 }
