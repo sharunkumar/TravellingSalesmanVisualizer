@@ -7,22 +7,26 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-import static org.junit.Assert.*;
-
 import java.io.IOException;
+
+import static edu.neu.utilties.DistanceCalculator.calculateDistance;
+import static org.junit.Assert.assertArrayEquals;
 
 /**
  * Unit test for simple App.
  */
 public class AppTest
         extends TestCase {
+    private static double[][] defaultWeightMatrix;
+
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public AppTest(String testName) {
+    public AppTest(String testName) throws IOException {
         super(testName);
+        defaultWeightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_1);
     }
 
     /**
@@ -40,9 +44,10 @@ public class AppTest
     }
 
     public void testChristofidesDefault() throws IOException {
-        double[][] weightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION);
-        int[] route = ChristofidesAlgorithm.run(weightMatrix);
+        int[] route = ChristofidesAlgorithm.run(defaultWeightMatrix);
         assertSame(route.length, 26);
-        assertArrayEquals(route, new int[]{0, 14, 13, 2, 1, 9, 8, 6, 4, 5, 3, 7, 15, 18, 19, 17, 16, 20, 21, 25, 22, 23, 24, 11, 12, 10});
+        assertArrayEquals(route, new int[]{0, 14, 13, 2, 1, 9, 8, 6, 4, 5, 3, 7, 15, 18, 19, 17, 16, 20, 21, 25, 22,
+                23, 24, 11, 12, 10});
+        assertEquals(calculateDistance(route, defaultWeightMatrix), 1095.0);
     }
 }

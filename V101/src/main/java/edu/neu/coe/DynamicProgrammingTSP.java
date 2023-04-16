@@ -10,7 +10,7 @@ public class DynamicProgrammingTSP {
     public DynamicProgrammingTSP(int[][] routeMap) {
 
         numberOfVertices = routeMap[0].length;
-        System.out.println("Length of routeMap: "+numberOfVertices);
+        System.out.println("Length of routeMap (Dynamic Programming Technique): "+numberOfVertices);
         adjacencyMatrix = new int[numberOfVertices][numberOfVertices];
         adjacencyMatrix = routeMap;
 
