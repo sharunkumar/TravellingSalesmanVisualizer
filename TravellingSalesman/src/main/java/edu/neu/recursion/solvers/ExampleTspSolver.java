@@ -1,4 +1,4 @@
-package edu.neu.solvers;
+package edu.neu.recursion.solvers;
 
 import edu.neu.interfaces.AbstractTspSolver;
 import edu.neu.io.DataSet;

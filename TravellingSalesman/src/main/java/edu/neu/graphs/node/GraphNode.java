@@ -4,6 +4,7 @@ package edu.neu.graphs.node;
 import edu.neu.graphs.graphInterface.GraphNodeInterface;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Vector;
 
 public class GraphNode implements GraphNodeInterface {
@@ -61,10 +62,17 @@ public class GraphNode implements GraphNodeInterface {
 
             if( childList.size()>0 ){
                 GraphNode tmpNode=(GraphNode)childList.remove(0);
-                tmpNode.removeChild(this); //ta bort kanten från andra hållet
+                tmpNode.removeChild(this);
                 path.add(new Integer(this.getName()));
                 tmpNode.getNextChild(goal,path,false);
             }
         }
     }
+
+    public ArrayList getChildList()
+    {
+        return this.childList;
+    }
+
+
 }
