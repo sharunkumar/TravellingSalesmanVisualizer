@@ -43,10 +43,12 @@ public class TspSolverUI {
         };
 
         var simulated_annealing_flow = new IAlgorithmStep[]{
-                new SimulatedAnnealingStep(10, 0.9),
+                new SimulatedAnnealingStep(100, 0.9),
                 new PrintPath("Simulated Annealing"),
                 new TwoOpt(),
                 new PrintPath("Two Opt"),
+                new WinTitle("TSP Complete!"),
+                new PrintLocations("Final Locations")
         };
 
         runFlow(simulated_annealing_flow);
