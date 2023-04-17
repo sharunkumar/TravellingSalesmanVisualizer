@@ -2,14 +2,8 @@ package edu.neu.christofides;
 
 import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
-import edu.neu.modals.TravelPath;
-import edu.neu.optimizations.tactical.RandomOptimizerBruteForce;
-import edu.neu.optimizations.tactical.TwoOptOptimization;
-
-import java.util.Random;
-
-import static edu.neu.display.DRAW_MODE.MST;
-import static edu.neu.utilties.TSPUtilities.trySleep;
+import edu.neu.utilties.abstractions.IAlgorithmStep;
+import edu.neu.utilties.algorithm.*;
 
 public class ChristofidesUi {
     private final Location[] locations;
@@ -29,46 +23,67 @@ public class ChristofidesUi {
 
     public void run() {
         int sleep_duration = 0;
-        window.setTitle("Generating Minimum Spanning Tree. Please wait...");
-        int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
-        print("Minimum Spanning Tree Generated!",
-                "Minimum Spanning Tree: " + minimumSpanningTree);
-        window.setMinimumSpanningTree(minimumSpanningTree);
-        window.setDrawMode(MST);
-        window.repaint();
-        window.setTitle("Minimum Spanning Tree");
-        trySleep(sleep_duration);
-        window.setTitle("Generating Euler Circuit. Please wait...");
 
-        var path = EulerCircuitGenerator.generateEulerCircuit(locations, minimumSpanningTree, weightMatrix);
-        print("Euler Circuit Generated!", "Euler Circuit: " + path);
-        window.drawPath(path);
-        trySleep(sleep_duration);
+        var steps = new IAlgorithmStep[]{
+                new GenerateMst(),
+                new PrintRoute("Minimum Spanning Tree"),
+                new GenerateEulerCircuit(),
+                new PrintPath("Euler Circuit"),
+                new RandomOptimization(),
+                new PrintPath("Random Optimization"),
+                new TwoOpt(),
+                new PrintPath("Two Opt"),
+                new PrintPath("Final Path"),
+        };
 
-        window.setTitle("Generating Random Optimization. Please wait...");
+        var route = new int[locations.length];
 
-        var optimizer = new RandomOptimizerBruteForce(locations, weightMatrix, path.getRoute(), new Random(69420),
-                100000);
-
-        while (optimizer.hasNext()) {
-            var prev_path = path;
-            path = optimizer.next();
-            var new_path = path;
-            if (prev_path.hashCode() != new_path.hashCode()) {
-                window.drawPath(path);
-                print("Random Optimization Path: " + path.getRoute(), "Random " +
-                        "Optimization Path: " + path);
-            }
+        for (var step : steps) {
+            route = step.run(locations, weightMatrix, route, window);
         }
-
-        print("Running Two Opt Optimization", "Running Two Opt Optimization");
-
-        var twoOptRoute = TwoOptOptimization.twoOptOptimization(path.getRoute(), weightMatrix, window, locations);
-
-        path = new TravelPath(locations, twoOptRoute);
-        print("Two Opt Optimization Complete!", "Two Opt Optimization Complete:" + path);
-
-        print("Final Path: " + path.getRoute(), "Final Path: " + path);
+//
+//
+//
+//        window.setTitle("Generating Minimum Spanning Tree. Please wait...");
+//        int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
+//        print("Minimum Spanning Tree Generated!",
+//                "Minimum Spanning Tree: " + minimumSpanningTree);
+//        window.setMinimumSpanningTree(minimumSpanningTree);
+//        window.setDrawMode(MST);
+//        window.repaint();
+//        window.setTitle("Minimum Spanning Tree");
+//        trySleep(sleep_duration);
+//        window.setTitle("Generating Euler Circuit. Please wait...");
+//
+//        var path = EulerCircuitGenerator.generateEulerCircuit(locations, minimumSpanningTree, weightMatrix);
+//        print("Euler Circuit Generated!", "Euler Circuit: " + path);
+//        window.drawPath(path);
+//        trySleep(sleep_duration);
+//
+//        window.setTitle("Generating Random Optimization. Please wait...");
+//
+//        var optimizer = new RandomOptimizerBruteForce(locations, weightMatrix, path.getRoute(), new Random(69420),
+//                100000);
+//
+//        while (optimizer.hasNext()) {
+//            var prev_path = path;
+//            path = optimizer.next();
+//            var new_path = path;
+//            if (prev_path.hashCode() != new_path.hashCode()) {
+//                window.drawPath(path);
+//                print("Random Optimization Path: " + path.getRoute(), "Random " +
+//                        "Optimization Path: " + path);
+//            }
+//        }
+//
+//        print("Running Two Opt Optimization", "Running Two Opt Optimization");
+//
+//        var twoOptRoute = TwoOptOptimization.twoOptOptimization(path.getRoute(), weightMatrix, window, locations);
+//
+//        path = new TravelPath(locations, twoOptRoute);
+//        print("Two Opt Optimization Complete!", "Two Opt Optimization Complete:" + path);
+//
+//        print("Final Path: " + path.getRoute(), "Final Path: " + path);
 
     }
 }
