@@ -3,10 +3,7 @@ package edu.neu.display;
 import edu.neu.modals.Location;
 import edu.neu.utilties.abstractions.IAlgorithmStep;
 import edu.neu.utilties.algorithm.*;
-import edu.neu.utilties.algorithm.io.PrintLocations;
-import edu.neu.utilties.algorithm.io.PrintPath;
-import edu.neu.utilties.algorithm.io.PrintRoute;
-import edu.neu.utilties.algorithm.io.WinTitle;
+import edu.neu.utilties.algorithm.io.*;
 
 public class TspSolverUI {
     private final Location[] locations;
@@ -40,12 +37,19 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        var antColonyFlow = new IAlgorithmStep[]{
+        var ant_colony_flow = new IAlgorithmStep[]{
                 new AntColony(),
                 new PrintPath("Ant Colony"),
         };
 
-        runFlow(antColonyFlow);
+        var simulated_annealing_flow = new IAlgorithmStep[]{
+                new SimulatedAnnealingStep(10, 0.9),
+                new PrintPath("Simulated Annealing"),
+                new TwoOpt(),
+                new PrintPath("Two Opt"),
+        };
+
+        runFlow(simulated_annealing_flow);
     }
 
     private void runFlow(IAlgorithmStep[] christofides_flow) {
