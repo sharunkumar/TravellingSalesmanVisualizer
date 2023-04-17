@@ -1,6 +1,6 @@
 package edu.neu;
 
-import edu.neu.christofides.ChristofidesUi;
+import edu.neu.display.TspSolverUI;
 import edu.neu.io.DataSet;
 
 import java.io.IOException;
@@ -14,7 +14,7 @@ public class App {
         var locations = set.getNormalizedLocations(1000);
         var matrix = getWeightMatrix(locations);
 
-        ChristofidesUi christofidesUi = new ChristofidesUi(locations, matrix);
-        christofidesUi.run();
+        TspSolverUI tspSolverUI = new TspSolverUI(locations, matrix);
+        tspSolverUI.run();
     }
 }

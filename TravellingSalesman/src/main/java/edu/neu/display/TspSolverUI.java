@@ -1,16 +1,15 @@
-package edu.neu.christofides;
+package edu.neu.display;
 
-import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
 import edu.neu.utilties.abstractions.IAlgorithmStep;
 import edu.neu.utilties.algorithm.*;
 
-public class ChristofidesUi {
+public class TspSolverUI {
     private final Location[] locations;
     private final double[][] weightMatrix;
     private final TravellingSalesmanWindow window;
 
-    public ChristofidesUi(Location[] locations, double[][] weightMatrix) {
+    public TspSolverUI(Location[] locations, double[][] weightMatrix) {
         this.locations = locations;
         this.weightMatrix = weightMatrix;
         this.window = new TravellingSalesmanWindow(locations);
