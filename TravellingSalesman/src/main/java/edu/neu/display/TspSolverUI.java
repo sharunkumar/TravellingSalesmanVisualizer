@@ -1,6 +1,7 @@
 package edu.neu.display;
 
 import edu.neu.modals.Location;
+import edu.neu.optimizations.strategic.AntColonyOptimization;
 import edu.neu.utilties.abstractions.IAlgorithmStep;
 import edu.neu.utilties.algorithm.*;
 import edu.neu.utilties.algorithm.io.PrintLocations;
@@ -39,7 +40,6 @@ public class TspSolverUI {
                 new WinTitle("TSP Complete!"),
                 new PrintLocations("Final Locations")
         };
-
         var antColonyFlow = new IAlgorithmStep[]{
                 new AntColony(),
                 new PrintPath("Ant Colony"),
