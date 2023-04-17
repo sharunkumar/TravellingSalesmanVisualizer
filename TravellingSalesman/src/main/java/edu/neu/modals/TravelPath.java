@@ -3,6 +3,8 @@ package edu.neu.modals;
 import java.util.Arrays;
 import java.util.Random;
 
+import static edu.neu.utilties.TSPUtilities.getWeightMatrix;
+
 /**
  * Contains an array of location objects which represents a path through the
  * locations.
@@ -10,6 +12,7 @@ import java.util.Random;
 public class TravelPath implements Comparable<TravelPath> {
     private final Location[] locations;
     private final int[] route;
+    private final double[][] weightMatrix;
     private int hashcode = -1;
     private double distance = -1; // Calculated once then cached.
     private Random random;
@@ -26,9 +29,11 @@ public class TravelPath implements Comparable<TravelPath> {
         for (int i = 0; i < locations.length; i++) {
             route[i] = i;
         }
+        this.weightMatrix = getWeightMatrix(locations);
     }
 
-    public TravelPath(Location[] locations, int[] route) {
+    public TravelPath(Location[] locations, int[] route, double[][] weightMatrix) {
+        this.weightMatrix = weightMatrix;
         Location[] travelRoute = new Location[locations.length];
         for (int i = 0; i < route.length; i++) {
             travelRoute[i] = locations[route[i]];
@@ -51,6 +56,7 @@ public class TravelPath implements Comparable<TravelPath> {
         for (int i = 0; i < locations.length; i++) {
             route[i] = i;
         }
+        this.weightMatrix = getWeightMatrix(locations);
     }
 
     public int[] getRoute() {
@@ -110,10 +116,10 @@ public class TravelPath implements Comparable<TravelPath> {
         double distanceTravelled = 0;
 
         for (int i = 1; i < locations.length; i++) {
-            distanceTravelled += Location.distance(locations[i - 1], locations[i]);
+            distanceTravelled += this.weightMatrix[route[i - 1]][route[i]];
         }
 
-        distanceTravelled += Location.distance(locations[locations.length - 1], locations[0]);
+        distanceTravelled += this.weightMatrix[route[locations.length - 1]][route[0]];
         this.distance = distanceTravelled;
         return distance;
     }

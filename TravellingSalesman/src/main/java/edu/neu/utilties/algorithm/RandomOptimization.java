@@ -13,7 +13,7 @@ public class RandomOptimization implements IAlgorithmStep {
     public int[] run(Location[] locations, double[][] weightMatrix, int[] route, TravellingSalesmanWindow window) {
         window.setTitle("Generating Random Optimization. Please wait...");
 
-        var path = new TravelPath(locations, route);
+        var path = new TravelPath(locations, route, weightMatrix);
 
         var optimizer = new RandomOptimizerBruteForce(locations, weightMatrix, path.getRoute(), new Random(69420),
                 100000);

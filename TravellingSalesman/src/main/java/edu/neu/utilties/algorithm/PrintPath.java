@@ -12,7 +12,7 @@ public class PrintPath extends PrintRoute {
 
     @Override
     public int[] run(Location[] locations, double[][] weightMatrix, int[] route, TravellingSalesmanWindow window) {
-        var path = new TravelPath(locations, route);
+        var path = new TravelPath(locations, route, weightMatrix);
         System.out.println(title + ": " + path);
         return route;
     }

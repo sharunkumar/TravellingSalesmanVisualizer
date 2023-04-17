@@ -34,11 +34,11 @@ public class TwoOptOptimization {
         return bestRoute;
     }
 
-    public static int[] twoOptOptimization(int[] route, double[][] distMatrix, TravellingSalesmanWindow window,
+    public static int[] twoOptOptimization(int[] route, double[][] weightMatrix, TravellingSalesmanWindow window,
                                            Location[] locations) {
         boolean improved = true;
         int[] bestRoute = route.clone();
-        double bestDistance = calculateDistance(bestRoute, distMatrix);
+        double bestDistance = calculateDistance(bestRoute, weightMatrix);
         while (improved) {
             improved = false;
             for (int i = 1; i < route.length - 2; i++) {
@@ -48,18 +48,18 @@ public class TwoOptOptimization {
                     }
                     int[] newRoute = route.clone();
                     reverse(newRoute, i, j);
-                    double newDistance = calculateDistance(newRoute, distMatrix);
+                    double newDistance = calculateDistance(newRoute, weightMatrix);
                     if (newDistance < bestDistance) {
                         bestDistance = newDistance;
                         bestRoute = newRoute;
-                        window.drawPath(new TravelPath(locations, bestRoute));
+                        window.drawPath(new TravelPath(locations, bestRoute, weightMatrix));
                         improved = true;
                     }
                 }
             }
             route = bestRoute;
         }
-        window.drawPath(new TravelPath(locations, bestRoute));
+        window.drawPath(new TravelPath(locations, bestRoute, weightMatrix));
         return bestRoute;
     }
 

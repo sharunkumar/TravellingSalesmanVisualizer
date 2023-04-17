@@ -33,7 +33,7 @@ public class RandomOptimizerBruteForce extends RandomOptimizer {
             i = 0;
             j = 1;
 
-            return new TravelPath(locations, route);
+            return new TravelPath(locations, route, weightMatrix);
         } else {
             swap(route, i, j);
         }
@@ -42,6 +42,6 @@ public class RandomOptimizerBruteForce extends RandomOptimizer {
             i++;
             j = i + 1;
         }
-        return new TravelPath(locations, route);
+        return new TravelPath(locations, route, weightMatrix);
     }
 }

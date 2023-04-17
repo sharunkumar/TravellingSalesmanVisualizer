@@ -19,7 +19,7 @@ public class EulerCircuitGenerator {
 
         System.out.println("Euler Route = " + Arrays.toString(route));
 
-        return new TravelPath(locations, route);
+        return new TravelPath(locations, route, weightMatrix);
     }
 
     public static int[] generateEulerCircuit(GraphNode[] nodes) {

@@ -17,7 +17,7 @@ public class RandomOptimization extends OptimizationHelperFunctions {
 
         System.out.println("Random Swapping Shortest path: " + Arrays.toString(optimizedRoute));
 
-        return new TravelPath(locations, optimizedRoute);
+        return new TravelPath(locations, optimizedRoute, weightMatrix);
     }
 
     public static int[] randomSwappingRoute(double[][] weightMatrix, int[] initialRoute) {

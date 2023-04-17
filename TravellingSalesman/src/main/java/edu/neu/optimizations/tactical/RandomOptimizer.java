@@ -39,7 +39,7 @@ public class RandomOptimizer implements Iterator<TravelPath> {
         this.route = getNextBestRoute();
         this.currentDistance = calculateDistance(route, weightMatrix);
         current++;
-        return new TravelPath(locations, route);
+        return new TravelPath(locations, route, weightMatrix);
     }
 
     private int[] getNextBestRoute() {
