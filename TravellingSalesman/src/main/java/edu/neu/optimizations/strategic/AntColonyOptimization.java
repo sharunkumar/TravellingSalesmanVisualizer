@@ -1,14 +1,11 @@
 package edu.neu.optimizations.strategic;
 
-import edu.neu.graphs.node.GraphNode;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class AntColonyOptimization {
-
     private final double[][] weightMatrix;
     private final int numNodes;
     private final int numAnts;
@@ -21,7 +18,7 @@ public class AntColonyOptimization {
     public AntColonyOptimization(double[][] weightMatrix, int numAnts, double alpha, double beta,
                                  double evaporationRate, double initialPheromoneLevel) {
         this.weightMatrix = weightMatrix;
-        this.numNodes = weightMatrix.length;
+        this.numNodes = weightMatrix[0].length;
         this.numAnts = numAnts;
         this.alpha = alpha;
         this.beta = beta;

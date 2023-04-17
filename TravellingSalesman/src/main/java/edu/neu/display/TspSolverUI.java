@@ -2,10 +2,7 @@ package edu.neu.display;
 
 import edu.neu.modals.Location;
 import edu.neu.utilties.abstractions.IAlgorithmStep;
-import edu.neu.utilties.algorithm.GenerateEulerCircuit;
-import edu.neu.utilties.algorithm.GenerateMst;
-import edu.neu.utilties.algorithm.RandomOptimization;
-import edu.neu.utilties.algorithm.TwoOpt;
+import edu.neu.utilties.algorithm.*;
 import edu.neu.utilties.algorithm.io.PrintLocations;
 import edu.neu.utilties.algorithm.io.PrintPath;
 import edu.neu.utilties.algorithm.io.PrintRoute;
@@ -29,7 +26,7 @@ public class TspSolverUI {
 
     public void run() {
 
-        var steps = new IAlgorithmStep[]{
+        var christofides_flow = new IAlgorithmStep[]{
                 new GenerateMst(),
                 new PrintRoute("Minimum Spanning Tree"),
                 new GenerateEulerCircuit(),
@@ -43,11 +40,20 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
+        var antColonyFlow = new IAlgorithmStep[]{
+                new AntColony(),
+                new PrintPath("Ant Colony"),
+        };
+
+        runFlow(antColonyFlow);
+    }
+
+    private void runFlow(IAlgorithmStep[] christofides_flow) {
         var route = new int[locations.length];
 
         //noinspection ForLoopReplaceableByForEach
-        for (int i = 0; i < steps.length; i++) {
-            route = steps[i].run(locations, weightMatrix, route, window);
+        for (int i = 0; i < christofides_flow.length; i++) {
+            route = christofides_flow[i].run(locations, weightMatrix, route, window);
         }
     }
 }
