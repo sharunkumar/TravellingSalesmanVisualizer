@@ -14,7 +14,7 @@ public class App {
         var locations = set.getLocations();
         var matrix = getWeightMatrix(locations);
 
-        TspSolverUI tspSolverUI = new TspSolverUI(locations, matrix);
+        TspSolverUI tspSolverUI = new TspSolverUI(set.getNormalizedLocations(500), matrix);
         tspSolverUI.run();
     }
 }

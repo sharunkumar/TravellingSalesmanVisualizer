@@ -53,7 +53,7 @@ public class DataSet {
     }
 
     public Location[] getNormalizedLocations(int normalizationFactor) {
-        Set<Location> result = new HashSet<Location>();
+        Location[] result = new Location[locations.length];
         double minLat, maxLat, minLng, maxLng;
         minLat = Double.MAX_VALUE;
         maxLat = Double.MIN_VALUE;
@@ -76,16 +76,17 @@ public class DataSet {
         double latRange = maxLat - minLat;
         double lngRange = maxLng - minLng;
 
-        for (Location location : locations) {
+        for (int i = 0; i < locations.length; i++) {
+            Location location = locations[i];
             double lat = location.getLatitude();
             double lng = location.getLongitude();
             double normalizedLat = ((lat - minLat) / latRange) * normalizationFactor;
             double normalizedLng = ((lng - minLng) / lngRange) * normalizationFactor;
 
-            result.add(new Location(normalizedLat, normalizedLng, location.getCrimeID()));
+            result[i] = new Location(normalizedLat, normalizedLng, location.getCrimeID());
         }
 
-        return result.toArray(new Location[0]);
+        return result;
     }
 
     public Location[] getGroupedLocations(int normalizationFactor, double distanceThreshold) {
