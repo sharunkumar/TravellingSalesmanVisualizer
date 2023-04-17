@@ -28,10 +28,10 @@ public class TspSolverUI {
                 new PrintRoute("Minimum Spanning Tree"),
                 new GenerateEulerCircuit(),
                 new PrintPath("Euler Circuit"),
-                new RandomOptimization(),
-                new PrintPath("Random Optimization"),
                 new TwoOpt(),
                 new PrintPath("Two Opt"),
+                new RandomOptimization(),
+                new PrintPath("Random Optimization"),
                 new PrintPath("Final Path"),
         };
 
