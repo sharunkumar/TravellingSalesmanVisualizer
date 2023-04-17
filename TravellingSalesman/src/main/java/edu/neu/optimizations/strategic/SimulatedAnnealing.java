@@ -1,5 +1,9 @@
-package edu.neu.christofides;
+package edu.neu.optimizations.strategic;
 
+import edu.neu.christofides.EulerCircuitGenerator;
+import edu.neu.christofides.GreedyMatch;
+import edu.neu.christofides.MultiGraph;
+import edu.neu.christofides.PrimsAlgorithm;
 import edu.neu.graphs.node.GraphNode;
 
 import java.util.Arrays;

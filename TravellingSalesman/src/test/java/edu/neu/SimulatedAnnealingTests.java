@@ -1,10 +1,8 @@
 package edu.neu;
 
-import edu.neu.christofides.SimulatedAnnealing;
+import edu.neu.optimizations.strategic.SimulatedAnnealing;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.util.Arrays;
 
 public class SimulatedAnnealingTests {
     private final double[][] weightMatrix = {

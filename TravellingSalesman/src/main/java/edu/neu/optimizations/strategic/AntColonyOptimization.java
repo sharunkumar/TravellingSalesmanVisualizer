@@ -1,4 +1,4 @@
-package edu.neu.christofides;
+package edu.neu.optimizations.strategic;
 
 import edu.neu.graphs.node.GraphNode;
 

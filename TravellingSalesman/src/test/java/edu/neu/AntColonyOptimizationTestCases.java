@@ -1,10 +1,8 @@
 package edu.neu;
 
-import edu.neu.christofides.AntColonyOptimization;
-import org.junit.jupiter.api.Assertions;
+import edu.neu.optimizations.strategic.AntColonyOptimization;
 import org.junit.jupiter.api.Test;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -104,9 +102,11 @@ public class AntColonyOptimizationTestCases {
 //        };
 //        double initialPheromoneLevel = 0.5;
 //        double evaporationRate = 0.1;
-//        AntColonyOptimization aco = new AntColonyOptimization(weightMatrix, 5, 1, 2, evaporationRate, initialPheromoneLevel);
+//        AntColonyOptimization aco = new AntColonyOptimization(weightMatrix, 5, 1, 2, evaporationRate,
+//        initialPheromoneLevel);
 //        int[] route = {0, 1, 2, 3, 0};
-//        double expectedPheromoneLevel = (1 - evaporationRate) * initialPheromoneLevel + evaporationRate * (1.0 / 20.0);
+//        double expectedPheromoneLevel = (1 - evaporationRate) * initialPheromoneLevel + evaporationRate * (1.0 / 20
+//        .0);
 //        aco.updatePheromones(route, 16.0);
 //        double[][] actualPheromoneLevels = aco.pheromoneMatrix;
 //        assertEquals(expectedPheromoneLevel, actualPheromoneLevels[0][1], 0.001);
