@@ -2,7 +2,13 @@ package edu.neu.display;
 
 import edu.neu.modals.Location;
 import edu.neu.utilties.abstractions.IAlgorithmStep;
-import edu.neu.utilties.algorithm.*;
+import edu.neu.utilties.algorithm.GenerateEulerCircuit;
+import edu.neu.utilties.algorithm.GenerateMst;
+import edu.neu.utilties.algorithm.RandomOptimization;
+import edu.neu.utilties.algorithm.TwoOpt;
+import edu.neu.utilties.algorithm.io.PrintLocations;
+import edu.neu.utilties.algorithm.io.PrintPath;
+import edu.neu.utilties.algorithm.io.PrintRoute;
 
 public class TspSolverUI {
     private final Location[] locations;
@@ -33,6 +39,7 @@ public class TspSolverUI {
                 new RandomOptimization(),
                 new PrintPath("Random Optimization"),
                 new PrintPath("Final Path"),
+                new PrintLocations("Final Locations")
         };
 
         var route = new int[locations.length];
