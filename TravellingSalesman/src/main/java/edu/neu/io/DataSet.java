@@ -54,15 +54,15 @@ public class DataSet {
 
     public Location[] getNormalizedLocations(int normalizationFactor) {
         Set<Location> result = new HashSet<Location>();
-        float minLat, maxLat, minLng, maxLng;
-        minLat = Float.MAX_VALUE;
-        maxLat = Float.MIN_VALUE;
-        minLng = Float.MAX_VALUE;
-        maxLng = Float.MIN_VALUE;
+        double minLat, maxLat, minLng, maxLng;
+        minLat = Double.MAX_VALUE;
+        maxLat = Double.MIN_VALUE;
+        minLng = Double.MAX_VALUE;
+        maxLng = Double.MIN_VALUE;
 
         for (Location location : locations) {
-            float lat = location.getLatitude();
-            float lng = location.getLongitude();
+            double lat = location.getLatitude();
+            double lng = location.getLongitude();
             if (lat < minLat)
                 minLat = lat;
             if (lat > maxLat)
@@ -73,14 +73,14 @@ public class DataSet {
                 maxLng = lng;
         }
 
-        float latRange = maxLat - minLat;
-        float lngRange = maxLng - minLng;
+        double latRange = maxLat - minLat;
+        double lngRange = maxLng - minLng;
 
         for (Location location : locations) {
-            float lat = location.getLatitude();
-            float lng = location.getLongitude();
-            float normalizedLat = ((lat - minLat) / latRange) * normalizationFactor;
-            float normalizedLng = ((lng - minLng) / lngRange) * normalizationFactor;
+            double lat = location.getLatitude();
+            double lng = location.getLongitude();
+            double normalizedLat = ((lat - minLat) / latRange) * normalizationFactor;
+            double normalizedLng = ((lng - minLng) / lngRange) * normalizationFactor;
 
             result.add(new Location(normalizedLat, normalizedLng, location.getCrimeID()));
         }

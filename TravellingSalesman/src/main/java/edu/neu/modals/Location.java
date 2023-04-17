@@ -7,8 +7,8 @@ import java.util.Random;
  * Immutable.
  */
 public class Location {
-    private final float latitude;
-    private final float longitude;
+    private final double latitude;
+    private final double longitude;
     private final String crimeID;
     private int hashCode = -1;
 
@@ -19,7 +19,7 @@ public class Location {
      * @param longitude the y coordinate
      * @param crimeID
      */
-    public Location(float latitude, float longitude, String crimeID) {
+    public Location(double latitude, double longitude, String crimeID) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.crimeID = crimeID;
@@ -46,14 +46,14 @@ public class Location {
      */
     public static double distance(Location location1, Location location2) {
 
-        float x1 = location1.getLatitude();
-        float y1 = location1.getLongitude();
+        double x1 = location1.getLatitude();
+        double y1 = location1.getLongitude();
 
-        float x2 = location2.getLatitude();
-        float y2 = location2.getLongitude();
+        double x2 = location2.getLatitude();
+        double y2 = location2.getLongitude();
 
-        float xDiff = x2 - x1;
-        float yDiff = y2 - y1;
+        double xDiff = x2 - x1;
+        double yDiff = y2 - y1;
 
         return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
     }
@@ -62,11 +62,11 @@ public class Location {
         return crimeID;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 

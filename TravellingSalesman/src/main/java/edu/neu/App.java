@@ -11,7 +11,7 @@ public class App {
     public static void main(String[] args) throws IOException {
         var set = DataSet.DefaultDataSet();
 
-        var locations = set.getNormalizedLocations(1000);
+        var locations = set.getLocations();
         var matrix = getWeightMatrix(locations);
 
         TspSolverUI tspSolverUI = new TspSolverUI(locations, matrix);

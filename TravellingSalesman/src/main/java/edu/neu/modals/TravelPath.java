@@ -114,7 +114,7 @@ public class TravelPath implements Comparable<TravelPath> {
         }
 
         distanceTravelled += Location.distance(locations[locations.length - 1], locations[0]);
-        this.distance = (int) distanceTravelled;
+        this.distance = distanceTravelled;
         return distance;
     }
 
@@ -131,7 +131,8 @@ public class TravelPath implements Comparable<TravelPath> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("Distance = " + getDistance() + ", [ ");
+        var dist = getDistance();
+        StringBuilder sb = new StringBuilder("Distance = " + dist + ", [ ");
         for (var item : route) {
             sb.append(item);
             sb.append(" ");

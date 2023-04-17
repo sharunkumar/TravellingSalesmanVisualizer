@@ -23,7 +23,7 @@ public class TravellingSalesmanWindow extends JFrame {
     TravelPath path;
     double scaleX;
     double scaleY;
-    private float maxX, maxY;
+    private double maxX, maxY;
 
     /**
      * Construct the WindowTSP and draw the locations to the screen.
