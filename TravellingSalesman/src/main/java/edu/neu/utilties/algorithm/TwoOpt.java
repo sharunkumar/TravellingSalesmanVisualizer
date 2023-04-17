@@ -16,8 +16,6 @@ public class TwoOpt implements IAlgorithmStep {
         var path = new TravelPath(locations, twoOptRoute, weightMatrix);
         window.setTitle("Two Opt Optimization Complete!");
 
-        window.setTitle("Final Path: " + path.getRoute());
-
         return path.getRoute();
     }
 }

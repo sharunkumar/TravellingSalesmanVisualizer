@@ -24,9 +24,10 @@ public class RandomOptimization implements IAlgorithmStep {
             var new_path = path;
             if (prev_path.hashCode() != new_path.hashCode()) {
                 window.drawPath(path);
-                window.setTitle("Random Optimization Path: ");
+                window.setTitle("Current Random Optimization Path: " + path.getRoute());
             }
         }
+        window.setTitle("Random Optimization Path Generated!");
 
         return path.getRoute();
     }

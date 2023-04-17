@@ -9,6 +9,7 @@ import edu.neu.utilties.algorithm.TwoOpt;
 import edu.neu.utilties.algorithm.io.PrintLocations;
 import edu.neu.utilties.algorithm.io.PrintPath;
 import edu.neu.utilties.algorithm.io.PrintRoute;
+import edu.neu.utilties.algorithm.io.WinTitle;
 
 public class TspSolverUI {
     private final Location[] locations;
@@ -39,6 +40,7 @@ public class TspSolverUI {
                 new RandomOptimization(),
                 new PrintPath("Random Optimization"),
                 new PrintPath("Final Path"),
+                new WinTitle("TSP Complete!"),
                 new PrintLocations("Final Locations")
         };
 

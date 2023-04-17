@@ -15,7 +15,7 @@ public class GenerateMst implements IAlgorithmStep {
         window.setMinimumSpanningTree(minimumSpanningTree);
         window.setDrawMode(MST);
         window.repaint();
-        window.setTitle("Minimum Spanning Tree");
+        window.setTitle("Minimum Spanning Tree Generated!");
         return minimumSpanningTree;
     }
 }
