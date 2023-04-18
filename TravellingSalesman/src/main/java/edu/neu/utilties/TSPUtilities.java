@@ -32,15 +32,12 @@ public class TSPUtilities {
     }
 
     private static double trueDistance(Location location1, Location location2) {
-        double r = 6371; // radius of the Earth in kilometers
-
         double lat1_rad = location1.getLatitude();
         double lon1_rad = location1.getLongitude();
         double lat2_rad = location2.getLatitude();
         double lon2_rad = location2.getLongitude();
 
-        return SloppyMath.haversinMeters(lon2_rad,lat2_rad,lon1_rad,lat1_rad);
-        //to to from from
+        return SloppyMath.haversinMeters(lat1_rad, lon1_rad, lat2_rad, lon2_rad);
 
     }
 }
