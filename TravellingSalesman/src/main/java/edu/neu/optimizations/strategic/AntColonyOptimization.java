@@ -37,18 +37,17 @@ public class AntColonyOptimization {
     }
 
     public int[] run() {
-        List<Integer> nodes = new ArrayList<>();
+        List < Integer > nodes = new ArrayList < > ();
         for (int i = 0; i < numNodes; i++) {
             nodes.add(i);
         }
-
         int[] bestRoute = null;
         double bestDistance = Double.MAX_VALUE;
-
         for (int iter = 0; iter < numAnts; iter++) {
             Collections.shuffle(nodes);
             int[] route = new int[numNodes];
             route[0] = nodes.get(0);
+            nodes.remove(0);
             for (int i = 1; i < numNodes; i++) {
                 int currentNode = route[i - 1];
                 int nextNode = selectNextNode(currentNode, nodes);
