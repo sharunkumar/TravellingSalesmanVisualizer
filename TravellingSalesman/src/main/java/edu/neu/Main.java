@@ -4,17 +4,17 @@ import edu.neu.christofides.*;
 import edu.neu.graphs.node.GraphNode;
 import edu.neu.optimizations.tactical.RandomOptimization;
 import edu.neu.optimizations.tactical.TwoOptOptimization;
-import edu.neu.utility.ReadDistanceMatrix;
 
 import java.io.IOException;
 import java.util.Arrays;
 
 import static edu.neu.utilties.TSPUtilities.calculateDistance;
+import static edu.neu.utilties.TSPUtilities.readDistanceMatrix;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        double[][] weightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_1);
+        double[][] weightMatrix = readDistanceMatrix(Constants.DATA_SET_LOCATION_1);
 
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
 

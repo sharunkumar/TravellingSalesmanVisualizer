@@ -2,7 +2,6 @@ package edu.neu;
 
 import edu.neu.christofides.ChristofidesAlgorithm;
 import edu.neu.christofides.Constants;
-import edu.neu.utility.ReadDistanceMatrix;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -10,6 +9,7 @@ import junit.framework.TestSuite;
 import java.io.IOException;
 
 import static edu.neu.utilties.TSPUtilities.calculateDistance;
+import static edu.neu.utilties.TSPUtilities.readDistanceMatrix;
 import static org.junit.Assert.assertArrayEquals;
 
 /**
@@ -26,7 +26,7 @@ public class ChristofidesTest
      */
     public ChristofidesTest(String testName) throws IOException {
         super(testName);
-        defaultWeightMatrix = ReadDistanceMatrix.readDistanceMatrix(Constants.DATA_SET_LOCATION_1);
+        defaultWeightMatrix = readDistanceMatrix(Constants.DATA_SET_LOCATION_1);
     }
 
     /**
@@ -42,6 +42,7 @@ public class ChristofidesTest
     public void testApp() {
         assertTrue(true);
     }
+
     @org.junit.Test
     public void testChristofidesDefault() throws IOException {
         int[] route = ChristofidesAlgorithm.run(defaultWeightMatrix);
