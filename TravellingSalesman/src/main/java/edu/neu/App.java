@@ -1,7 +1,6 @@
 package edu.neu;
 
 import edu.neu.data.DataSet;
-import edu.neu.display.TspSolverUI;
 
 import java.io.IOException;
 

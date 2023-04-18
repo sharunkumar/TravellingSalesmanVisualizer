@@ -1,5 +1,6 @@
-package edu.neu.display;
+package edu.neu;
 
+import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
 import edu.neu.utilties.abstractions.IAlgorithmStep;
 import edu.neu.utilties.algorithm.*;
@@ -51,7 +52,7 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        runFlow(christofides_flow);
+        runFlow(getRandomFlow(320_000));
 
     }
 
