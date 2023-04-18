@@ -1,4 +1,4 @@
-package edu.neu.display;
+package edu.neu.display.enums;
 
 public enum DRAW_MODE {
     PATHS,

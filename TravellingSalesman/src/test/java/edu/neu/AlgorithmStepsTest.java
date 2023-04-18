@@ -1,5 +1,6 @@
 package edu.neu;
 
+import edu.neu.display.HeadlessTspWindow;
 import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.io.DataSet;
 import edu.neu.modals.Location;
@@ -35,7 +36,7 @@ public class AlgorithmStepsTest
         locations = dataSet.getLocations();
         var normalizedLocations = dataSet.getNormalizedLocations(500);
         weightMatrix = getWeightMatrix(locations);
-        window = new TravellingSalesmanWindow(normalizedLocations);
+        window = new HeadlessTspWindow();
     }
 
     /**

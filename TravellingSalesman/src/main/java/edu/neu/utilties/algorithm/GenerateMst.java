@@ -5,7 +5,7 @@ import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
 import edu.neu.utilties.abstractions.IAlgorithmStep;
 
-import static edu.neu.display.DRAW_MODE.MST;
+import static edu.neu.display.enums.DRAW_MODE.MST;
 
 public class GenerateMst implements IAlgorithmStep {
     @Override
