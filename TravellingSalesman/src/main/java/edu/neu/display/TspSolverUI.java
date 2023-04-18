@@ -38,7 +38,7 @@ public class TspSolverUI {
         };
 
         var ant_colony_flow = new IAlgorithmStep[]{
-                new AntColony(),
+                new AntColony(80, 4, 5, 0.8, 1),
                 new PrintPath("Ant Colony"),
         };
 
@@ -51,7 +51,7 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        runFlow(simulated_annealing_flow);
+        runFlow(ant_colony_flow);
     }
 
     private void runFlow(IAlgorithmStep[] christofides_flow) {
