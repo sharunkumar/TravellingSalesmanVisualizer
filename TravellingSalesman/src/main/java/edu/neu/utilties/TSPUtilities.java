@@ -1,6 +1,7 @@
 package edu.neu.utilties;
 
 import edu.neu.modals.Location;
+import org.apache.lucene.util.SloppyMath;
 
 public class TSPUtilities {
     public static void trySleep(int millis) {
@@ -33,18 +34,13 @@ public class TSPUtilities {
     private static double trueDistance(Location location1, Location location2) {
         double r = 6371; // radius of the Earth in kilometers
 
-        double lat1_rad = Math.toRadians(location1.getLatitude());
-        double lon1_rad = Math.toRadians(location1.getLongitude());
-        double lat2_rad = Math.toRadians(location2.getLatitude());
-        double lon2_rad = Math.toRadians(location2.getLongitude());
+        double lat1_rad = location1.getLatitude();
+        double lon1_rad = location1.getLongitude();
+        double lat2_rad = location2.getLatitude();
+        double lon2_rad = location2.getLongitude();
 
-        double diff_lat = lat2_rad - lat1_rad;
-        double diff_long = lon2_rad - lon1_rad;
+        return SloppyMath.haversinMeters(lon2_rad,lat2_rad,lon1_rad,lat1_rad);
+        //to to from from
 
-        double a =
-                Math.sin(diff_lat / 2) * Math.sin(diff_lat / 2) + Math.cos(lat1_rad) * Math.cos(lat2_rad) * Math.sin(diff_long / 2) * Math.sin(diff_long / 2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-        return r * c;
     }
 }
