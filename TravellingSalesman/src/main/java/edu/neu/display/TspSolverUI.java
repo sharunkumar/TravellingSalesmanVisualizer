@@ -51,7 +51,18 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        runFlow(ant_colony_flow);
+        var genetic_flow = new IAlgorithmStep[]{
+                new GenerateMst(),
+                new PrintRoute("Minimum Spanning Tree"),
+                new GenerateEulerCircuit(),
+                new PrintPath("Euler Circuit"),
+                new GeneticAlgorithmStep(100, 1000, 0.9, 0.04, locations),
+                new PrintPath("Genetic Algorithm"),
+                new WinTitle("TSP Complete!"),
+                new PrintLocations("Final Locations")
+        };
+
+        runFlow(genetic_flow);
     }
 
     private void runFlow(IAlgorithmStep[] christofides_flow) {

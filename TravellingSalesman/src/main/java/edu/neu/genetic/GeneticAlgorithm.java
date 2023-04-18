@@ -29,9 +29,7 @@ public class GeneticAlgorithm {
     private Random random;
     private CrossoverType crossoverType = CrossoverType.UNIFORM_ORDER;
     private MutationType mutationType = MutationType.INSERTION;
-
     private boolean finished;
-
     // Results
     private double averageDistanceOfFirstGeneration;
     private double averageDistanceOfLastGeneration;
@@ -46,7 +44,7 @@ public class GeneticAlgorithm {
      * Construct the GeneticAlgorithm object with default values.
      */
     public GeneticAlgorithm() {
-        initialPop = Population.getRandomPopulation(10, 10, new Random());
+        initialPop = Population.getRandomPopulation(10, 10);
         population = initialPop.deepCopy();
         maxGen = 10;
         k = 3;
@@ -85,6 +83,10 @@ public class GeneticAlgorithm {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+
+    public Population getPopulation() {
+        return population;
     }
 
     public void setPopulation(Population population) {
@@ -274,18 +276,17 @@ public class GeneticAlgorithm {
      * Displays the fittest Chromosome of each Population to the screen.
      * Also displays a graph that contains the average distance per population.
      */
-    public void runWithDebugMode() {
-        TravellingSalesmanWindow win = new TravellingSalesmanWindow(population.getLocations());
+    public void runWithDebugMode(TravellingSalesmanWindow window) {
         delay(1000);
 
         TravelPath mostFitLast = population.getMostFit();
-        win.drawPath(mostFitLast);
+        window.drawPath(mostFitLast);
         for (int i = 0; i < maxGen; i++) {
             population = createNextGeneration();
 
             TravelPath mostFit = population.getMostFit();
             if (!mostFit.equals(mostFitLast)) {
-                win.drawPath(mostFit);
+                window.drawPath(mostFit);
             }
             mostFitLast = mostFit;
             averageDistanceOfEachGeneration.add(population.getAverageDistance());

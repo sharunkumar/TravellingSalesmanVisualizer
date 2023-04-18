@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.PriorityQueue;
 import java.util.Random;
 
+import static edu.neu.christofides.Constants.RANDOM;
+
 /**
  * Represents a Population of chromosomes.
  */
@@ -26,7 +28,7 @@ public class Population implements Iterable<TravelPath> {
     }
 
     public static Population fromDataSet(int popSize, DataSet dataSet, Random r) {
-        Location[] locations = dataSet.getNormalizedLocations(500);
+        Location[] locations = dataSet.getLocations();
         Population population = new Population(popSize);
         population.populate(locations, r);
         return population;
@@ -37,20 +39,19 @@ public class Population implements Iterable<TravelPath> {
      *
      * @param numOfLocations the number of locations
      * @param sizeOfPop      the size of the population
-     * @param random         the Random object used for the generation
      * @return a randomly generated Population
      */
-    public static Population getRandomPopulation(int numOfLocations, int sizeOfPop, Random random) {
+    public static Population getRandomPopulation(int numOfLocations, int sizeOfPop) {
         Location[] locations = new Location[numOfLocations];
 
         for (int i = 0; i < numOfLocations; i++) {
-            locations[i] = Location.getRandomLocation(random);
+            locations[i] = Location.getRandomLocation(RANDOM);
         }
 
         Population population = new Population(sizeOfPop);
 
         for (int i = 0; i < sizeOfPop; i++) {
-            population.add(new TravelPath(locations, random));
+            population.add(new TravelPath(locations, RANDOM));
         }
 
         return population;
@@ -66,6 +67,17 @@ public class Population implements Iterable<TravelPath> {
             throw new BufferOverflowException();
         }
         chromosomes.add(chromosome);
+    }
+
+    public void populate(Location[] locations) {
+        HashSet<TravelPath> hashSet = new HashSet<>();
+        while (chromosomes.size() < maxSize) {
+            TravelPath path = new TravelPath(locations, RANDOM);
+            if (!hashSet.contains(path)) {
+                hashSet.add(path);
+                add(path);
+            }
+        }
     }
 
     public void populate(Location[] locations, Random random) {
@@ -97,10 +109,10 @@ public class Population implements Iterable<TravelPath> {
         HashSet<TravelPath> hashSet = new HashSet<>();
 
         while (chromosomes.size() < maxSize) {
-            TravelPath chromo = new TravelPath(locations, random);
-            if (!hashSet.contains(chromo)) {
-                hashSet.add(chromo);
-                add(chromo);
+            TravelPath path = new TravelPath(locations, random);
+            if (!hashSet.contains(path)) {
+                hashSet.add(path);
+                add(path);
             }
         }
 

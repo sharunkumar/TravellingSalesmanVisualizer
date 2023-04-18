@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 
+import static edu.neu.christofides.Constants.RANDOM;
+
 /**
  * Used for Chromosome reproduction.
  */
@@ -297,16 +299,16 @@ class Crossover {
     }
 
     public static void main(String[] args) {
-        Population pop = Population.getRandomPopulation(10, 10, new Random());
-        TravelPath c1 = new TravelPath(pop.getLocations(), new Random());
-        TravelPath c2 = new TravelPath(pop.getLocations(), new Random());
+        Population pop = Population.getRandomPopulation(10, 10);
+        TravelPath c1 = new TravelPath(pop.getLocations(), RANDOM);
+        TravelPath c2 = new TravelPath(pop.getLocations(), RANDOM);
 
         System.out.println("Children:");
         System.out.println(c1);
         System.out.println(c2);
         System.out.println();
 
-        ArrayList<TravelPath> list = orderCrossover(c1, c2, new Random());
+        ArrayList<TravelPath> list = orderCrossover(c1, c2, RANDOM);
         System.out.println(list.get(0));
         System.out.println(list.get(1));
     }

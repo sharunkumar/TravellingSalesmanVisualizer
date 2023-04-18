@@ -5,6 +5,7 @@ import edu.neu.io.DataSet;
 import java.io.IOException;
 import java.util.Random;
 
+import static edu.neu.christofides.Constants.RANDOM;
 import static edu.neu.modals.Population.fromDataSet;
 
 public class Preset {
@@ -13,8 +14,7 @@ public class Preset {
 
     public static GeneticAlgorithm getDefaultGA() throws IOException {
 
-        Random random = new Random();
-        long seed = random.nextLong();
+        long seed = RANDOM.nextLong();
         System.out.println("Seed: " + seed);
         Random r = new Random();
         r.setSeed(seed);
