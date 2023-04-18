@@ -52,7 +52,7 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        runFlow(simulated_annealing_flow);
+        runFlow(christofides_flow);
 
     }
 
