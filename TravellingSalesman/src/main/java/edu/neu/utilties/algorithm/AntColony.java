@@ -7,11 +7,11 @@ import edu.neu.optimizations.strategic.AntColonyOptimization;
 import edu.neu.utilties.abstractions.IAlgorithmStep;
 
 public class AntColony implements IAlgorithmStep {
-    private static final int NUM_ANTS = 5;
-    private static final double ALPHA = 1.0;
-    private static final double BETA = 2.0;
-    private static final double EVAPORATION_RATE = 0.5;
-    private static final double INITIAL_PHEROMONE_LEVEL = 0.1;
+    private static final int NUM_ANTS = 80;
+    private static final double ALPHA = 4.0;
+    private static final double BETA = 5.0;
+    private static final double EVAPORATION_RATE = 0.8;
+    private static final double INITIAL_PHEROMONE_LEVEL = 1;
 
     @Override
     public int[] run(Location[] locations, double[][] weightMatrix, int[] route, TravellingSalesmanWindow window) {

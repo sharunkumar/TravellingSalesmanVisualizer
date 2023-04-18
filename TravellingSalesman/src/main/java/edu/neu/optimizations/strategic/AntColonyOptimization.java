@@ -100,10 +100,14 @@ public class AntColonyOptimization {
         for (int i = 0; i < numNodes; i++) {
             p += probabilities[i];
             if (rand <= p) {
-                return i;
+                if (nodes.contains(i)) {
+                    return i;
+                } else {
+                    break; // Selected node is not in list, fall back to first node
+                }
             }
         }
-        return -1; // Should never reach this line
+        return nodes.get(0);
     }
 
     public void updatePheromones(int[] route, double distance) {
