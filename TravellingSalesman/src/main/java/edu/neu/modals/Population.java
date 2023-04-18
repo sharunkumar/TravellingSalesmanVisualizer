@@ -1,6 +1,6 @@
 package edu.neu.modals;
 
-import edu.neu.io.DataSet;
+import edu.neu.data.DataSet;
 
 import java.nio.BufferOverflowException;
 import java.util.HashSet;

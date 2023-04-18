@@ -1,4 +1,4 @@
-package edu.neu.io;
+package edu.neu.data;
 
 import edu.neu.modals.Location;
 

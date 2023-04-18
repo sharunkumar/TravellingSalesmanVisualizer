@@ -1,7 +1,7 @@
 package edu.neu.recursion.solvers;
 
+import edu.neu.data.DataSet;
 import edu.neu.interfaces.AbstractTspSolver;
-import edu.neu.io.DataSet;
 import edu.neu.modals.Location;
 import edu.neu.modals.TravelPath;
 

@@ -1,8 +1,8 @@
 package edu.neu;
 
+import edu.neu.data.DataSet;
 import edu.neu.display.HeadlessTspWindow;
 import edu.neu.display.TravellingSalesmanWindow;
-import edu.neu.io.DataSet;
 import edu.neu.modals.Location;
 import edu.neu.utilties.algorithm.AntColony;
 import junit.framework.Test;
