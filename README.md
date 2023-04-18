@@ -14,3 +14,9 @@
 ### Random Optimization
 ![Random Optimization](./Observations/Screenshots/4.%20Random%20Optimization.png)
 
+### Ant Colony
+![Ant Colony](./Observations/Screenshots/5.%20Ant%20Colony.png)
+
+### Simulated Annealing
+![Simulated Annealing](./Observations/Screenshots/6.%20Simulated%20Annealing.png)
+

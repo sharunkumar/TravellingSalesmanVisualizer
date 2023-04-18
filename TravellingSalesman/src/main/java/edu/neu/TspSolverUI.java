@@ -50,6 +50,8 @@ public class TspSolverUI {
         var ant_colony_flow = new IAlgorithmStep[]{
                 new AntColony(80, 50, 50, 0.1, 1),
                 new PrintPath("Ant Colony"),
+                new WinTitle("Ant Colony Complete!"),
+                new PrintLocations("Final Locations")
         };
 
         var simulated_annealing_flow = new IAlgorithmStep[]{
@@ -61,7 +63,13 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        runFlow(two_opt_only);
+        var simulated_annealing_only = new IAlgorithmStep[]{
+                new SimulatedAnnealingStep(100, 0.9),
+                new PrintPath("Simulated Annealing"),
+                new WinTitle("Simulated Annealing Complete!"),
+        };
+
+        runFlow(christofides_flow);
 
     }
 
