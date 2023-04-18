@@ -1,12 +1,13 @@
 package edu.neu.display;
 
+import edu.neu.display.enums.DRAW_MODE;
 import edu.neu.modals.Location;
 import edu.neu.modals.TravelPath;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static edu.neu.display.DRAW_MODE.PATHS;
+import static edu.neu.display.enums.DRAW_MODE.PATHS;
 
 /**
  * Draws the locations to the screen, as well as a path.
@@ -16,7 +17,7 @@ public class TravellingSalesmanWindow extends JFrame {
     static final int LOCATION_SIZE = 4;
     private static final int WIDTH = 1600;
     private static final int HEIGHT = 1600 / 16 * 9;
-    private final Panel panel;
+    protected Panel panel;
     protected DRAW_MODE drawMode = PATHS;
     protected int[] minimumSpanningTree = null;
     Location[] locations;
@@ -72,7 +73,7 @@ public class TravellingSalesmanWindow extends JFrame {
         return panel;
     }
 
-    private void setWindowProperties() {
+    protected void setWindowProperties() {
         int sWidth = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth() / 2;
         int sHeight = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight() / 2;
         int x = sWidth - (WIDTH / 2);
