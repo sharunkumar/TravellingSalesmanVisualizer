@@ -1,6 +1,10 @@
 package edu.neu;
 
-import edu.neu.christofides.*;
+import edu.neu.christofides.EulerCircuitGenerator;
+import edu.neu.christofides.GreedyMatch;
+import edu.neu.christofides.MultiGraph;
+import edu.neu.christofides.PrimsAlgorithm;
+import edu.neu.data.DataSet;
 import edu.neu.graphs.node.GraphNode;
 import edu.neu.optimizations.tactical.RandomOptimization;
 import edu.neu.optimizations.tactical.TwoOptOptimization;
@@ -9,12 +13,14 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import static edu.neu.utilties.TSPUtilities.calculateDistance;
-import static edu.neu.utilties.TSPUtilities.readDistanceMatrix;
+import static edu.neu.utilties.TSPUtilities.getWeightMatrix;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        double[][] weightMatrix = readDistanceMatrix(Constants.DATA_SET_LOCATION_1);
+        var locations = DataSet.DefaultDataSet().getLocations();
+        
+        double[][] weightMatrix = getWeightMatrix(locations);
 
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix);
 

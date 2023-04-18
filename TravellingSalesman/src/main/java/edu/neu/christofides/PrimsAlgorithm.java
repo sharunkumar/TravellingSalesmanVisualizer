@@ -49,7 +49,7 @@ public class PrimsAlgorithm {
 
         double minimumSpanningTreeSum = 0;
         for (int k = 0; k < weightMatrixSize; k++) {
-            minimumSpanningTreeSum += allKeys[k];
+            minimumSpanningTreeSum += weightMatrix[k][result[k]];
         }
 
         System.out.println("Minimum Spanning Tree Route Sum = " + minimumSpanningTreeSum);
