@@ -30,7 +30,7 @@ public class TspSolverUI {
                 new PrintPath("Euler Circuit"),
                 new TwoOpt(),
                 new PrintPath("Two Opt"),
-                new RandomOptimization(),
+                new RandomOptimization(10000),
                 new PrintPath("Random Optimization"),
                 new PrintPath("Final Path"),
                 new WinTitle("TSP Complete!"),
@@ -51,7 +51,21 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        runFlow(ant_colony_flow);
+        for (int i = 100; i < 1000000; i *= 2) {
+            runFlow(getRandomFlow(i));
+        }
+
+    }
+
+    private IAlgorithmStep[] getRandomFlow(int maxIterations) {
+        return new IAlgorithmStep[]{
+                new GenerateMst(),
+                new PrintRoute("Minimum Spanning Tree"),
+                new GenerateEulerCircuit(),
+                new PrintPath("Euler Circuit"),
+                new RandomOptimization(maxIterations),
+                new PrintPath("Random Optimization"),
+        };
     }
 
     private void runFlow(IAlgorithmStep[] algorithm_steps) {
