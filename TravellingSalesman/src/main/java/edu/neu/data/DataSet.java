@@ -45,7 +45,7 @@ public class DataSet {
     }
 
     public static DataSet DefaultDataSet() throws IOException {
-        return new DataSet("../DataSet/info6205.spring2023.teamproject.csv");
+        return new DataSet("../DataSet/final/info6205.spring2023.teamproject.csv");
     }
 
     public Location[] getLocations() {
