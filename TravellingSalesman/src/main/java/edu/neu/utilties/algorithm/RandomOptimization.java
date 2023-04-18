@@ -3,7 +3,7 @@ package edu.neu.utilties.algorithm;
 import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
 import edu.neu.modals.TravelPath;
-import edu.neu.optimizations.tactical.RandomOptimizer;
+import edu.neu.optimizations.tactical.RandomOptimizerBruteForce;
 import edu.neu.utilties.abstractions.IAlgorithmStep;
 
 import java.util.Random;
@@ -21,7 +21,7 @@ public class RandomOptimization implements IAlgorithmStep {
 
         var path = new TravelPath(locations, route, weightMatrix);
 
-        var optimizer = new RandomOptimizer(locations, weightMatrix, path.getRoute(), new Random(69420),
+        var optimizer = new RandomOptimizerBruteForce(locations, weightMatrix, path.getRoute(), new Random(69420),
                 maxIterations, window);
 
         while (optimizer.hasNext()) {

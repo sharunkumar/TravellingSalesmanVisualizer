@@ -12,8 +12,8 @@ public class PrintLocations extends PrintRoute {
     public int[] run(Location[] locations, double[][] weightMatrix, int[] route, TravellingSalesmanWindow window) {
         System.out.println(title);
         //noinspection ForLoopReplaceableByForEach
-        for (int i = 0; i < locations.length; i++) {
-            System.out.println(locations[i].getCrimeID());
+        for (int i = 0; i < route.length; i++) {
+            System.out.println(locations[route[i]].getCrimeID());
         }
         return route;
     }
