@@ -2,6 +2,8 @@ package edu.neu.modals;
 
 import java.util.Random;
 
+import static edu.neu.utilties.TSPUtilities.trueDistance;
+
 /**
  * Represents a location in the Traveling Salesman Problem.
  * Immutable.
@@ -45,17 +47,7 @@ public class Location {
      * @return the distance
      */
     public static double distance(Location location1, Location location2) {
-
-        double x1 = location1.getLatitude();
-        double y1 = location1.getLongitude();
-
-        double x2 = location2.getLatitude();
-        double y2 = location2.getLongitude();
-
-        double xDiff = x2 - x1;
-        double yDiff = y2 - y1;
-
-        return Math.sqrt(xDiff * xDiff + yDiff * yDiff);
+        return trueDistance(location1, location2);
     }
 
     public String getCrimeID() {

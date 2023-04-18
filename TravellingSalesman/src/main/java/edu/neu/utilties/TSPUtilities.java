@@ -31,7 +31,7 @@ public class TSPUtilities {
         return weightMatrix;
     }
 
-    private static double trueDistance(Location location1, Location location2) {
+    public static double trueDistance(Location location1, Location location2) {
         double lat1_rad = location1.getLatitude();
         double lon1_rad = location1.getLongitude();
         double lat2_rad = location2.getLatitude();
