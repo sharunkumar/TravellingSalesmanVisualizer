@@ -51,7 +51,7 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        runFlow(getRandomFlow(10000));
+        runFlow(christofides_flow);
 
     }
 
