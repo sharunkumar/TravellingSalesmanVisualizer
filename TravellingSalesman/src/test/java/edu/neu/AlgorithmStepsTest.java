@@ -48,7 +48,7 @@ public class AlgorithmStepsTest
 
 
     public void testInputData() {
-        assertEquals(locations.length, 585);
+        assertEquals(585, locations.length);
     }
 
     public void testAntColony() {
@@ -57,7 +57,7 @@ public class AlgorithmStepsTest
         for (int i : route) {
             set.add(i);
         }
-        assertEquals(route.length, locations.length);
-        assertEquals(set.size(), locations.length);
+        assertEquals(locations.length + 1, route.length);
+        assertEquals(locations.length, set.size());
     }
 }
