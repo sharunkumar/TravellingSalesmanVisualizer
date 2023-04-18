@@ -51,9 +51,7 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        for (int i = 100; i < 1000000; i *= 2) {
-            runFlow(getRandomFlow(i));
-        }
+        runFlow(getRandomFlow(10000));
 
     }
 

@@ -22,7 +22,7 @@ public class RandomOptimization implements IAlgorithmStep {
         var path = new TravelPath(locations, route, weightMatrix);
 
         var optimizer = new RandomOptimizer(locations, weightMatrix, path.getRoute(), new Random(69420),
-                maxIterations);
+                maxIterations, window);
 
         while (optimizer.hasNext()) {
             var prev_path = path;

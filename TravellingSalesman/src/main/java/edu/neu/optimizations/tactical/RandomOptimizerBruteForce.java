@@ -1,5 +1,6 @@
 package edu.neu.optimizations.tactical;
 
+import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
 import edu.neu.modals.TravelPath;
 
@@ -13,8 +14,8 @@ public class RandomOptimizerBruteForce extends RandomOptimizer {
     int j = 1;
 
     public RandomOptimizerBruteForce(Location[] locations, double[][] weightMatrix, int[] route, Random random,
-                                     int maxIterations) {
-        super(locations, weightMatrix, route, random, maxIterations);
+                                     int maxIterations, TravellingSalesmanWindow window) {
+        super(locations, weightMatrix, route, random, maxIterations, window);
     }
 
     @Override
@@ -26,6 +27,9 @@ public class RandomOptimizerBruteForce extends RandomOptimizer {
     public TravelPath next() {
         swap(route, i, j);
         var newDistance = calculateDistance(route, weightMatrix);
+
+        window.drawPath(new TravelPath(locations, route, weightMatrix));
+
         if (newDistance < currentDistance) {
             currentDistance = newDistance;
 

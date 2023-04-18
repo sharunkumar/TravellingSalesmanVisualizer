@@ -1,5 +1,6 @@
 package edu.neu.optimizations.tactical;
 
+import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
 import edu.neu.modals.TravelPath;
 
@@ -14,17 +15,19 @@ public class RandomOptimizer implements Iterator<TravelPath> {
     protected final Location[] locations;
     protected final int maxIterations;
     protected final Random random;
+    protected final TravellingSalesmanWindow window;
     protected int[] route;
     protected double currentDistance;
     int current = 0;
 
     public RandomOptimizer(Location[] locations, double[][] weightMatrix, int[] route, Random random,
-                           int maxIterations) {
+                           int maxIterations, TravellingSalesmanWindow window) {
         this.weightMatrix = weightMatrix;
         this.locations = locations;
         this.route = route;
         this.random = random;
         this.maxIterations = maxIterations;
+        this.window = window;
         this.currentDistance = calculateDistance(route, weightMatrix);
         ;
     }
