@@ -10,6 +10,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashSet;
 
 import static edu.neu.utilties.TSPUtilities.getWeightMatrix;
@@ -57,7 +58,11 @@ public class AlgorithmStepsTest
         for (int i : route) {
             set.add(i);
         }
-        assertEquals(locations.length + 1, route.length);
+        assertEquals(locations.length, route.length);
         assertEquals(locations.length, set.size());
+        Arrays.sort(route);
+        for (int i = 0; i < route.length; i++) {
+            assertEquals(i, route[i]);
+        }
     }
 }
