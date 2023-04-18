@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import static edu.neu.christofides.Constants.RANDOM;
+
 public class AntColonyOptimization {
     private final double[][] weightMatrix;
     private final int numNodes;
@@ -37,7 +39,7 @@ public class AntColonyOptimization {
     }
 
     public int[] run() {
-        List < Integer > nodes = new ArrayList < > ();
+        List<Integer> nodes = new ArrayList<>();
         for (int i = 0; i < numNodes; i++) {
             nodes.add(i);
         }
@@ -94,7 +96,7 @@ public class AntColonyOptimization {
         for (int i = 0; i < numNodes; i++) {
             probabilities[i] /= sum;
         }
-        double rand = Math.random();
+        double rand = RANDOM.nextDouble();
         double p = 0.0;
         for (int i = 0; i < numNodes; i++) {
             p += probabilities[i];

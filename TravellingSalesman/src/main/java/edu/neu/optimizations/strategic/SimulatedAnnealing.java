@@ -9,6 +9,8 @@ import edu.neu.graphs.node.GraphNode;
 import java.util.Arrays;
 import java.util.Random;
 
+import static edu.neu.christofides.Constants.RANDOM;
+
 public class SimulatedAnnealing {
     public static int[] run(double[][] weightMatrix, double temperature, double coolingRate) {
         int[] minimumSpanningTree = PrimsAlgorithm.run(weightMatrix); //, weightMatrix[0].length
@@ -20,14 +22,12 @@ public class SimulatedAnnealing {
         double currentEnergy = calculateEnergy(currentRoute, weightMatrix);
         double bestEnergy = currentEnergy;
 
-        Random random = new Random();
-
         while (temperature > 1) {
-            int[] newRoute = perturbRoute(currentRoute, random);
+            int[] newRoute = perturbRoute(currentRoute, RANDOM);
             double newEnergy = calculateEnergy(newRoute, weightMatrix);
             double deltaEnergy = newEnergy - currentEnergy;
 
-            if (deltaEnergy < 0 || Math.exp(-deltaEnergy / temperature) > random.nextDouble()) {
+            if (deltaEnergy < 0 || Math.exp(-deltaEnergy / temperature) > RANDOM.nextDouble()) {
                 currentRoute = newRoute.clone();
                 currentEnergy = newEnergy;
 

@@ -4,7 +4,6 @@ import edu.neu.modals.Location;
 import edu.neu.modals.TravelPath;
 
 import java.util.Arrays;
-import java.util.Random;
 
 import static edu.neu.utilties.TSPUtilities.calculateDistance;
 
@@ -24,7 +23,6 @@ public class RandomOptimization extends OptimizationHelperFunctions {
 
         double sum = calculateDistance(initialRoute, weightMatrix);
 
-        Random random = new Random();
         boolean improved = true;
         int count = 0;
         while (improved) {
