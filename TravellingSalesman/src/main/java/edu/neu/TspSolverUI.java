@@ -38,6 +38,15 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
+        var two_opt_only = new IAlgorithmStep[]{
+                new GenerateMst(),
+                new PrintRoute("Minimum Spanning Tree"),
+                new GenerateEulerCircuit(),
+                new PrintPath("Euler Circuit"),
+                new TwoOpt(),
+                new PrintPath("Two Opt"),
+        };
+
         var ant_colony_flow = new IAlgorithmStep[]{
                 new AntColony(80, 50, 50, 0.1, 1),
                 new PrintPath("Ant Colony"),
@@ -52,7 +61,7 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        runFlow(christofides_flow);
+        runFlow(two_opt_only);
 
     }
 

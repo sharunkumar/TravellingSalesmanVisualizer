@@ -39,10 +39,12 @@ public class TwoOptOptimization {
         boolean improved = true;
         int[] bestRoute = route.clone();
         double bestDistance = calculateDistance(bestRoute, weightMatrix);
+        long counter = 0;
         while (improved) {
             improved = false;
             for (int i = 1; i < route.length - 2; i++) {
                 for (int j = i + 1; j < route.length; j++) {
+                    counter++;
                     if (j - i == 1) {
                         continue;
                     }
@@ -54,6 +56,7 @@ public class TwoOptOptimization {
                         bestRoute = newRoute;
                         window.drawPath(new TravelPath(locations, bestRoute, weightMatrix));
                         improved = true;
+                        System.out.println("Counter: " + counter + " Distance: " + bestDistance);
                     }
                 }
             }
