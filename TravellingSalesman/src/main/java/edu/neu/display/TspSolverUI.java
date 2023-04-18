@@ -54,12 +54,12 @@ public class TspSolverUI {
         runFlow(ant_colony_flow);
     }
 
-    private void runFlow(IAlgorithmStep[] christofides_flow) {
+    private void runFlow(IAlgorithmStep[] algorithm_steps) {
         var route = new int[locations.length];
 
         //noinspection ForLoopReplaceableByForEach
-        for (int i = 0; i < christofides_flow.length; i++) {
-            route = christofides_flow[i].run(locations, weightMatrix, route, window);
+        for (int i = 0; i < algorithm_steps.length; i++) {
+            route = algorithm_steps[i].run(locations, weightMatrix, route, window);
         }
     }
 }
