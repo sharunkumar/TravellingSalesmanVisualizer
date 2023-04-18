@@ -38,7 +38,7 @@ public class TspSolverUI {
         };
 
         var ant_colony_flow = new IAlgorithmStep[]{
-                new AntColony(),
+                new AntColony(80, 4, 5, 0.8, 1),
                 new PrintPath("Ant Colony"),
         };
 

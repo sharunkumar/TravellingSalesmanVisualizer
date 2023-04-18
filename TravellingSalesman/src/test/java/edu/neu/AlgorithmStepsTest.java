@@ -20,7 +20,7 @@ import static edu.neu.utilties.TSPUtilities.getWeightMatrix;
  */
 public class AlgorithmStepsTest
         extends TestCase {
-    private static final AntColony antColony = new AntColony();
+    private static final AntColony antColony = new AntColony(80, 4, 5, 0.8, 1);
     private final TravellingSalesmanWindow window;
     private final DataSet dataSet;
     private final Location[] locations;
