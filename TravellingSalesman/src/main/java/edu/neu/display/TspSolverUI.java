@@ -51,7 +51,7 @@ public class TspSolverUI {
                 new PrintLocations("Final Locations")
         };
 
-        runFlow(simulated_annealing_flow);
+        runFlow(ant_colony_flow);
     }
 
     private void runFlow(IAlgorithmStep[] christofides_flow) {
