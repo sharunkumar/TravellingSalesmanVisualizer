@@ -27,8 +27,8 @@ public class DataSet {
                 String[] data = line.split(",");
                 try {
                     String crimeID = data[0];
-                    float latitude = Float.parseFloat(data[1]);
-                    float longitude = Float.parseFloat(data[2]);
+                    float latitude = Float.parseFloat(data[2]);
+                    float longitude = Float.parseFloat(data[1]);
 
                     unique_locations.add(new Location(latitude, longitude, crimeID));
                 } catch (Exception e) {
