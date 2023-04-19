@@ -1,4 +1,4 @@
-package edu.neu.utilties.algorithm.io;
+package edu.neu.utilties.algorithm;
 
 import edu.neu.display.TravellingSalesmanWindow;
 import edu.neu.modals.Location;
